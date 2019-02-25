@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {getInfoDetail} from '../services/InfoDao';
 import {isEmptyObject,strNotNull,weiXinShare} from "../utils/utils";
-import {Images} from '../components'
+import {Images,MarkDown} from '../components'
 
 export default class SecondPage extends Component {
 
@@ -45,9 +45,10 @@ export default class SecondPage extends Component {
     };
 
     render() {
+        const {info} = this.state;
         return (
             <div>
-
+                {strNotNull(info.description) ? <MarkDown description={info.description}/> : null}
             </div>
         );
     }
