@@ -3,7 +3,7 @@ import {getEventDetail} from '../services/InfoDao';
 import {isEmptyObject,strNotNull,weiXinShare} from "../utils/utils";
 import {Images,MarkDown} from '../components'
 
-export default class SecondPage extends Component {
+export default class EventDetail extends Component {
 
     constructor(props) {
         super(props);

@@ -6,9 +6,7 @@ import {Images} from '../components';
 export default class LoadApp extends Component {
     state = {
         show: false,
-        showAndroid: false,
-        ios_version: '',
-        android_version: ''
+        showAndroid: false
     };
 
     componentDidMount() {
@@ -35,7 +33,6 @@ export default class LoadApp extends Component {
 
     };
     toAndroidApp = () => {
-        console.log("android_version", this.state.android_version)
 
         let plat = navigator.userAgent;
         if (plat.indexOf('Android') > -1 || plat.indexOf('Adr') > -1) {
@@ -46,7 +43,7 @@ export default class LoadApp extends Component {
                 });
             } else {
 
-                this.open_android(`http://cdn-upyun.deshpro.com/deshpro_public/macauhike.apk?version=${this.state.android_version}`);
+                this.open_android(`http://cdn-upyun.deshpro.com/deshpro_public/pokerkinglive.apk`);
             }
 
 
