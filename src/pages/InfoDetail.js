@@ -18,7 +18,7 @@ export default class SecondPage extends Component {
         const {id} = this.props.match.params;
 
         getInfoDetail({id: id}, data => {
-            console.log("info:", data.info);
+            console.log("info:", data);
             this.setState({
                 info: data.info
             });
@@ -46,6 +46,9 @@ export default class SecondPage extends Component {
 
     render() {
         const {info} = this.state;
+        if(isEmptyObject(info)){
+            return <div/>
+        }
         return (
             <div>
                 {strNotNull(info.description) ? <MarkDown description={info.description}/> : null}

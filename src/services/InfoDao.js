@@ -2,7 +2,7 @@ import api from '../utils/api'
 import {get,post} from '../utils/fetch'
 
 export function getInfoDetail(body, resolved, reject) {
-    get(api.info_detail(body),ret=>{
+    get(api.info_detail(body),{},ret=>{
         resolved(ret.data)
     },reject)
 }
