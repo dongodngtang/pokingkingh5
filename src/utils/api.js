@@ -8,7 +8,8 @@ const api = {
     //production 用来发布正式生产环境
     production: 'http://pokerking_api.deshpro.com/v1',
     info_detail:info_detail,//获取热门资讯详情
-    weixin_js_sign:'weixin_js_sign'
+    weixin_js_sign:'weixin_js_sign',
+    event_detail:event_detail,//获取主赛的新闻详情
 
 }
 
@@ -19,5 +20,9 @@ function info_detail(body){
     return `infos/${id}`;
 }
 
+function event_detail(body){
+    const {event_id,id} = body;
+    return `main_events/${event_id}/infos/${id}`;
+}
 
 export default api

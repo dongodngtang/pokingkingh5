@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getInfoDetail} from '../services/InfoDao';
+import {getEventDetail} from '../services/InfoDao';
 import {isEmptyObject,strNotNull,weiXinShare} from "../utils/utils";
 import {Images,MarkDown} from '../components'
 
@@ -15,9 +15,9 @@ export default class SecondPage extends Component {
     componentDidMount() {
 
 
-        const {id} = this.props.match.params;
+        const {event_id,id} = this.props.match.params;
 
-        getInfoDetail({id: id}, data => {
+        getEventDetail({event_id: event_id, id: id}, data => {
             console.log("info:", data);
             this.setState({
                 info: data.info

@@ -12,3 +12,9 @@ export function getWeiXinSign(payload, resolve, reject) {
         resolve(ret.data);
     }, reject)
 }
+/*获取主赛的新闻详情*/
+export function getEventDetail(body,resolve, reject) {
+    get(api.event_detail(body),body,ret=>{
+        resolve(ret.data)
+    },reject)
+}
