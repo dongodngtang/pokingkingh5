@@ -60,7 +60,6 @@ export default class LoadApp extends Component {
 
 
     render() {
-        console.log("djskdkskds",window.screen.availHeight )
         return (
             <div style={{display: 'flex',flex:1, flexDirection: 'column', alignItems: 'center', width: '100%'}}>
                 {this.state.showAndroid ? <div style={{
