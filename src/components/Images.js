@@ -5,3 +5,5 @@ const images = {
     androidload:'/images/androidload.png',
     safari:'/images/safari.png'
 }
+
+export default images
