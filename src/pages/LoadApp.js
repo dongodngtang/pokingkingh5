@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {weiXinShare} from  "../utils/utils";
+import {mul, weiXinShare} from "../utils/utils";
 import '../css/Download.css';
 import {Images} from '../components';
 
@@ -60,8 +60,9 @@ export default class LoadApp extends Component {
 
 
     render() {
+        console.log("djskdkskds",window.screen.availHeight )
         return (
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
+            <div style={{display: 'flex',flex:1, flexDirection: 'column', alignItems: 'center', width: '100%'}}>
                 {this.state.showAndroid ? <div style={{
                     width: '100%',
                     height: 70,
@@ -77,17 +78,16 @@ export default class LoadApp extends Component {
                     <div style={{
                         width:'100%',
                         display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent:'space-between',
+                        flexDirection: 'column',
                         alignItems: 'center',
                         position:'absolute',
-                        bottom:60
+                        bottom:Number(mul(window.screen.availHeight , 0.272))
                     }}>
-                        <a className="ios_app_a" onClick={this.toIosApp} style={{marginLeft:17}}>
+                        <a onClick={this.toIosApp} className="onclick">
                             <img className="iosDownloadImg2" src={Images.iphoneload} alt=""/>
                         </a>
 
-                        <a id='android_load' className="android_app_a" onClick={this.toAndroidApp}  style={{marginRight:17}}>
+                        <a id='android_load' onClick={this.toAndroidApp} className="onclick" style={{marginTop:20}}>
                             <img className="andoridDownloadImg2" src={Images.androidload} alt=""/>
                         </a>
                     </div>
