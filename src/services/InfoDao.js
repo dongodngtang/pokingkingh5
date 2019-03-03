@@ -25,3 +25,10 @@ export function getCashQueues(body,resolve, reject) {
         resolve(ret.data)
     }, reject)
 }
+
+/*现金桌排队进程报名人列表*/
+export function getCashQueuesNumber(body,resolve, reject) {
+    get(api.cash_queues_number(body), {}, ret => {
+        resolve(ret.data)
+    }, reject)
+}
