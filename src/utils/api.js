@@ -10,10 +10,15 @@ const api = {
     info_detail:info_detail,//获取热门资讯详情
     weixin_js_sign:'weixin_js_sign',
     event_detail:event_detail,//获取主赛的新闻详情
+    cash_queues:cash_queues,//现金桌排队进程列表
 
 }
 
 
+function cash_queues(body){
+    const {cash_game_id} = body;
+    return `cash_games/${cash_game_id}/cash_queues`;
+}
 
 function info_detail(body){
     const {id} = body;

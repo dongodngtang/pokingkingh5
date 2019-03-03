@@ -1,0 +1,106 @@
+.home_div {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: url('/images/home_bg.png') no-repeat center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 100% 100%;
+    display: flex;
+    flex: 1;
+}
+
+.top_div {
+    height: 124px;
+    width: 100%;
+    background-color: #1C1E23;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.left_div{
+    height:100%;
+    width:223px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1E23;
+    position:absolute;
+    left:0;
+}
+.pukewang_img{
+    width:192px;
+    height:96px;
+    margin-top: 60px;
+    margin-bottom: 18px;
+}
+.left_line{
+    width:60%;
+    height:1px;
+    background-color: #757575;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.left_span{
+    color:#CCCCCC;
+    font-size:18px;
+}
+.circle_div{
+    width:80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top:11px;
+}
+.circle{
+    width:85px;
+    height:43px;
+    background: url('/images/circle1.png') no-repeat center;
+    background-size: 100% 100%;
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle_span{
+    color:#FFFFFF;
+    font-size:18px;
+    font-weight: bold;
+}
+.big_circle{
+    width:208px;
+    height:96px;
+    background: url('/images/Rectangle.png') no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 68px;
+}
+.big_circle_last{
+    width:208px;
+    height:96px;
+    background: url('/images/limit.png') no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 68px;
+}
+.big_circle_span{
+    color:#44474E;
+    font-size:32px;
+    font-weight: bold;
+}
+.big_money_span{
+    color:#1C1E23;
+    font-size:18px;
+    font-weight: bold;
+}

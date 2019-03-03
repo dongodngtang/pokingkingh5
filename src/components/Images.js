@@ -3,7 +3,8 @@ const images = {
     empty_img: '/images/empty_ticket.png',
     iphoneload:'/images/iphoneload.png',
     androidload:'/images/androidload.png',
-    safari:'/images/safari.png'
+    safari:'/images/safari.png',
+    pukewang:'/images/pukewang.png',
 }
 
 export default images
