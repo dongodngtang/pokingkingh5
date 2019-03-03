@@ -68,6 +68,7 @@ let members = [[{
     small_blind: 100,
     table_numbers: 2
 }], [], []];
+const list = [1,2,3,4,5,6,7,8,9,10,11];
 
 export default class EventDetail extends Component {
 
@@ -162,15 +163,22 @@ export default class EventDetail extends Component {
                 <div className="queue_div">
                     {cash_queue_members.map((item, index) => {
                         return (
-                            <div className="queue" key={index}>
-                                <span className="text1">{item.length}</span>
-                                <div className="queue_number_div"
-                                     style={{height: Number(mul(window.screen.height, 0.648))}}>
-                                    {item.map((member_item, member_index) => {
-                                        return <span className="name_span"
-                                                     key={member_index}>{member_item.nickname}</span>
-                                    })}
+                            <div className="queue_list">
+                                <div className="queue" key={index}>
+                                    <span className="text1">{item.length}</span>
+                                    <div className="queue_number_div"
+                                         style={{height: Number(mul(window.screen.height, 0.648))}}>
+                                        {item.map((member_item, member_index) => {
+                                            return <span className="name_span"
+                                                         key={member_index}>{member_item.nickname}</span>
+                                        })}
+                                    </div>
                                 </div>
+                                {index === cash_queue_members.length -1 ? null : <div className="list_div">
+                                    {list.map((item,index)=>{
+                                        return <span className="number_span" key={index}>{item}</span>
+                                    })}
+                                </div>}
                             </div>
                         )
                     })}
