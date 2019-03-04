@@ -12,6 +12,7 @@ const api = {
     event_detail:event_detail,//获取主赛的新闻详情
     cash_queues:cash_queues,//现金桌排队进程列表
     cash_queues_number:cash_queues_number,//现金桌排队进程报名人列表
+    cash_games:"cash_games",//现金桌列表
 
 }
 

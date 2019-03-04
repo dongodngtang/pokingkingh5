@@ -32,3 +32,9 @@ export function getCashQueuesNumber(body,resolve, reject) {
         resolve(ret.data)
     }, reject)
 }
+/*现金桌列表*/
+export function getCashGames(resolve, reject) {
+    get(api.cash_games, {from:'h5'}, ret => {
+        resolve(ret.data)
+    }, reject)
+}

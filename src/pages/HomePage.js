@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {getCashQueues, getCashQueuesNumber} from '../services/InfoDao';
+import {getCashQueues, getCashQueuesNumber, getCashGames} from '../services/InfoDao';
 import {isEmptyObject, logMsg, mul, strNotNull, weiXinShare} from "../utils/utils";
 import {Images, MarkDown} from '../components';
 import '../css/home.css';
@@ -12,6 +12,7 @@ export default class EventDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            cash_games: [],
             cash_queues: [],
             all_cash_queues: [],
             cash_queue_members: []
@@ -22,26 +23,35 @@ export default class EventDetail extends Component {
 
 
     componentDidMount() {
-        const {id} = this.props.match.params;
+        getCashGames(data => {
+            console.log("现金桌", data);
+            this.setState({
+                cash_games: data.items
+            })
+            this.getlist(data.items[0].id)
+        })
 
+    };
+
+    getlist = (id) => {
         getCashQueues({cash_game_id: id}, data => {
             console.log("cash_queues", data);
-            let queues= data.items;
+            let queues = data.items;
             let cash_queues1 = [];
             let members = [];
-            queues.forEach((item,index,arr) => {
+            queues.forEach((item, index, arr) => {
 
                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
                     console.log("cash_queue_members", data2);
                     item.cash_items = data2.items
                     members.push(data2.items)
-                    if(arr.length === members.length){
+                    if (arr.length === members.length) {
 
-                        let cash_queue_members =arr.map(x=>x.cash_items)
+                        let cash_queue_members = arr.map(x => x.cash_items)
                         this.setState({
                             cash_queue_members
                         })
-                        logMsg('史蒂夫',cash_queue_members)
+                        logMsg('史蒂夫', cash_queue_members)
                     }
                 });
                 for (let i = 0; i < item.table_numbers; i++) {
@@ -56,12 +66,30 @@ export default class EventDetail extends Component {
             });
 
         });
-
     }
 
+
+    _color = (small_blind, big_blind) => {
+        if (small_blind === 50 && big_blind === 100) {
+            return '#4CB564'
+        } else if (small_blind === 100 && big_blind === 200) {
+            return '#C14C33'
+        } else if (small_blind === 25 && big_blind === 50) {
+            return '#717171'
+        } else if (small_blind === 300 && big_blind === 600) {
+            return '#4A90E2'
+        }else if (small_blind === 1000 && big_blind === 2000) {
+            return '#D8A655'
+        }else if (small_blind === 2000 && big_blind === 4000) {
+            return '#942CEF'
+        }else if (small_blind === 5000 && big_blind === 10000) {
+            return '#893505'
+        }
+    };
+
     render() {
-        const {all_cash_queues, cash_queues, cash_queue_members} = this.state;
-        console.log("cash_queue_members",cash_queue_members)
+        const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
+        console.log("cash_queue_members", cash_queue_members)
         return (
             <div className="home_div">
                 <div className="top_div">
@@ -92,12 +120,23 @@ export default class EventDetail extends Component {
                         {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {
                             const {small_blind, big_blind} = item;
                             return (
-                                <div className="circle" key={index}>
+                                <div className="circle" key={index}
+                                     style={{backgroundColor: this._color(small_blind, big_blind)}}>
                                     <span className="circle_span">{`${small_blind}/${big_blind}`}</span>
                                 </div>
                             )
                         })}
                     </div>
+                    <select id="dropdown" ref={(input) => this.menu = input}
+                            onChange={() => {
+
+                                this.getlist(this.menu.value)
+                            }}>
+                        {cash_games.map((item, index) => {
+                            return <option>{item.id}</option>
+                        })}
+                    </select>
+
                 </div>
 
                 <div className="queue_div">
