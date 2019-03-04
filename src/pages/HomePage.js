@@ -4,70 +4,7 @@ import {isEmptyObject, mul, strNotNull, weiXinShare} from "../utils/utils";
 import {Images, MarkDown} from '../components';
 import '../css/home.css';
 
-const queues = [{
-    big_blind: 100,
-    buy_in: '',
-    cash_game_id: 2,
-    cash_queue_members_count: 0,
-    created_at: 1550220955,
-    id: 2,
-    small_blind: 50,
-    table_no: "",
-    table_numbers: 3
-},
-    {
-        big_blind: 200,
-        buy_in: '',
-        cash_game_id: 2,
-        cash_queue_members_count: 3,
-        created_at: 1550220963,
-        id: 3,
-        small_blind: 100,
-        table_no: "",
-        table_numbers: 2
-    },
-    {
-        big_blind: 400,
-        buy_in: '',
-        cash_game_id: 2,
-        cash_queue_members_count: 0,
-        created_at: 1550220931,
-        id: 1,
-        small_blind: 200,
-        table_no: "",
-        table_numbers: 4
-    }];
-let members = [[{
-    big_blind: 200,
-    canceled: false,
-    cash_queue_id: 3,
-    created_at: 1550567345,
-    id: 3,
-    isSelect: true,
-    nickname: "Lorne",
-    small_blind: 100,
-    table_numbers: 2
-}, {
-    big_blind: 200,
-    canceled: false,
-    cash_queue_id: 3,
-    created_at: 1550567330,
-    id: 2,
-    isSelect: false,
-    nickname: "Millie",
-    small_blind: 100,
-    table_numbers: 2
-}, {
-    big_blind: 200,
-    canceled: false,
-    cash_queue_id: 3,
-    created_at: 1550543053,
-    id: 1,
-    isSelect: false,
-    nickname: "Ricky",
-    small_blind: 100,
-    table_numbers: 2
-}], [], []];
+let members = [];
 const list = [1,2,3,4,5,6,7,8,9,10,11];
 
 export default class EventDetail extends Component {
@@ -85,45 +22,40 @@ export default class EventDetail extends Component {
 
     componentDidMount() {
         const {id} = this.props.match.params;
-        let cash_queues1 = [];
-        queues.forEach(item => {
-            for (let i = 0; i < item.table_numbers; i++) {
-                cash_queues1.push(item)
-            }
+
+        getCashQueues({cash_game_id: id}, data => {
+            console.log("cash_queues", data);
+            let cash_queues1 = [];
+            data.items.forEach(item => {
+                for (let i = 0; i < item.table_numbers; i++) {
+                    cash_queues1.push(item)
+                }
+            });
+            this.setState({
+                cash_queues: data.items,
+                all_cash_queues: cash_queues1
+            });
+
+            data.items.forEach(item => {
+                this.getQueueMembers(item.cash_game_id, item.id)
+            })
         });
-        this.setState({
-            cash_queues: queues,
-            all_cash_queues: cash_queues1
-        });
-        // getCashQueues({cash_game_id: id}, data => {
-        //     console.log("cash_queues", data);
-        //     this.setState({
-        //         cash_queues: data.items
-        //     });
-        // });
-        queues.forEach(item => {
-            this.getQueueMembers(item.cash_game_id, item.id)
-        })
 
     }
 
     getQueueMembers = (cash_game_id, id) => {
-        // getCashQueuesNumber({cash_game_id: cash_game_id, cash_queue_id: id}, data => {
-        //     console.log("cash_queue_members", data);
-        //     members.push(data.items);
-        //     this.setState({
-        //         cash_queue_members: members
-        //     })
-        // })
-        this.setState({
-            cash_queue_members: members
+        getCashQueuesNumber({cash_game_id: cash_game_id, cash_queue_id: id}, data => {
+            console.log("cash_queue_members", data);
+            members.push(data.items);
+            this.setState({
+                cash_queue_members: members
+            })
         })
 
     }
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members} = this.state;
-        console.log("fjskdls", window.screen.height)
         return (
             <div className="home_div">
                 <div className="top_div">
@@ -163,7 +95,7 @@ export default class EventDetail extends Component {
                 <div className="queue_div">
                     {cash_queue_members.map((item, index) => {
                         return (
-                            <div className="queue_list">
+                            <div className="queue_list" key={index}>
                                 <div className="queue" key={index}>
                                     <span className="text1">{item.length}</span>
                                     <div className="queue_number_div"

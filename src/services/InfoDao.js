@@ -21,14 +21,14 @@ export function getEventDetail(body,resolve, reject) {
 
 /*现金桌排队进程列表*/
 export function getCashQueues(body,resolve, reject) {
-    get(api.cash_queues(body), {}, ret => {
+    get(api.cash_queues(body), {from:'h5'}, ret => {
         resolve(ret.data)
     }, reject)
 }
 
 /*现金桌排队进程报名人列表*/
 export function getCashQueuesNumber(body,resolve, reject) {
-    get(api.cash_queues_number(body), {}, ret => {
+    get(api.cash_queues_number(body), {from:'h5'}, ret => {
         resolve(ret.data)
     }, reject)
 }
