@@ -30,14 +30,18 @@ export default class EventDetail extends Component {
             let cash_queues1 = [];
             let members = [];
             queues.forEach((item,index,arr) => {
+
                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
                     console.log("cash_queue_members", data2);
+                    item.cash_items = data2.items
                     members.push(data2.items)
                     if(arr.length === members.length){
+
+                        let cash_queue_members =arr.map(x=>x.cash_items)
                         this.setState({
-                            cash_queue_members: members
+                            cash_queue_members
                         })
-                        logMsg('史蒂夫',members)
+                        logMsg('史蒂夫',cash_queue_members)
                     }
                 });
                 for (let i = 0; i < item.table_numbers; i++) {
