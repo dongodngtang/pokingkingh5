@@ -51,7 +51,6 @@ export default class EventDetail extends Component {
                         this.setState({
                             cash_queue_members
                         })
-                        logMsg('史蒂夫', cash_queue_members)
                     }
                 });
                 for (let i = 0; i < item.table_numbers; i++) {
