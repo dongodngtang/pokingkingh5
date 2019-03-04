@@ -89,7 +89,6 @@ export default class EventDetail extends Component {
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
-        console.log("cash_queue_members", cash_queue_members)
         return (
             <div className="home_div">
                 <div className="top_div">
