@@ -5,7 +5,7 @@ import {Images, MarkDown} from '../components';
 import '../css/home.css';
 
 let members = [];
-const list = [1,2,3,4,5,6,7,8,9,10,11];
+const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 export default class EventDetail extends Component {
 
@@ -61,10 +61,12 @@ export default class EventDetail extends Component {
                 <div className="top_div">
                     <div style={{width: 223}}/>
                     {cash_queues.map((item, index) => {
-                        const {small_blind, big_blind} = item;
+                        const {small_blind, big_blind, buy_in} = item;
                         return (
                             <div className="big_circle" key={index}>
-                                <span className="big_money_span">{`5K ～ 30K (HKD)`}</span>
+                                {strNotNull(buy_in) ?
+                                    <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
+
                                 <span className="big_circle_span">{`${small_blind}/${big_blind}`}NL</span>
                             </div>
                         )
@@ -106,8 +108,8 @@ export default class EventDetail extends Component {
                                         })}
                                     </div>
                                 </div>
-                                {index === cash_queue_members.length -1 ? null : <div className="list_div">
-                                    {list.map((item,index)=>{
+                                {index === cash_queue_members.length - 1 ? null : <div className="list_div">
+                                    {list.map((item, index) => {
                                         return <span className="number_span" key={index}>{item}</span>
                                     })}
                                 </div>}
