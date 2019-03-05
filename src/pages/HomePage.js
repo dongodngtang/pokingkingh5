@@ -31,9 +31,11 @@ export default class EventDetail extends Component {
             this.setState({
                 cash_games: data.items
             })
-            this.intervalId = setInterval(() => {
+            this.getlist(data.items[0].id)
+            this.intervalId = setInterval(()=>{
                 this.getlist(data.items[0].id)
-            }, 5000);
+            },5000)
+
 
         })
 
@@ -132,8 +134,16 @@ export default class EventDetail extends Component {
                     </div>
                     <select id="dropdown" ref={(input) => this.menu = input}
                             onChange={() => {
-
+                                clearInterval(this.intervalId);
                                 this.getlist(this.menu.value)
+                                this.intervalId = setInterval(()=>{
+                                    this.getlist(this.menu.value)
+                                },5000)
+                                this.setState({
+                                    cash_queue_members:[]
+                                })
+
+
                             }}>
                         {cash_games.map((item, index) => {
                             return <option key={index}>{item.id}</option>
