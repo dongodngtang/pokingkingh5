@@ -20,15 +20,21 @@ export default class EventDetail extends Component {
 
 
     }
-
+    componentWillMount(){
+        clearInterval(this.intervalId);
+    }
 
     componentDidMount() {
+
         getCashGames(data => {
             console.log("现金桌", data);
             this.setState({
                 cash_games: data.items
             })
-            this.getlist(data.items[0].id)
+            this.intervalId = setInterval(() => {
+                this.getlist(data.items[0].id)
+            }, 5000);
+
         })
 
     };
@@ -42,12 +48,11 @@ export default class EventDetail extends Component {
             queues.forEach((item, index, arr) => {
 
                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
-                    console.log("cash_queue_members", data2);
                     item.cash_items = data2.items
                     members.push(data2.items)
                     if (arr.length === members.length) {
 
-                        let cash_queue_members = arr.map(x => x.cash_items)
+                        let cash_queue_members = arr.map(x => x.cash_items);
                         this.setState({
                             cash_queue_members
                         })
@@ -60,7 +65,7 @@ export default class EventDetail extends Component {
 
             this.setState({
                 cash_queues: data.items,
-                all_cash_queues: cash_queues1,
+                all_cash_queues: cash_queues1
 
             });
 
@@ -131,7 +136,7 @@ export default class EventDetail extends Component {
                                 this.getlist(this.menu.value)
                             }}>
                         {cash_games.map((item, index) => {
-                            return <option>{item.id}</option>
+                            return <option key={index}>{item.id}</option>
                         })}
                     </select>
 

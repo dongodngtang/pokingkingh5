@@ -29,7 +29,7 @@ export default class LoadApp extends Component {
         this.setState({
             show: true
         });
-        window.open('https://itunes.apple.com/cn/app/macauhike/id1381273877?mt=8');
+        window.open('http://cdn-upyun.deshpro.com/deshpro_public/pokerkinglive.apk');
 
     };
     toAndroidApp = () => {
