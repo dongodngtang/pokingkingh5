@@ -29,7 +29,7 @@ export default class LoadApp extends Component {
         this.setState({
             show: true
         });
-        window.open('http://cdn-upyun.deshpro.com/deshpro_public/pokerkinglive.apk');
+        window.open('https://github.com/dongodngtang/PokerKingLive/blob/master/manifest.plist');
 
     };
     toAndroidApp = () => {
