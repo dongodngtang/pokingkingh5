@@ -12,9 +12,12 @@
     flex: 1;
     flex-direction: column;
 }
+.top1{
+    width: 250px
+}
 
 .top_div {
-    height: 124px;
+    height: 150px;
     width: 100%;
     background-color: #1C1E23;
     margin-top: 50px;
@@ -24,7 +27,7 @@
 }
 .left_div{
     height:100%;
-    width:223px;
+    width:250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,10 +36,9 @@
     left:0;
 }
 .pukewang_img{
-    width:192px;
-    height:96px;
+    width:134px;
+    height:67px;
     margin-top: 60px;
-    margin-bottom: 18px;
 }
 .left_line{
     width:60%;
@@ -50,7 +52,7 @@
     font-size:18px;
 }
 .circle_div{
-    width:90%;
+    width:80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -60,8 +62,8 @@
 }
 .circle{
     width:85px;
-    height:43px;
-    border-radius: 16px;
+    height:40px;
+    border-radius: 34px;
     border-width: 3px;
     border-color: #CCCCCC;
     border-style: solid;
@@ -108,9 +110,9 @@
     font-weight: bold;
 }
 .queue_div{
-    margin-left: 286px;
+    margin-left: 317px;
     margin-right: 33px;
-    margin-top:12px;
+    margin-top:20px;
     display: flex;
     flex-direction: row;
 }
@@ -125,7 +127,7 @@
     font-size:12px;
 }
 .queue_number_div{
-    width:208px;
+    width:204px;
     background-color: #FDF3D9;
     border-radius: 10px;
     border-width: 4px;
@@ -149,8 +151,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left:24px;
-    margin-right:24px;
+    margin-left:23px;
+    margin-right:23px;
     margin-top: 21px;
 }
 .number_span{
@@ -160,8 +162,12 @@
     margin-top: 21px;
 }
 #dropdown{
-    margin-top: 50px;
-    width:50%;
+    position:absolute;
+    bottom:50px;
+    width:30%;
     height:30px;
+    background-color: transparent;
+    border-color: transparent;
     align-self: center;
+    color:#cccccc;
 }
