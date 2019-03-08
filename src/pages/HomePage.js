@@ -175,6 +175,7 @@ export default class EventDetail extends Component {
                             </div>
                         )
                     })}
+                    <div className="queue_number_div last_div"/>
                 </div>
             </div>
         )
