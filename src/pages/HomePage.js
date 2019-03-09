@@ -50,6 +50,7 @@ export default class EventDetail extends Component {
             queues.forEach((item, index, arr) => {
 
                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
+                    logMsg("numbers",data2)
                     item.cash_items = data2.items
                     members.push(data2.items)
                     if (arr.length === members.length) {
@@ -95,11 +96,12 @@ export default class EventDetail extends Component {
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
+        logMsg("cash_queue_members",cash_queue_members)
         console.log("height",window.screen.height )
         console.log("width",window.screen.width )
         return (
             <div className="home_div">
-                <div className="top_div">
+                <div className="top_div" style={{height:Number(mul(window.screen.height,0.14))}}>
                     <div className='top1'/>
                     {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
                         const {small_blind, big_blind, buy_in} = item;
