@@ -104,7 +104,7 @@ export default class EventDetail extends Component {
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
-        logMsg("cash_queue_members", cash_queue_members)
+        logMsg("cash_queue_members", cash_queue_members);
         console.log("hepukewang_imgight", window.screen.height)
         console.log("width", window.screen.width)
         return (
@@ -187,7 +187,7 @@ export default class EventDetail extends Component {
                                 <div className="queue" key={index}>
                                     <span className="text1">{item.length}</span>
                                     <div className="queue_number_div"
-                                         style={{height: this.getHeight(0.648), width: this.getWidth(0.10625)}}>
+                                         style={{height:this.getHeight(0.74), width: this.getWidth(0.10625)}}>
                                         {item.map((member_item, member_index) => {
                                             if (member_index < 11) {
                                                 return <span className="name_span"
@@ -196,16 +196,16 @@ export default class EventDetail extends Component {
                                         })}
                                     </div>
                                 </div>
-                                {index === cash_queue_members.length - 1 ? null : <div className="list_div">
+                                <div className="list_div">
                                     {list.map((item, index) => {
                                         return <span className="number_span" key={index}>{item}</span>
                                     })}
-                                </div>}
+                                </div>
                             </div>
                         )
                     })}
                     <div className="queue_number_div last_div"
-                         style={{height: this.getHeight(0.648), width: this.getWidth(0.10625)}}/>
+                         style={{width: this.getWidth(0.10625),height:this.getHeight(0.595)}}/>
                 </div>
             </div>
         )

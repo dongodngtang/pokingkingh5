@@ -135,6 +135,7 @@
 }
 .queue_number_div{
     /*width:204px;*/
+    height:100%;
     background-color: #FDF3D9;
     border-radius: 10px;
     border-width: 4px;
@@ -146,7 +147,7 @@
 }
 .last_div{
     margin-top: 17px;
-    margin-left: 66px;
+
 }
 .name_span{
     color:#444444;
@@ -175,7 +176,7 @@
 #dropdown{
     position:absolute;
     bottom:50px;
-    width:30%;
+   
     height:30px;
     background-color: transparent;
     border-color: transparent;
