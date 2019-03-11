@@ -124,16 +124,18 @@ export default class EventDetail extends Component {
                     <span className="left_span">LIVE PREVIEW</span>
                     <div className="left_line"/>
 
-                    <div className="circle_div">
-                        {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {
-                            const {small_blind, big_blind} = item;
-                            return (
-                                <div className="circle" key={index}
-                                     style={{backgroundColor: this._color(small_blind, big_blind)}}>
-                                    <span className="circle_span">{`${small_blind}/${big_blind}`}</span>
-                                </div>
-                            )
-                        })}
+                    <div className="content_circle">
+                        <div className="circle_div">
+                            {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {
+                                const {small_blind, big_blind} = item;
+                                return (
+                                    <div className="circle" key={index}
+                                         style={{backgroundColor: this._color(small_blind, big_blind)}}>
+                                        <span className="circle_span">{`${small_blind}/${big_blind}`}</span>
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </div>
                     <select id="dropdown" ref={(input) => this.menu = input}
                             onChange={() => {
