@@ -164,8 +164,10 @@ export default class EventDetail extends Component {
                                     <div className="queue_number_div"
                                          style={{height: Number(mul(window.screen.height, 0.648))}}>
                                         {item.map((member_item, member_index) => {
-                                            return <span className="name_span"
-                                                         key={member_index}>{member_item.nickname}</span>
+                                            if(member_index < 11){
+                                                return <span className="name_span"
+                                                             key={member_index}>{member_item.nickname}</span>
+                                            }
                                         })}
                                     </div>
                                 </div>
