@@ -180,14 +180,14 @@ export default class EventDetail extends Component {
 
                 </div>
 
-                <div className="queue_div" style={{marginTop:this.getHeight(0.0185)}}>
+                <div className="queue_div" style={{marginTop: this.getHeight(0.0185)}}>
                     {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
                         return (
                             <div className="queue_list" key={index}>
                                 <div className="queue" key={index}>
                                     <span className="text1">{item.length}</span>
                                     <div className="queue_number_div"
-                                         style={{height: this.getHeight(0.648),width:this.getWidth(0.10625)}}>
+                                         style={{height: this.getHeight(0.648), width: this.getWidth(0.10625)}}>
                                         {item.map((member_item, member_index) => {
                                             if (member_index < 11) {
                                                 return <span className="name_span"
@@ -204,7 +204,8 @@ export default class EventDetail extends Component {
                             </div>
                         )
                     })}
-                    <div className="queue_number_div last_div"/>
+                    <div className="queue_number_div last_div"
+                         style={{height: this.getHeight(0.648), width: this.getWidth(0.10625)}}/>
                 </div>
             </div>
         )
