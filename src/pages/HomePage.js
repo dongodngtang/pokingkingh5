@@ -20,7 +20,8 @@ export default class EventDetail extends Component {
 
 
     }
-    componentWillMount(){
+
+    componentWillMount() {
         clearInterval(this.intervalId);
     }
 
@@ -32,9 +33,9 @@ export default class EventDetail extends Component {
                 cash_games: data.items
             })
             this.getlist(data.items[0].id)
-            this.intervalId = setInterval(()=>{
+            this.intervalId = setInterval(() => {
                 this.getlist(data.items[0].id)
-            },5000)
+            }, 5000)
 
 
         })
@@ -50,7 +51,7 @@ export default class EventDetail extends Component {
             queues.forEach((item, index, arr) => {
 
                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
-                    logMsg("numbers",data2)
+                    logMsg("numbers", data2)
                     item.cash_items = data2.items
                     members.push(data2.items)
                     if (arr.length === members.length) {
@@ -85,28 +86,38 @@ export default class EventDetail extends Component {
             return '#717171'
         } else if (small_blind === 300 && big_blind === 600) {
             return '#4A90E2'
-        }else if (small_blind === 1000 && big_blind === 2000) {
+        } else if (small_blind === 1000 && big_blind === 2000) {
             return '#D8A655'
-        }else if (small_blind === 2000 && big_blind === 4000) {
+        } else if (small_blind === 2000 && big_blind === 4000) {
             return '#942CEF'
-        }else if (small_blind === 5000 && big_blind === 10000) {
+        } else if (small_blind === 5000 && big_blind === 10000) {
             return '#893505'
         }
     };
 
+    getHeight = (float) => {
+        return Number(mul(window.screen.height, float))
+    };
+    getWidth = (float) => {
+        return Number(mul(window.screen.width, float))
+    };
+
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
-        logMsg("cash_queue_members",cash_queue_members)
-        console.log("height",window.screen.height )
-        console.log("width",window.screen.width )
+        logMsg("cash_queue_members", cash_queue_members)
+        console.log("hepukewang_imgight", window.screen.height)
+        console.log("width", window.screen.width)
         return (
             <div className="home_div">
-                <div className="top_div" style={{height:Number(mul(window.screen.height,0.14))}}>
-                    <div className='top1'/>
+                <div className="top_div" style={{height: this.getHeight(0.14), marginTop: this.getHeight(0.0463)}}>
+                    <div className='top1' style={{width: this.getWidth(0.13)}}/>
                     {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
                         const {small_blind, big_blind, buy_in} = item;
                         return (
-                            <div className="big_circle" key={index}>
+                            <div className="big_circle" key={index} style={{
+                                height: this.getHeight(0.089),
+                                width: this.getWidth(0.1083)
+                            }}>
                                 {strNotNull(buy_in) ?
                                     <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
 
@@ -114,23 +125,35 @@ export default class EventDetail extends Component {
                             </div>
                         )
                     })}
-                    <div className="big_circle_last">
+                    <div className="big_circle_last" style={{
+                        height: this.getHeight(0.089),
+                        width: this.getWidth(0.1083)
+                    }}>
                     </div>
                 </div>
-                <div className="left_div">
-                    <img className="pukewang_img" src={Images.pukewang}/>
+                <div className="left_div" style={{width: this.getWidth(0.13)}}>
+                    <img className="pukewang_img" style={{
+                        marginTop: this.getHeight(0.056),
+                        height: this.getHeight(0.062),
+                        width: this.getWidth(0.070)
+                    }} src={Images.pukewang}/>
                     <div className="left_line"/>
 
                     <span className="left_span">LIVE PREVIEW</span>
                     <div className="left_line"/>
 
-                    <div className="content_circle">
+                    <div className="content_circle" style={{height: this.getHeight(0.463)}}>
                         <div className="circle_div">
                             {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {
                                 const {small_blind, big_blind} = item;
                                 return (
                                     <div className="circle" key={index}
-                                         style={{backgroundColor: this._color(small_blind, big_blind)}}>
+                                         style={{
+                                             height: this.getHeight(0.037),
+                                             width: this.getWidth(0.044),
+                                             backgroundColor: this._color(small_blind, big_blind),
+                                             marginTop: this.getHeight(0.0167)
+                                         }}>
                                         <span className="circle_span">{`${small_blind}/${big_blind}`}</span>
                                     </div>
                                 )
@@ -141,11 +164,11 @@ export default class EventDetail extends Component {
                             onChange={() => {
                                 clearInterval(this.intervalId);
                                 this.getlist(this.menu.value)
-                                this.intervalId = setInterval(()=>{
+                                this.intervalId = setInterval(() => {
                                     this.getlist(this.menu.value)
-                                },5000)
+                                }, 5000)
                                 this.setState({
-                                    cash_queue_members:[]
+                                    cash_queue_members: []
                                 })
 
 
@@ -157,16 +180,16 @@ export default class EventDetail extends Component {
 
                 </div>
 
-                <div className="queue_div">
+                <div className="queue_div" style={{marginTop:this.getHeight(0.0185)}}>
                     {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
                         return (
                             <div className="queue_list" key={index}>
                                 <div className="queue" key={index}>
                                     <span className="text1">{item.length}</span>
                                     <div className="queue_number_div"
-                                         style={{height: Number(mul(window.screen.height, 0.648))}}>
+                                         style={{height: this.getHeight(0.648),width:this.getWidth(0.10625)}}>
                                         {item.map((member_item, member_index) => {
-                                            if(member_index < 11){
+                                            if (member_index < 11) {
                                                 return <span className="name_span"
                                                              key={member_index}>{member_item.nickname}</span>
                                             }

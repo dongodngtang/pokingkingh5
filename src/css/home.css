@@ -13,21 +13,19 @@
     flex-direction: column;
 }
 .top1{
-    width: 250px
 }
 
 .top_div {
-    height: 150px;
     width: 100%;
     background-color: #1C1E23;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 .left_div{
     height:100%;
-    width:250px;
+    /*width:250px;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,9 +34,6 @@
     left:0;
 }
 .pukewang_img{
-    width:134px;
-    height:67px;
-    margin-top: 60px;
 }
 .left_line{
     width:60%;
@@ -53,7 +48,7 @@
 }
 .content_circle{
     width:80%;
-    height:500px;
+    /*height:500px;*/
     overflow-y: scroll;
 }
 .element::-webkit-scrollbar {display:none}
@@ -73,13 +68,13 @@
     margin-top:11px;
 }
 .circle{
-    width:85px;
-    height:40px;
+    /*width:85px;*/
+    /*height:40px;*/
     border-radius: 34px;
     border-width: 3px;
     border-color: #CCCCCC;
     border-style: solid;
-    margin-top: 18px;
+    /*margin-top: 18px;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,8 +85,8 @@
     font-weight: bold;
 }
 .big_circle{
-    width:208px;
-    height:96px;
+    /*width:208px;*/
+    /*height:96px;*/
     background: url('/images/Rectangle.png') no-repeat center;
     background-size: 100% 100%;
     display: flex;
@@ -101,8 +96,8 @@
     margin-left: 68px;
 }
 .big_circle_last{
-    width:208px;
-    height:96px;
+    /*width:208px;*/
+    /*height:96px;*/
     background: url('/images/limit.png') no-repeat center;
     background-size: 100% 100%;
     display: flex;
@@ -124,7 +119,7 @@
 .queue_div{
     margin-left: 317px;
     margin-right: 33px;
-    margin-top:20px;
+    /*margin-top:20px;*/
     display: flex;
     flex-direction: row;
 }
@@ -139,7 +134,7 @@
     font-size:12px;
 }
 .queue_number_div{
-    width:204px;
+    /*width:204px;*/
     background-color: #FDF3D9;
     border-radius: 10px;
     border-width: 4px;
