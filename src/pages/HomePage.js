@@ -95,6 +95,18 @@ export default class EventDetail extends Component {
         }
     };
 
+
+    get_cash = (small_blind, big_blind) => {
+        if (small_blind >= 1000) {
+            return `${small_blind / 1000}k/${big_blind / 1000}k`
+        } else if (big_blind >= 1000) {
+            return `${small_blind}/${big_blind / 1000}k`
+        } else {
+            return `${small_blind}/${big_blind}`
+        }
+
+    }
+
     getHeight = (float) => {
         return Number(mul(window.screen.height, float))
     };
@@ -105,30 +117,30 @@ export default class EventDetail extends Component {
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
         logMsg("cash_queue_members", cash_queue_members);
-        console.log("hepukewang_imgight", window.screen.height)
-        console.log("width", window.screen.width)
         return (
             <div className="home_div">
-                <div className="top_div" style={{height: this.getHeight(0.14), marginTop: this.getHeight(0.0463)}}>
-                    <div className='top1' style={{width: this.getWidth(0.13)}}/>
-                    {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
-                        const {small_blind, big_blind, buy_in} = item;
-                        return (
-                            <div className="big_circle" key={index} style={{
-                                height: this.getHeight(0.089),
-                                width: this.getWidth(0.1083)
-                            }}>
-                                {strNotNull(buy_in) ?
-                                    <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
+                <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
+                    <div className="top_div_content">
 
-                                <span className="big_circle_span">{`${small_blind}/${big_blind}`}NL</span>
-                            </div>
-                        )
-                    })}
-                    <div className="big_circle_last" style={{
-                        height: this.getHeight(0.089),
-                        width: this.getWidth(0.1083)
-                    }}>
+                        {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
+                            const {small_blind, big_blind, buy_in} = item;
+                            return (
+                                <div className="big_circle" key={index} style={{
+                                    height: this.getHeight(0.089),
+                                    width: this.getWidth(0.1083)
+                                }}>
+                                    {strNotNull(buy_in) ?
+                                        <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
+
+                                    <span className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
+                                </div>
+                            )
+                        })}
+                        <div className="big_circle_last" style={{
+                            height: this.getHeight(0.089),
+                            width: this.getWidth(0.1083)
+                        }}>
+                        </div>
                     </div>
                 </div>
                 <div className="left_div" style={{width: this.getWidth(0.13)}}>
@@ -154,7 +166,7 @@ export default class EventDetail extends Component {
                                              backgroundColor: this._color(small_blind, big_blind),
                                              marginTop: this.getHeight(0.0167)
                                          }}>
-                                        <span className="circle_span">{`${small_blind}/${big_blind}`}</span>
+                                        <span className="circle_span">{this.get_cash(small_blind, big_blind)}</span>
                                     </div>
                                 )
                             })}
@@ -187,7 +199,7 @@ export default class EventDetail extends Component {
                                 <div className="queue" key={index}>
                                     <span className="text1">{item.length}</span>
                                     <div className="queue_number_div"
-                                         style={{height:this.getHeight(0.74), width: this.getWidth(0.10625)}}>
+                                         style={{height: this.getHeight(0.74), width: this.getWidth(0.10625)}}>
                                         {item.map((member_item, member_index) => {
                                             if (member_index < 11) {
                                                 return <span className="name_span"
@@ -205,7 +217,7 @@ export default class EventDetail extends Component {
                         )
                     })}
                     <div className="queue_number_div last_div"
-                         style={{width: this.getWidth(0.10625),height:this.getHeight(0.595)}}/>
+                         style={{width: this.getWidth(0.10625), height: this.getHeight(0.595)}}/>
                 </div>
             </div>
         )
