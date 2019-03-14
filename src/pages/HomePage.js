@@ -121,7 +121,7 @@ export default class EventDetail extends Component {
         logMsg("cash_queue_members", cash_queue_members);
         return (
             <div className="home_div">
-                <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
+                <div className="top_div" style={{height: this.getHeight(0.15), marginTop: this.getHeight(0.0463)}}>
                     <div className="top_div_content">
 
                         {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
@@ -198,10 +198,10 @@ export default class EventDetail extends Component {
                     {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
                         return (
                             <div className="queue_list" key={index}>
-                                <div className="queue" key={index}>
+                                <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
                                     <span className="text1">{item.length}</span>
                                     <div className="queue_number_div"
-                                         style={{height: this.getHeight(0.74), width: this.getWidth(0.10625)}}>
+                                         style={{width: this.getWidth(0.1083)}}>
                                         {item.map((member_item, member_index) => {
                                             if (member_index < 11) {
                                                 return <span className="name_span"
@@ -218,8 +218,8 @@ export default class EventDetail extends Component {
                             </div>
                         )
                     })}
-                    {/*<div className="queue_number_div last_div"*/}
-                         {/*style={{width: this.getWidth(0.10625), height: this.getHeight(0.595)}}/>*/}
+                    <div className="queue_number_div last_div"
+                         style={{width: this.getWidth(0.1083)}}/>
                 </div>
             </div>
         )
