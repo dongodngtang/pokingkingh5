@@ -121,7 +121,7 @@ export default class EventDetail extends Component {
         logMsg("cash_queue_members", cash_queue_members);
         return (
             <div className="home_div">
-                <div className="top_div" style={{height: this.getHeight(0.15), marginTop: this.getHeight(0.0463)}}>
+                <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
                     <div className="top_div_content">
 
                         {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
