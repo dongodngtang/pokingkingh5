@@ -5,6 +5,8 @@ import {Images, MarkDown} from '../components';
 import '../css/home.css';
 
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const HEIGHT = window.screen.height;
+const WIDTH = window.screen.width;
 
 export default class EventDetail extends Component {
 
@@ -108,10 +110,10 @@ export default class EventDetail extends Component {
     }
 
     getHeight = (float) => {
-        return Number(mul(window.screen.height, float))
+        return Number(mul(HEIGHT, float))
     };
     getWidth = (float) => {
-        return Number(mul(window.screen.width, float))
+        return Number(mul(WIDTH, float))
     };
 
     render() {
