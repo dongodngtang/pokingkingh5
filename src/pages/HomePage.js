@@ -218,8 +218,14 @@ export default class EventDetail extends Component {
                             </div>
                         )
                     })}
-                    <div className="queue_number_div last_div"
-                         style={{width: this.getWidth(0.1083)}}/>
+                    <div className="queue_list">
+                        <div className="queue" style={{width: this.getWidth(0.1083)}}>
+                            <span className="text1">{0}</span>
+                            <div className="queue_number_div"
+                                 style={{width: this.getWidth(0.1083)}}/>
+                        </div>
+                        <div className="list_div"/>
+                    </div>
                 </div>
             </div>
         )
