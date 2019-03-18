@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {getCashQueues, getCashQueuesNumber, getCashGames} from '../services/InfoDao';
-import {isEmptyObject, logMsg, mul, strNotNull, weiXinShare} from "../utils/utils";
+import {isEmptyObject, isStrNull, logMsg, mul, strNotNull, weiXinShare} from "../utils/utils";
 import {Images, MarkDown} from '../components';
 import '../css/home.css';
 
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const HEIGHT = window.screen.height;
 const WIDTH = window.screen.width;
+const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
 export default class EventDetail extends Component {
 
@@ -67,6 +68,7 @@ export default class EventDetail extends Component {
                 for (let i = 0; i < item.table_numbers; i++) {
                     cash_queues1.push(item)
                 }
+
             });
 
             this.setState({
@@ -76,11 +78,27 @@ export default class EventDetail extends Component {
             });
 
         });
-    }
+    };
+
+
+    getRandomColor = () => {
+        let color = "";
+        for (let i = 0; i < 6; i++) {
+            color += colorArr[Math.floor(Math.random() * 15)];
+        }
+        if (color !== '4CB564' && color !== 'C14C33' && color !== '717171' && color !== '4A90E2'
+            && color !== 'D8A655' && color !== '942CEF' && color !== '893505') {
+            return `#${color}`
+        } else {
+            return this.getRandomColor();
+        }
+    };
 
 
     _color = (small_blind, big_blind) => {
-        if (small_blind === 50 && big_blind === 100) {
+        if(isStrNull(small_blind) || isStrNull(big_blind)){
+            return '#1C1E23'
+        }else if (small_blind === 50 && big_blind === 100) {
             return '#4CB564'
         } else if (small_blind === 100 && big_blind === 200) {
             return '#C14C33'
@@ -99,13 +117,16 @@ export default class EventDetail extends Component {
 
 
     get_cash = (small_blind, big_blind) => {
-        if (small_blind >= 1000) {
+        if(isStrNull(small_blind) || isStrNull(big_blind)){
+            return ``
+        }else if (small_blind >= 1000) {
             return `${small_blind / 1000}k/${big_blind / 1000}k`
         } else if (big_blind >= 1000) {
             return `${small_blind}/${big_blind / 1000}k`
         } else {
             return `${small_blind}/${big_blind}`
         }
+
 
     }
 
@@ -119,6 +140,11 @@ export default class EventDetail extends Component {
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
         logMsg("cash_queue_members", cash_queue_members);
+        let top_content = [];
+        let last = 9 - all_cash_queues.length;
+        for (let i = 0; i < last; i++) {
+            top_content.push(i)
+        }
         return (
             <div className="home_div">
                 <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
@@ -158,6 +184,19 @@ export default class EventDetail extends Component {
 
                     <div className="content_circle" style={{height: this.getHeight(0.463)}}>
                         <div className="circle_div">
+                            {!isEmptyObject(top_content) && top_content.map((item, index) => {
+                                return (
+                                    <div className="circle" key={index}
+                                         style={{
+                                             height: this.getHeight(0.037),
+                                             width: this.getWidth(0.044),
+                                             backgroundColor: this._color('', ''),
+                                             marginTop: this.getHeight(0.0167)
+                                         }}>
+                                        <span className="circle_span">{this.get_cash('', '')}</span>
+                                    </div>
+                                )
+                            })}
                             {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {
                                 const {small_blind, big_blind} = item;
                                 return (
