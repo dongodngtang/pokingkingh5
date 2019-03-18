@@ -238,7 +238,10 @@ export default class EventDetail extends Component {
                         return (
                             <div className="queue_list" key={index}>
                                 <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
-                                    <span className="text1">{item.length}</span>
+                                    <div className="top_text_div">
+
+                                        <span className="text1">{item.length}</span>
+                                    </div>
                                     <div className="queue_number_div"
                                          style={{width: this.getWidth(0.1083)}}>
                                         {item.map((member_item, member_index) => {
