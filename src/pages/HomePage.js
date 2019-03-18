@@ -59,7 +59,13 @@ export default class EventDetail extends Component {
                     members.push(data2.items)
                     if (arr.length === members.length) {
 
-                        let cash_queue_members = arr.map(x => x.cash_items);
+                        let cash_queue_members = arr.map(x => {
+                            return {
+                                cash_items:x.cash_items,
+                                table_no:x.table_no
+                            }
+
+                        });
                         this.setState({
                             cash_queue_members
                         })
@@ -96,9 +102,9 @@ export default class EventDetail extends Component {
 
 
     _color = (small_blind, big_blind) => {
-        if(isStrNull(small_blind) || isStrNull(big_blind)){
+        if (isStrNull(small_blind) || isStrNull(big_blind)) {
             return '#1C1E23'
-        }else if (small_blind === 50 && big_blind === 100) {
+        } else if (small_blind === 50 && big_blind === 100) {
             return '#4CB564'
         } else if (small_blind === 100 && big_blind === 200) {
             return '#C14C33'
@@ -117,9 +123,9 @@ export default class EventDetail extends Component {
 
 
     get_cash = (small_blind, big_blind) => {
-        if(isStrNull(small_blind) || isStrNull(big_blind)){
+        if (isStrNull(small_blind) || isStrNull(big_blind)) {
             return ``
-        }else if (small_blind >= 1000) {
+        } else if (small_blind >= 1000) {
             return `${small_blind / 1000}k/${big_blind / 1000}k`
         } else if (big_blind >= 1000) {
             return `${small_blind}/${big_blind / 1000}k`
@@ -235,16 +241,17 @@ export default class EventDetail extends Component {
 
                 <div className="queue_div" style={{marginTop: this.getHeight(0.0185)}}>
                     {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
+
                         return (
                             <div className="queue_list" key={index}>
                                 <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
                                     <div className="top_text_div">
 
-                                        <span className="text1">{item.length}</span>
+                                        <span className="text1">{item.table_no}</span>
                                     </div>
                                     <div className="queue_number_div"
                                          style={{width: this.getWidth(0.1083)}}>
-                                        {item.map((member_item, member_index) => {
+                                        {item.cash_items.map((member_item, member_index) => {
                                             if (member_index < 11) {
                                                 return <span className="name_span"
                                                              key={member_index}>{member_item.nickname}</span>
