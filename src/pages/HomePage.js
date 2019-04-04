@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {getCashQueues, getCashQueuesNumber, getCashGames} from '../services/InfoDao';
-import {isEmptyObject, isStrNull, logMsg, mul, strNotNull, weiXinShare} from "../utils/utils";
+import {add, div, isEmptyObject, isStrNull, logMsg, mul, strNotNull, weiXinShare} from "../utils/utils";
 import {Images, MarkDown} from '../components';
 import '../css/home.css';
 
@@ -61,8 +61,8 @@ export default class EventDetail extends Component {
 
                         let cash_queue_members = arr.map(x => {
                             return {
-                                cash_items:x.cash_items,
-                                table_no:x.table_no
+                                cash_items: x.cash_items,
+                                table_no: x.table_no
                             }
 
                         });
@@ -151,33 +151,13 @@ export default class EventDetail extends Component {
         for (let i = 0; i < last; i++) {
             top_content.push(i)
         }
+        let length = cash_queues.length;
+        let div_width = this.getWidth(0.1083);
+        let right_width = div(300,length);
+        let all_div = add(div_width,right_width);
         return (
             <div className="home_div">
-                <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
-                    <div className="top_div_content">
-
-                        {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
-                            const {small_blind, big_blind, buy_in} = item;
-                            return (
-                                <div className="big_circle" key={index} style={{
-                                    height: this.getHeight(0.089),
-                                    width: this.getWidth(0.1083)
-                                }}>
-                                    {strNotNull(buy_in) ?
-                                        <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
-
-                                    <span className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
-                                </div>
-                            )
-                        })}
-                        <div className="big_circle_last" style={{
-                            height: this.getHeight(0.089),
-                            width: this.getWidth(0.1083)
-                        }}>
-                        </div>
-                    </div>
-                </div>
-                <div className="left_div" style={{width: this.getWidth(0.13)}}>
+                <div className="left_div" style={{width: '20%'}}>
                     <img className="pukewang_img" style={{
                         marginTop: this.getHeight(0.056),
                         height: this.getHeight(0.062),
@@ -185,7 +165,7 @@ export default class EventDetail extends Component {
                     }} src={Images.pukewang}/>
                     <div className="left_line"/>
 
-                    <span className="left_span">LIVE PREVIEW</span>
+                    <span className="left_span">TABLE PREVIEW</span>
                     <div className="left_line"/>
 
                     <div className="content_circle" style={{height: this.getHeight(0.463)}}>
@@ -239,43 +219,86 @@ export default class EventDetail extends Component {
 
                 </div>
 
-                <div className="queue_div" style={{marginTop: this.getHeight(0.0185)}}>
-                    {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
+                <div className="right_div" style={{width:'80%'}}>
+                    <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
+                        <div className="top_div_content">
 
-                        return (
-                            <div className="queue_list" key={index}>
-                                <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
-                                    <div className="top_text_div">
+                            {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
+                                const {small_blind, big_blind, buy_in} = item;
+                                return (
+                                    <div className="err" style={{width:all_div}}>
+                                        <div className="big_circle" key={index} style={{
+                                            height: this.getHeight(0.089),
+                                            width: this.getWidth(0.1083)
+                                        }}>
+                                            {strNotNull(buy_in) ?
+                                                <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
 
-                                        <span className="text1">{item.table_no}</span>
+                                            <span className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
+                                        </div>
+
+                                        <div style={{width:right_width}}/>
                                     </div>
-                                    <div className="queue_number_div"
-                                         style={{width: this.getWidth(0.1083)}}>
-                                        {item.cash_items.map((member_item, member_index) => {
-                                            if (member_index < 11) {
-                                                return <span className="name_span"
-                                                             key={member_index}>{member_item.nickname}</span>
-                                            }
-                                        })}
-                                    </div>
+
+                                )
+                            })}
+                            <div className="err" style={{width:all_div}}>
+                                <div className="big_circle_last" style={{
+                                    height: this.getHeight(0.089),
+                                    width: this.getWidth(0.1083)
+                                }}>
                                 </div>
-                                <div className="list_div">
-                                    {list.map((item, index) => {
-                                        return <span className="number_span" key={index}>{item}</span>
-                                    })}
+                                <div style={{width:right_width}}/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="queue_div2">
+                        <div className="queue_div" style={{marginTop: this.getHeight(0.0185)}}>
+                            {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
+
+                                return (
+                                    <div className="queue_list" key={index} style={{width:all_div}}>
+                                        <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
+                                            <div className="top_text_div">
+
+                                                <span className="text1">{item.table_no}</span>
+                                            </div>
+                                            <div className="queue_number_div"
+                                                 style={{width: this.getWidth(0.1083)}}>
+                                                {item.cash_items.map((member_item, member_index) => {
+                                                    if (member_index < 11) {
+                                                        return <span className="name_span"
+                                                                     key={member_index}>{member_item.nickname}</span>
+                                                    }
+                                                })}
+                                                <img style={{alignSelf: 'center', marginTop: 20, height: 26, width: 6}}
+                                                     src={Images.point} alt=""/>
+
+                                                <span className="queue_all">{`(当前排队${item.cash_items.length}人)`}</span>
+                                            </div>
+                                        </div>
+                                        <div className="list_div" style={{width: div(300,length)}}>
+                                            {list.map((item, index) => {
+                                                return <span className="number_span" key={index}>{item}</span>
+                                            })}
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                            <div className="queue_list"  style={{width:all_div}}>
+                                <div className="queue" style={{width: this.getWidth(0.1083)}}>
+                                    <span className="text1">{0}</span>
+                                    <div className="queue_number_div"
+                                         style={{width: this.getWidth(0.1083)}}/>
+                                </div>
+                                <div className="list_div" style={{width: div(300,length)}}>
                                 </div>
                             </div>
-                        )
-                    })}
-                    <div className="queue_list">
-                        <div className="queue" style={{width: this.getWidth(0.1083)}}>
-                            <span className="text1">{0}</span>
-                            <div className="queue_number_div"
-                                 style={{width: this.getWidth(0.1083)}}/>
                         </div>
-                        <div className="list_div"/>
                     </div>
                 </div>
+
             </div>
         )
     }
