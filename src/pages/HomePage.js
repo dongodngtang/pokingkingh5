@@ -61,8 +61,8 @@ export default class EventDetail extends Component {
 
                         let cash_queue_members = arr.map(x => {
                             return {
-                                cash_items:x.cash_items,
-                                table_no:x.table_no
+                                cash_items: x.cash_items,
+                                table_no: x.table_no
                             }
 
                         });
@@ -177,7 +177,7 @@ export default class EventDetail extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="left_div" style={{width: this.getWidth(0.13)}}>
+                <div className="left_div" style={{width: this.getWidth(0.15)}}>
                     <img className="pukewang_img" style={{
                         marginTop: this.getHeight(0.056),
                         height: this.getHeight(0.062),
@@ -185,7 +185,7 @@ export default class EventDetail extends Component {
                     }} src={Images.pukewang}/>
                     <div className="left_line"/>
 
-                    <span className="left_span">LIVE PREVIEW</span>
+                    <span className="left_span">TABLE PREVIEW</span>
                     <div className="left_line"/>
 
                     <div className="content_circle" style={{height: this.getHeight(0.463)}}>
@@ -257,6 +257,18 @@ export default class EventDetail extends Component {
                                                              key={member_index}>{member_item.nickname}</span>
                                             }
                                         })}
+
+                                        <img style={{alignSelf: 'center', marginTop: 20, height: 26, width:6}}
+                                             src={Images.point} alt=""/>
+                                        {/*<div className="point_div">*/}
+                                        {/*<span className="point">.</span>*/}
+                                        {/*<span className="point">.</span>*/}
+                                        {/*<span className="point">.</span>*/}
+                                        {/*<span className="point">.</span>*/}
+                                        {/*<span className="point">.</span>*/}
+                                        {/*<span className="point">.</span>*/}
+                                        {/*</div>*/}
+                                        <span className="queue_all">{`(当前排队${item.cash_items.length}人)`}</span>
                                     </div>
                                 </div>
                                 <div className="list_div">

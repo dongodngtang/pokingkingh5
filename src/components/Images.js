@@ -5,6 +5,7 @@ const images = {
     androidload:'/images/androidload.png',
     safari:'/images/safari.png',
     pukewang:'/images/pukewang.png',
+    point:'/images/point.png',
 }
 
 export default images
