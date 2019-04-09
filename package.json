@@ -18,7 +18,7 @@
     "build-test": "REACT_APP_KKAPI_ENV=test react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && scp -r build/ desh-h5:/deploy/production/pokerking_h5/source/",
+    "deploy": "react-scripts build && scp -r build/ pokerking:/home/deploy/deploy/pokerking_h5/source/",
     "detest": "REACT_APP_KKAPI_ENV=test react-scripts build && scp -r build/ test-h5:/deploy/test/pokerking_h5/source"
   },
   "eslintConfig": {

@@ -60,6 +60,10 @@
     width:80%;
     /*height:500px;*/
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .element::-webkit-scrollbar {display:none}
 .inner-container::-webkit-scrollbar {
@@ -76,6 +80,19 @@
     align-items: center;
     justify-content: space-between;
     margin-top:11px;
+}
+.circle_vip{
+    /*width:85px;*/
+    /*height:40px;*/
+    align-self: center;
+    border-radius: 34px;
+    border-width: 3px;
+    border-color: #CCCCCC;
+    border-style: solid;
+    /*margin-top: 18px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .circle{
     /*width:85px;*/

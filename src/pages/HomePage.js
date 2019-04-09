@@ -8,6 +8,47 @@ const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const HEIGHT = window.screen.height;
 const WIDTH = window.screen.width;
 const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+const top_content = [{
+    id: 9,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 10,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 7,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 8,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 5,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 6,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 3,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 4,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 1,
+    small_blind: '',
+    big_blind: ""
+}, {
+    id: 2,
+    small_blind: '',
+    big_blind: ""
+}];
 
 export default class EventDetail extends Component {
 
@@ -18,7 +59,8 @@ export default class EventDetail extends Component {
             cash_games: [],
             cash_queues: [],
             all_cash_queues: [],
-            cash_queue_members: []
+            cash_queue_members: [],
+            cash_vip: {small_blind: '', big_blind: ""}
         }
 
 
@@ -48,8 +90,25 @@ export default class EventDetail extends Component {
     getlist = (id) => {
         getCashQueues({cash_game_id: id}, data => {
             console.log("cash_queues", data);
-            let queues = data.items;
-            let cash_queues1 = [];
+            let queues = data.ordinary_queues;
+            let hight_limit = data.high_limit_queues;
+            let vip = {small_blind: '', big_blind: ""};
+            if (!isEmptyObject(hight_limit) && hight_limit.status) {
+                queues.push(hight_limit)
+            }
+            let cash_queues1 = data.tables;
+            let newTables = top_content.map(item => {
+                cash_queues1.forEach(x => {
+                    if (parseInt(x.table_no) === 11) {
+                        vip.small_blind = x.small_blind;
+                        vip.small_blind = x.big_blind;
+                    }
+                    else if (parseInt(x.table_no) === item.id)
+                        item.small_blind = x.small_blind;
+                        item.small_blind = x.big_blind;
+                })
+                return item
+            })
             let members = [];
             queues.forEach((item, index, arr) => {
 
@@ -71,15 +130,14 @@ export default class EventDetail extends Component {
                         })
                     }
                 });
-                for (let i = 0; i < item.table_numbers; i++) {
-                    cash_queues1.push(item)
-                }
+
 
             });
 
             this.setState({
-                cash_queues: data.items,
-                all_cash_queues: cash_queues1
+                cash_queues: data.ordinary_queues,
+                all_cash_queues: newTables,
+                cash_vip: vip
 
             });
 
@@ -144,17 +202,13 @@ export default class EventDetail extends Component {
     };
 
     render() {
-        const {all_cash_queues, cash_queues, cash_queue_members, cash_games} = this.state;
-        logMsg("cash_queue_members", cash_queue_members);
-        let top_content = [];
-        let last = 9 - all_cash_queues.length;
-        for (let i = 0; i < last; i++) {
-            top_content.push(i)
-        }
+        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip} = this.state;
+        logMsg("all_cash_queuesall_cash_queues",all_cash_queues)
+        logMsg("cash_vipcash_vip",cash_vip)
         let length = cash_queues.length;
         let div_width = this.getWidth(0.1083);
-        let right_width = div(300,length);
-        let all_div = add(div_width,right_width);
+        let right_width = div(300, length);
+        let all_div = add(div_width, right_width);
         return (
             <div className="home_div">
                 <div className="left_div" style={{width: '20%'}}>
@@ -169,8 +223,19 @@ export default class EventDetail extends Component {
                     <div className="left_line"/>
 
                     <div className="content_circle" style={{height: this.getHeight(0.463)}}>
+                        <div className="circle_vip"
+                             style={{
+                                 height: this.getHeight(0.037),
+                                 width: this.getWidth(0.044),
+                                 backgroundColor: this._color('', ''),
+                                 marginTop: this.getHeight(0.0167)
+                             }}>
+                            <span
+                                className="circle_span">{this.get_cash(cash_vip.small_blind, cash_vip.big_blind)}</span>
+                        </div>
                         <div className="circle_div">
-                            {!isEmptyObject(top_content) && top_content.map((item, index) => {
+
+                            {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                 return (
                                     <div className="circle" key={index}
                                          style={{
@@ -179,24 +244,25 @@ export default class EventDetail extends Component {
                                              backgroundColor: this._color('', ''),
                                              marginTop: this.getHeight(0.0167)
                                          }}>
-                                        <span className="circle_span">{this.get_cash('', '')}</span>
+                                        <span
+                                            className="circle_span">{this.get_cash(item.small_blind, item.big_blind)}</span>
                                     </div>
                                 )
                             })}
-                            {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {
-                                const {small_blind, big_blind} = item;
-                                return (
-                                    <div className="circle" key={index}
-                                         style={{
-                                             height: this.getHeight(0.037),
-                                             width: this.getWidth(0.044),
-                                             backgroundColor: this._color(small_blind, big_blind),
-                                             marginTop: this.getHeight(0.0167)
-                                         }}>
-                                        <span className="circle_span">{this.get_cash(small_blind, big_blind)}</span>
-                                    </div>
-                                )
-                            })}
+                            {/*{!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index) => {*/}
+                            {/*const {small_blind, big_blind} = item;*/}
+                            {/*return (*/}
+                            {/*<div className="circle" key={index}*/}
+                            {/*style={{*/}
+                            {/*height: this.getHeight(0.037),*/}
+                            {/*width: this.getWidth(0.044),*/}
+                            {/*backgroundColor: this._color(small_blind, big_blind),*/}
+                            {/*marginTop: this.getHeight(0.0167)*/}
+                            {/*}}>*/}
+                            {/*<span className="circle_span">{this.get_cash(small_blind, big_blind)}</span>*/}
+                            {/*</div>*/}
+                            {/*)*/}
+                            {/*})}*/}
                         </div>
                     </div>
                     <select id="dropdown" ref={(input) => this.menu = input}
@@ -219,14 +285,14 @@ export default class EventDetail extends Component {
 
                 </div>
 
-                <div className="right_div" style={{width:'80%'}}>
+                <div className="right_div" style={{width: '80%'}}>
                     <div className="top_div" style={{height: this.getHeight(0.18), marginTop: this.getHeight(0.0463)}}>
                         <div className="top_div_content">
 
                             {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
                                 const {small_blind, big_blind, buy_in} = item;
                                 return (
-                                    <div className="err" style={{width:all_div}}>
+                                    <div className="err" style={{width: all_div}}>
                                         <div className="big_circle" key={index} style={{
                                             height: this.getHeight(0.089),
                                             width: this.getWidth(0.1083)
@@ -234,22 +300,23 @@ export default class EventDetail extends Component {
                                             {strNotNull(buy_in) ?
                                                 <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
 
-                                            <span className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
+                                            <span
+                                                className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
                                         </div>
 
-                                        <div style={{width:right_width}}/>
+                                        <div style={{width: right_width}}/>
                                     </div>
 
                                 )
                             })}
-                            <div className="err" style={{width:all_div}}>
-                                <div className="big_circle_last" style={{
-                                    height: this.getHeight(0.089),
-                                    width: this.getWidth(0.1083)
-                                }}>
-                                </div>
-                                <div style={{width:right_width}}/>
-                            </div>
+                            {/*<div className="err" style={{width:all_div}}>*/}
+                            {/*<div className="big_circle_last" style={{*/}
+                            {/*height: this.getHeight(0.089),*/}
+                            {/*width: this.getWidth(0.1083)*/}
+                            {/*}}>*/}
+                            {/*</div>*/}
+                            {/*<div style={{width:right_width}}/>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
 
@@ -258,7 +325,7 @@ export default class EventDetail extends Component {
                             {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
 
                                 return (
-                                    <div className="queue_list" key={index} style={{width:all_div}}>
+                                    <div className="queue_list" key={index} style={{width: all_div}}>
                                         <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
                                             <div className="top_text_div">
 
@@ -278,23 +345,25 @@ export default class EventDetail extends Component {
                                                 <span className="queue_all">{`(当前排队${item.cash_items.length}人)`}</span>
                                             </div>
                                         </div>
-                                        <div className="list_div" style={{width: div(300,length)}}>
-                                            {list.map((item, index) => {
-                                                return <span className="number_span" key={index}>{item}</span>
-                                            })}
-                                        </div>
+                                        {index < cash_queue_members.length ?
+                                            <div className="list_div" style={{width: div(300, length)}}>
+                                                {list.map((item, index) => {
+                                                    return <span className="number_span" key={index}>{item}</span>
+                                                })}
+                                            </div> : null}
+
                                     </div>
                                 )
                             })}
-                            <div className="queue_list"  style={{width:all_div}}>
-                                <div className="queue" style={{width: this.getWidth(0.1083)}}>
-                                    <span className="text1">{0}</span>
-                                    <div className="queue_number_div"
-                                         style={{width: this.getWidth(0.1083)}}/>
-                                </div>
-                                <div className="list_div" style={{width: div(300,length)}}>
-                                </div>
-                            </div>
+                            {/*<div className="queue_list"  style={{width:all_div}}>*/}
+                            {/*<div className="queue" style={{width: this.getWidth(0.1083)}}>*/}
+                            {/*<span className="text1">{0}</span>*/}
+                            {/*<div className="queue_number_div"*/}
+                            {/*style={{width: this.getWidth(0.1083)}}/>*/}
+                            {/*</div>*/}
+                            {/*<div className="list_div" style={{width: div(300,length)}}>*/}
+                            {/*</div>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
