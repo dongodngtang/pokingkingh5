@@ -8,47 +8,7 @@ const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const HEIGHT = window.screen.height;
 const WIDTH = window.screen.width;
 const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
-const top_content = [{
-    id: 9,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 10,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 7,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 8,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 5,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 6,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 3,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 4,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 1,
-    small_blind: '',
-    big_blind: ""
-}, {
-    id: 2,
-    small_blind: '',
-    big_blind: ""
-}];
+const top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
 
 export default class EventDetail extends Component {
 
@@ -100,12 +60,10 @@ export default class EventDetail extends Component {
             let newTables = top_content.map(item => {
                 cash_queues1.forEach(x => {
                     if (parseInt(x.table_no) === 11) {
-                        vip.small_blind = x.small_blind;
-                        vip.small_blind = x.big_blind;
+                        vip = {small_blind: x.small_blind, big_blind: x.big_blind};
                     }
                     else if (parseInt(x.table_no) === item.id)
-                        item.small_blind = x.small_blind;
-                        item.small_blind = x.big_blind;
+                        item.info = x
                 })
                 return item
             })
@@ -203,8 +161,7 @@ export default class EventDetail extends Component {
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip} = this.state;
-        logMsg("all_cash_queuesall_cash_queues",all_cash_queues)
-        logMsg("cash_vipcash_vip",cash_vip)
+
         let length = cash_queues.length;
         let div_width = this.getWidth(0.1083);
         let right_width = div(300, length);
@@ -227,7 +184,7 @@ export default class EventDetail extends Component {
                              style={{
                                  height: this.getHeight(0.037),
                                  width: this.getWidth(0.044),
-                                 backgroundColor: this._color('', ''),
+                                 backgroundColor: this._color(cash_vip.small_blind, cash_vip.big_blind),
                                  marginTop: this.getHeight(0.0167)
                              }}>
                             <span
@@ -241,11 +198,12 @@ export default class EventDetail extends Component {
                                          style={{
                                              height: this.getHeight(0.037),
                                              width: this.getWidth(0.044),
-                                             backgroundColor: this._color('', ''),
+                                             backgroundColor: item.info ? this._color(item.info.small_blind, item.info.big_blind) : this._color('',''),
                                              marginTop: this.getHeight(0.0167)
                                          }}>
-                                        <span
-                                            className="circle_span">{this.get_cash(item.small_blind, item.big_blind)}</span>
+                                        {item.info ? <span
+                                            className="circle_span">{this.get_cash(item.info.small_blind, item.info.big_blind)}</span> : null}
+
                                     </div>
                                 )
                             })}
