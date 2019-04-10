@@ -50,7 +50,7 @@ export default class EventDetail extends Component {
 
     getlist = (id) => {
         getCashQueues({cash_game_id: id}, data => {
-            console.log("cash_queues", data);
+            // console.log("cash_queues", data);
             let queues = data.ordinary_queues;
             let hight_limit = data.high_limit_queues;
             let vip = {small_blind: '', big_blind: ""};
