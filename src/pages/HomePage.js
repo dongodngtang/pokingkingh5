@@ -82,7 +82,8 @@ export default class EventDetail extends Component {
                         let cash_queue_members = arr.map(x => {
                             return {
                                 cash_items: x.cash_items,
-                                table_no: x.table_no
+                                table_no: x.table_no,
+                                table_people:x.table_people
                             }
 
                         });
@@ -313,7 +314,7 @@ export default class EventDetail extends Component {
                                         <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
                                             <div className="top_text_div">
 
-                                                <span className="text1">{item.table_no}</span>
+                                                <span className="text1">{item.table_no}({item.table_people})</span>
                                             </div>
                                             <div className="queue_number_div"
                                                  style={{width: this.getWidth(0.1083)}}>
