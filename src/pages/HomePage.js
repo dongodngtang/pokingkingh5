@@ -329,7 +329,7 @@ export default class EventDetail extends Component {
                                                      {/*src={Images.point} alt=""/>*/}
 
                                                 <span
-                                                    className="queue_all">{`Table Count：${item.cash_items.length}人`}</span>
+                                                    className="queue_all">{`Total Count：${item.cash_items.length}人`}</span>
                                                 <div style={{height: 10}}/>
                                             </div>
                                         </div>
