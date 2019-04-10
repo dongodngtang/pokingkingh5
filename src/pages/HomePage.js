@@ -333,6 +333,9 @@ export default class EventDetail extends Component {
                             })}
                             {!high_limit.status ? <div className="queue_list" style={{width: all_div}}>
                                 <div className="list_div" style={{width: div(300, length)}}>
+                                    {list.map((item, index) => {
+                                        return <span className="number_span" key={index}>{item}</span>
+                                    })}
                                 </div>
 
                                 <div className="queue" style={{width: this.getWidth(0.1083)}}>
