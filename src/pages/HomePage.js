@@ -20,7 +20,8 @@ export default class EventDetail extends Component {
             cash_queues: [],
             all_cash_queues: [],
             cash_queue_members: [],
-            cash_vip: {small_blind: '', big_blind: ""}
+            cash_vip: {small_blind: '', big_blind: ""},
+            show_limit: false
         }
 
 
@@ -53,8 +54,10 @@ export default class EventDetail extends Component {
             let queues = data.ordinary_queues;
             let hight_limit = data.high_limit_queues;
             let vip = {small_blind: '', big_blind: ""};
+            let show_limit = false;
             if (!isEmptyObject(hight_limit) && hight_limit.status) {
-                queues.push(hight_limit)
+                queues.push(hight_limit);
+                show_limit = true;
             }
             let cash_queues1 = data.tables;
             let newTables = top_content.map(item => {
@@ -93,9 +96,10 @@ export default class EventDetail extends Component {
             });
 
             this.setState({
-                cash_queues: data.ordinary_queues,
+                cash_queues: queues,
                 all_cash_queues: newTables,
-                cash_vip: vip
+                cash_vip: vip,
+                show_limit: show_limit
 
             });
 
@@ -160,7 +164,7 @@ export default class EventDetail extends Component {
     };
 
     render() {
-        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip} = this.state;
+        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, show_limit} = this.state;
 
         let length = cash_queues.length;
         let div_width = this.getWidth(0.1083);
@@ -198,7 +202,7 @@ export default class EventDetail extends Component {
                                          style={{
                                              height: this.getHeight(0.037),
                                              width: this.getWidth(0.044),
-                                             backgroundColor: item.info ? this._color(item.info.small_blind, item.info.big_blind) : this._color('',''),
+                                             backgroundColor: item.info ? this._color(item.info.small_blind, item.info.big_blind) : this._color('', ''),
                                              marginTop: this.getHeight(0.0167)
                                          }}>
                                         {item.info ? <span
@@ -249,24 +253,38 @@ export default class EventDetail extends Component {
 
                             {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
                                 const {small_blind, big_blind, buy_in} = item;
-                                return (
-                                    <div className="err2" style={{width: all_div}}>
+                                if (index === cash_queues.length - 1 && show_limit ){
+                                   return <div className="err2" style={{width: all_div}}>
                                         <div style={{width: right_width}}/>
-                                        <div className="big_circle" key={index} style={{
+                                        <div className="big_circle_last" key={index} style={{
                                             height: this.getHeight(0.089),
                                             width: this.getWidth(0.1083)
                                         }}>
-                                            {strNotNull(buy_in) ?
-                                                <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
-
-                                            <span
-                                                className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
+                                            {/*<img src={Images.limit} style={{width:'100%',height:'100%'}}/>*/}
                                         </div>
 
 
                                     </div>
+                                }
 
-                                )
+                                    return (
+                                        <div className="err2" style={{width: all_div}}>
+                                            <div style={{width: right_width}}/>
+                                            <div className="big_circle" key={index} style={{
+                                                height: this.getHeight(0.089),
+                                                width: this.getWidth(0.1083)
+                                            }}>
+                                                {strNotNull(buy_in) ?
+                                                    <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
+
+                                                <span
+                                                    className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
+                                            </div>
+
+
+                                        </div>
+
+                                    )
                             })}
                             {/*<div className="err" style={{width:all_div}}>*/}
                             {/*<div className="big_circle_last" style={{*/}
@@ -305,12 +323,13 @@ export default class EventDetail extends Component {
                                                                      key={member_index}>{member_item.nickname}</span>
                                                     }
                                                 })}
-                                                <div style={{disply:'flex',flex:1}}/>
-                                                <img style={{alignSelf: 'center', marginTop: 20, height: 26, width: 6}}
-                                                     src={Images.point} alt=""/>
+                                                <div style={{disply: 'flex', flex: 1}}/>
+                                                {/*<img style={{alignSelf: 'center', marginTop: 20, height: 26, width: 6}}*/}
+                                                     {/*src={Images.point} alt=""/>*/}
 
-                                                <span className="queue_all">{`(Table Count：${item.cash_items.length}人)`}</span>
-                                                <div style={{height:10}}/>
+                                                <span
+                                                    className="queue_all">{`Table Count：${item.cash_items.length}人`}</span>
+                                                <div style={{height: 10}}/>
                                             </div>
                                         </div>
 
