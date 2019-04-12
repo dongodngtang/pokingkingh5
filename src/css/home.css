@@ -3,7 +3,8 @@
     height: 100%;
     padding: 0;
     margin: 0;
-    background: url('/images/home_bg.png') no-repeat center;
+    /*background: url('/images/home_bg.png') no-repeat center;*/
+    background-color: #F0D8AD;
     position: absolute;
     top: 0;
     left: 0;
@@ -168,7 +169,7 @@
     /*width:204px;*/
     height:100% !important;
     background-color: #FDF3D9;
-    border-radius: 10px;
+    border-radius: 19px;
     border-width: 4px;
     border-color: #6E6B6B;
     border-style: solid;
@@ -235,7 +236,7 @@
 .bottom_text_div{
     margin-top: 20px;
     height:90px;
-    border-radius: 20px;
+    border-radius: 19px;
     background-color: #1C1E23;
     display: flex;
     align-items: center;

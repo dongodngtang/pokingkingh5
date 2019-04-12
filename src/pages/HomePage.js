@@ -329,7 +329,7 @@ export default class EventDetail extends Component {
                                             <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
 
                                                 <span
-                                                    className="queue_all">{`Total Count：${item.cash_items.length}人`}</span>
+                                                    className="queue_all">{`Total Count：${item.cash_items.length}`}</span>
                                             </div>
                                         </div>
 
@@ -368,7 +368,7 @@ export default class EventDetail extends Component {
                                     <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
 
                                                 <span
-                                                    className="queue_all">{`Total Count：0人`}</span>
+                                                    className="queue_all">{`Total Count：0`}</span>
                                     </div>
                                 </div>
 
