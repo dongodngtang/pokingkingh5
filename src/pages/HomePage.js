@@ -314,16 +314,22 @@ export default class EventDetail extends Component {
                                                 <div style={{disply: 'flex', flex: 1}}/>
                                                 {/*<img style={{alignSelf: 'center', marginTop: 20, height: 26, width: 6}}*/}
                                                 {/*src={Images.point} alt=""/>*/}
-                                                <div style={{
-                                                    width: '100%',
-                                                    height: 2,
-                                                    marginBottom: 5,
-                                                    backgroundColor: "#6E6B6B"
-                                                }}/>
+                                                {/*<div style={{*/}
+                                                    {/*width: '100%',*/}
+                                                    {/*height: 2,*/}
+                                                    {/*marginBottom: 5,*/}
+                                                    {/*backgroundColor: "#6E6B6B"*/}
+                                                {/*}}/>*/}
+
+                                                {/*<span*/}
+                                                    {/*className="queue_all">{`Total Count：${item.cash_items.length}人`}</span>*/}
+                                                {/*<div style={{height: 10}}/>*/}
+                                            </div>
+
+                                            <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
 
                                                 <span
                                                     className="queue_all">{`Total Count：${item.cash_items.length}人`}</span>
-                                                <div style={{height: 10}}/>
                                             </div>
                                         </div>
 
@@ -348,16 +354,21 @@ export default class EventDetail extends Component {
 
                                         <div style={{disply: 'flex', flex: 1}}/>
 
-                                        <div style={{
-                                            width: '100%',
-                                            height: 2,
-                                            marginBottom: 5,
-                                            backgroundColor: "#6E6B6B"
-                                        }}/>
+                                        {/*<div style={{*/}
+                                            {/*width: '100%',*/}
+                                            {/*height: 2,*/}
+                                            {/*marginBottom: 5,*/}
+                                            {/*backgroundColor: "#6E6B6B"*/}
+                                        {/*}}/>*/}
 
-                                        <span
-                                            className="queue_all">{`Total Count：0人`}</span>
-                                        <div style={{height: 10}}/>
+                                        {/*<span*/}
+                                            {/*className="queue_all">{`Total Count：0人`}</span>*/}
+                                        {/*<div style={{height: 10}}/>*/}
+                                    </div>
+                                    <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
+
+                                                <span
+                                                    className="queue_all">{`Total Count：0人`}</span>
                                     </div>
                                 </div>
 
