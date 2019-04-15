@@ -46,15 +46,16 @@
 .pukewang_img{
 }
 .left_line{
-    width:60%;
+    width:85%;
     height:1px;
     background-color: #757575;
     margin-top: 18px;
     margin-bottom: 18px;
 }
 .left_span{
-    color:#CCCCCC;
-    font-size:18px;
+    color:white;
+    font-size:36px;
+    font-weight: bold;
 }
 .content_circle{
     /*width:230px;*/

@@ -175,8 +175,8 @@ export default class EventDetail extends Component {
                 <div className="left_div" style={{width: '20%'}}>
                     <img className="pukewang_img" style={{
                         marginTop: this.getHeight(0.056),
-                        height: this.getHeight(0.062),
-                        width: this.getWidth(0.070)
+                        height: this.getHeight(0.14),
+                        width: this.getWidth(0.19)
                     }} src={Images.pukewang}/>
                     <div className="left_line"/>
 
