@@ -294,7 +294,9 @@ export default class EventDetail extends Component {
                                     <div className="queue_list" key={index} style={{width: all_div}}>
                                         <div className="list_div" style={{width: div(300, length)}}>
                                             {list.map((item, index) => {
-                                                return <span className="number_span" key={index}>{item}</span>
+                                                return <div className="number_div">
+                                                    <span className="number_span" key={index}>{item}</span>
+                                                </div>
                                             })}
                                         </div>
 
@@ -307,23 +309,14 @@ export default class EventDetail extends Component {
                                                  style={{width: this.getWidth(0.1083)}}>
                                                 {item.cash_items && item.cash_items.map((member_item, member_index) => {
                                                     if (member_index < 11) {
-                                                        return <span className="name_span"
-                                                                     key={member_index}>{member_item.nickname}</span>
+                                                        return <div className="number_name_div">
+                                                            <span className="name_span"
+                                                                  key={member_index}>{member_item.nickname}</span>
+                                                        </div>
+
                                                     }
                                                 })}
                                                 <div style={{disply: 'flex', flex: 1}}/>
-                                                {/*<img style={{alignSelf: 'center', marginTop: 20, height: 26, width: 6}}*/}
-                                                {/*src={Images.point} alt=""/>*/}
-                                                {/*<div style={{*/}
-                                                    {/*width: '100%',*/}
-                                                    {/*height: 2,*/}
-                                                    {/*marginBottom: 5,*/}
-                                                    {/*backgroundColor: "#6E6B6B"*/}
-                                                {/*}}/>*/}
-
-                                                {/*<span*/}
-                                                    {/*className="queue_all">{`Total Count：${item.cash_items.length}人`}</span>*/}
-                                                {/*<div style={{height: 10}}/>*/}
                                             </div>
 
                                             <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
@@ -340,7 +333,9 @@ export default class EventDetail extends Component {
                             {!high_limit.status ? <div className="queue_list" style={{width: all_div}}>
                                 <div className="list_div" style={{width: div(300, length)}}>
                                     {list.map((item, index) => {
-                                        return <span className="number_span" key={index}>{item}</span>
+                                        return <div className="number_div">
+                                            <span className="number_span" key={index}>{item}</span>
+                                        </div>
                                     })}
                                 </div>
 
@@ -354,16 +349,6 @@ export default class EventDetail extends Component {
 
                                         <div style={{disply: 'flex', flex: 1}}/>
 
-                                        {/*<div style={{*/}
-                                            {/*width: '100%',*/}
-                                            {/*height: 2,*/}
-                                            {/*marginBottom: 5,*/}
-                                            {/*backgroundColor: "#6E6B6B"*/}
-                                        {/*}}/>*/}
-
-                                        {/*<span*/}
-                                            {/*className="queue_all">{`Total Count：0人`}</span>*/}
-                                        {/*<div style={{height: 10}}/>*/}
                                     </div>
                                     <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
 

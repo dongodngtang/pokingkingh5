@@ -181,11 +181,18 @@
     margin-top: 17px;
 
 }
+.number_name_div{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    width:100%;
+    height:60px;
+}
 .name_span{
     color:#444444;
     font-size:18px;
     font-weight: bold;
-    margin-top: 41px;
 }
 .queue_list{
     height:100%;
@@ -199,12 +206,19 @@
     align-items: flex-end;
     margin-top: 21px;
 }
+.number_div{
+    margin-right: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    width:20px;
+    height:60px;
+}
 .number_span{
     color:#7F6333;
     font-size:18px;
     font-weight: bold;
-    margin-top: 41px;
-    margin-right: 25px;
 }
 #dropdown{
     position:absolute;
