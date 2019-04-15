@@ -183,7 +183,7 @@ export default class EventDetail extends Component {
                     <span className="left_span">TABLE PREVIEW</span>
                     <div className="left_line"/>
 
-                    <div className="content_circle" style={{height: this.getHeight(0.463)}}>
+                    <div className="content_circle" style={{height: this.getHeight(0.463),width:this.getWidth(0.11)}}>
                         <div className="circle_vip"
                              style={{
                                  height: this.getHeight(0.037),
