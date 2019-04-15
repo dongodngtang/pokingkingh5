@@ -131,12 +131,12 @@
 }
 .big_circle_span{
     color:#44474E;
-    font-size:30px;
+    font-size:35px;
     font-weight: bold;
 }
 .big_money_span{
     color:#1C1E23;
-    font-size:18px;
+    font-size:20px;
     font-weight: bold;
 }
 .queue_div2{
@@ -163,7 +163,7 @@
 }
 .text1{
     color:#282828;
-    font-size:12px;
+    font-size:20px;
 }
 .queue_number_div{
     /*width:204px;*/
@@ -206,7 +206,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-top: 21px;
+    margin-top: 32px;
 }
 .number_div{
     margin-right: 25px;
@@ -237,10 +237,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    height:30px;
 }
 .queue_all{
     color:#FFFFFF;
-    font-size:18px;
+    font-size:24px;
     font-weight: bold;
     font-family: Arial;
 }
