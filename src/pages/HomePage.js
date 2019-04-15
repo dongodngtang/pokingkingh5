@@ -367,7 +367,7 @@ export default class EventDetail extends Component {
                                          style={{width: this.getWidth(0.1083), paddingLeft: 25,
                                              paddingRight: 25}}>
 
-                                        <div style={{disply: 'flex', flex: 1}}/>
+                                        <div style={{display: 'flex', flex: 1}}/>
 
                                     </div>
                                     <div className="bottom_text_div" style={{width: this.getWidth(0.1083), paddingLeft: 25,
