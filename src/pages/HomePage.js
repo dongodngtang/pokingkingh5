@@ -169,7 +169,7 @@ export default class EventDetail extends Component {
         let length = cash_queues.length;
         let div_width = this.getWidth(0.1083);
         let right_width = div(300, length);
-        let all_div = add(div_width, right_width);
+        let all_div = add(div_width, right_width) + 30;
         return (
             <div className="home_div">
                 <div className="left_div" style={{width: '20%'}}>
@@ -183,7 +183,7 @@ export default class EventDetail extends Component {
                     <span className="left_span">TABLE PREVIEW</span>
                     <div className="left_line"/>
 
-                    <div className="content_circle" style={{height: this.getHeight(0.463),width:this.getWidth(0.11)}}>
+                    <div className="content_circle" style={{height: this.getHeight(0.463), width: this.getWidth(0.11)}}>
                         <div className="circle_vip"
                              style={{
                                  height: this.getHeight(0.037),
@@ -239,14 +239,15 @@ export default class EventDetail extends Component {
 
                             {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
                                 const {small_blind, big_blind, buy_in} = item;
-                                if(index === cash_queues.length-1 && high_limit.status){
+                                if (index === cash_queues.length - 1 && high_limit.status) {
                                     return <div className="err2" style={{width: all_div}}>
                                         <div style={{width: right_width}}/>
                                         <div className="big_circle_last" style={{
                                             height: this.getHeight(0.089),
-                                            width: this.getWidth(0.1083)
+                                            width: this.getWidth(0.1083),
+                                            paddingLeft: 15,
+                                            paddingRight: 15
                                         }}>
-                                            {/*<img src={Images.limit} style={{width:'100%',height:'100%'}}/>*/}
                                         </div>
 
 
@@ -257,7 +258,9 @@ export default class EventDetail extends Component {
                                         <div style={{width: right_width}}/>
                                         <div className="big_circle" key={index} style={{
                                             height: this.getHeight(0.089),
-                                            width: this.getWidth(0.1083)
+                                            width: this.getWidth(0.1083),
+                                            paddingLeft: 15,
+                                            paddingRight: 15
                                         }}>
                                             {strNotNull(buy_in) ?
                                                 <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
@@ -276,9 +279,10 @@ export default class EventDetail extends Component {
                                 <div style={{width: right_width}}/>
                                 <div className="big_circle_last" style={{
                                     height: this.getHeight(0.089),
-                                    width: this.getWidth(0.1083)
+                                    width: this.getWidth(0.1083),
+                                    paddingLeft: 15,
+                                    paddingRight: 15
                                 }}>
-                                    {/*<img src={Images.limit} style={{width:'100%',height:'100%'}}/>*/}
                                 </div>
 
 
@@ -292,7 +296,9 @@ export default class EventDetail extends Component {
 
                                 return (
                                     <div className="queue_list" key={index} style={{width: all_div}}>
-                                        <div className="list_div" style={{width: div(300, length)}}>
+                                        <div className="list_div" style={{
+                                            width: div(300, length)
+                                        }}>
                                             {list.map((item, index) => {
                                                 return <div className="number_div">
                                                     <span className="number_span" key={index}>{item}</span>
@@ -300,13 +306,19 @@ export default class EventDetail extends Component {
                                             })}
                                         </div>
 
-                                        <div className="queue" style={{width: this.getWidth(0.1083)}} key={index}>
+                                        <div className="queue" style={{
+                                            width: this.getWidth(0.1083), paddingLeft: 15,
+                                            paddingRight: 15
+                                        }} key={index}>
                                             <div className="top_text_div">
 
                                                 <span className="text1">{item.table_no}({item.table_people})</span>
                                             </div>
                                             <div className="queue_number_div"
-                                                 style={{width: this.getWidth(0.1083)}}>
+                                                 style={{
+                                                     width: this.getWidth(0.1083), paddingLeft: 15,
+                                                     paddingRight: 15
+                                                 }}>
                                                 {item.cash_items && item.cash_items.map((member_item, member_index) => {
                                                     if (member_index < 11) {
                                                         return <div className="number_name_div">
@@ -319,7 +331,10 @@ export default class EventDetail extends Component {
                                                 <div style={{disply: 'flex', flex: 1}}/>
                                             </div>
 
-                                            <div className="bottom_text_div" style={{width: this.getWidth(0.1083)}}>
+                                            <div className="bottom_text_div" style={{
+                                                width: this.getWidth(0.1083), paddingLeft: 15,
+                                                paddingRight: 15
+                                            }}>
 
                                                 <span
                                                     className="queue_all">{`Total Count：${item.cash_items.length}`}</span>
