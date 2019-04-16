@@ -288,7 +288,9 @@ export default class EventDetail extends Component {
                                     height: this.getHeight(0.089),
                                     width: this.getWidth(0.1083),
                                     paddingLeft: 25,
-                                    paddingRight: 25
+                                    paddingRight: 25,
+                                    paddingTop:8,
+                                    paddingBottom:8
                                 }}>
                                 </div>
 
@@ -305,6 +307,7 @@ export default class EventDetail extends Component {
                                     <div className="queue_list" key={index} style={{width: all_div}}>
                                         <div className="list_div" style={{
                                             width: right_width
+
                                         }}>
                                             {list.map((item, index) => {
                                                 return <div className="number_div">
@@ -335,7 +338,7 @@ export default class EventDetail extends Component {
 
                                                     }
                                                 })}
-                                                <div style={{disply: 'flex', flex: 1}}/>
+                                                <div style={{display: 'flex', flex: 1}}/>
                                             </div>
 
                                             <div className="bottom_text_div" style={{
