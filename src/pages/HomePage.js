@@ -146,9 +146,9 @@ export default class EventDetail extends Component {
         if (isStrNull(small_blind) || isStrNull(big_blind)) {
             return ``
         } else if (small_blind >= 1000) {
-            return `${small_blind / 1000}k/${big_blind / 1000}k`
+            return `${small_blind / 1000}K/${big_blind / 1000}K`
         } else if (big_blind >= 1000) {
-            return `${small_blind}/${big_blind / 1000}k`
+            return `${small_blind}/${big_blind / 1000}K`
         } else {
             return `${small_blind}/${big_blind}`
         }
@@ -168,19 +168,19 @@ export default class EventDetail extends Component {
 
         let length = cash_queues.length;
         let div_width = this.getWidth(0.1083);
-        let right_width = div(300, length);
+        let right_width = div(250, length);
         let all_div = add(div_width, right_width) + 50;
         return (
             <div className="home_div">
                 <div className="left_div" style={{width: '17%'}}>
                     <img className="pukewang_img" style={{
                         marginTop: this.getHeight(0.056),
-                        height: this.getHeight(0.14),
-                        width: this.getWidth(0.19)
+                        height: this.getHeight(0.11),
+                        width: this.getWidth(0.14)
                     }} src={Images.pukewang}/>
                     <div className="left_line"/>
 
-                    <span className="left_span">TABLE PREVIEW</span>
+                    <span className="left_span">TABLE &nbsp; PREVIEW</span>
                     <div className="left_line"/>
 
                     <div className="content_circle" style={{
@@ -250,8 +250,8 @@ export default class EventDetail extends Component {
                                             width: this.getWidth(0.1083),
                                             paddingLeft: 25,
                                             paddingRight: 25,
-                                            paddingTop: 8,
-                                            paddingBottom: 8
+                                            paddingTop: 10,
+                                            paddingBottom: 10
                                         }}>
                                         </div>
 
@@ -266,14 +266,14 @@ export default class EventDetail extends Component {
                                             width: this.getWidth(0.1083),
                                             paddingLeft: 25,
                                             paddingRight: 25,
-                                            paddingTop: 8,
-                                            paddingBottom: 8
+                                            paddingTop: 10,
+                                            paddingBottom: 10
                                         }}>
                                             {strNotNull(buy_in) ?
                                                 <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
 
                                             <span
-                                                className="big_circle_span">{this.get_cash(small_blind, big_blind)}NL</span>
+                                                className="big_circle_span">{this.get_cash(small_blind, big_blind)} NL</span>
                                         </div>
 
 
@@ -289,8 +289,8 @@ export default class EventDetail extends Component {
                                     width: this.getWidth(0.1083),
                                     paddingLeft: 25,
                                     paddingRight: 25,
-                                    paddingTop: 8,
-                                    paddingBottom: 8
+                                    paddingTop: 10,
+                                    paddingBottom: 10
                                 }}>
                                 </div>
 

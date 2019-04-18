@@ -54,7 +54,7 @@
 }
 .left_span{
     color:white;
-    font-size:36px;
+    font-size:30px;
     font-weight: bold;
 }
 .content_circle{
@@ -132,12 +132,12 @@
 }
 .big_circle_span{
     color:#44474E;
-    font-size:35px;
+    font-size:38px;
     font-weight: bold;
 }
 .big_money_span{
     color:#1C1E23;
-    font-size:18px;
+    font-size:20px;
     font-weight: bold;
 }
 .queue_div2{
@@ -189,7 +189,7 @@
     justify-content: center;
     width:100%;
     height:45px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .name_span1{
     color:#444444;
@@ -216,13 +216,13 @@
     margin-top: 32px;
 }
 .number_div{
-    margin-right: 25px;
+    margin-right: 19px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height:45px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .number_span{
     color:#7F6333;
