@@ -172,7 +172,7 @@ export default class EventDetail extends Component {
         let all_div = add(div_width, right_width) + 50;
         return (
             <div className="home_div">
-                <div className="left_div" style={{width: '20%'}}>
+                <div className="left_div" style={{width: '17%'}}>
                     <img className="pukewang_img" style={{
                         marginTop: this.getHeight(0.056),
                         height: this.getHeight(0.14),
@@ -236,7 +236,7 @@ export default class EventDetail extends Component {
 
                 </div>
 
-                <div className="right_div" style={{width: '80%'}}>
+                <div className="right_div" style={{width: '83%'}}>
                     <div className="top_div" style={{height: this.getHeight(0.20), marginTop: this.getHeight(0.0463)}}>
                         <div className="top_div_content">
 
@@ -250,8 +250,8 @@ export default class EventDetail extends Component {
                                             width: this.getWidth(0.1083),
                                             paddingLeft: 25,
                                             paddingRight: 25,
-                                            paddingTop:8,
-                                            paddingBottom:8
+                                            paddingTop: 8,
+                                            paddingBottom: 8
                                         }}>
                                         </div>
 
@@ -266,8 +266,8 @@ export default class EventDetail extends Component {
                                             width: this.getWidth(0.1083),
                                             paddingLeft: 25,
                                             paddingRight: 25,
-                                            paddingTop:8,
-                                            paddingBottom:8
+                                            paddingTop: 8,
+                                            paddingBottom: 8
                                         }}>
                                             {strNotNull(buy_in) ?
                                                 <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
@@ -289,8 +289,8 @@ export default class EventDetail extends Component {
                                     width: this.getWidth(0.1083),
                                     paddingLeft: 25,
                                     paddingRight: 25,
-                                    paddingTop:8,
-                                    paddingBottom:8
+                                    paddingTop: 8,
+                                    paddingBottom: 8
                                 }}>
                                 </div>
 
@@ -332,8 +332,9 @@ export default class EventDetail extends Component {
                                                 {item.cash_items && item.cash_items.map((member_item, member_index) => {
                                                     if (member_index < 11) {
                                                         return <div className="number_name_div">
-                                                            <span className="name_span"
-                                                                  key={member_index}>{member_item.nickname}</span>
+                                                            <span
+                                                                className={member_item.nickname.length >=6 ? "name_span1" : "name_span"}
+                                                                key={member_index}>{member_item.nickname}</span>
                                                         </div>
 
                                                     }
@@ -364,21 +365,27 @@ export default class EventDetail extends Component {
                                     })}
                                 </div>
 
-                                <div className="queue" style={{width: this.getWidth(0.1083),paddingLeft: 25,
-                                    paddingRight: 25}}>
+                                <div className="queue" style={{
+                                    width: this.getWidth(0.1083), paddingLeft: 25,
+                                    paddingRight: 25
+                                }}>
                                     <div className="top_text_div">
 
                                         <span className="text1">0</span>
                                     </div>
                                     <div className="queue_number_div"
-                                         style={{width: this.getWidth(0.1083), paddingLeft: 25,
-                                             paddingRight: 25}}>
+                                         style={{
+                                             width: this.getWidth(0.1083), paddingLeft: 25,
+                                             paddingRight: 25
+                                         }}>
 
                                         <div style={{display: 'flex', flex: 1}}/>
 
                                     </div>
-                                    <div className="bottom_text_div" style={{width: this.getWidth(0.1083), paddingLeft: 25,
-                                        paddingRight: 25}}>
+                                    <div className="bottom_text_div" style={{
+                                        width: this.getWidth(0.1083), paddingLeft: 25,
+                                        paddingRight: 25
+                                    }}>
 
                                                 <span
                                                     className="queue_all">{`Total Count：0`}</span>

@@ -191,6 +191,12 @@
     height:45px;
     margin-top: 15px;
 }
+.name_span1{
+    color:#444444;
+    font-size:30px;
+    font-weight: bold;
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+}
 .name_span{
     color:#444444;
     font-size:35px;
