@@ -168,8 +168,8 @@ export default class EventDetail extends Component {
 
         let length = cash_queues.length;
         let div_width = this.getWidth(0.1083);
-        let right_width = div(250, length);
-        let all_div = add(div_width, right_width) + 50;
+        let right_width = div(230, length);
+        let all_div = add(div_width, right_width) + 54;
         return (
             <div className="home_div">
                 <div className="left_div" style={{width: '17%'}}>
@@ -248,8 +248,8 @@ export default class EventDetail extends Component {
                                         <div className="big_circle_last" style={{
                                             height: this.getHeight(0.092),
                                             width: this.getWidth(0.1083),
-                                            paddingLeft: 25,
-                                            paddingRight: 25,
+                                            paddingLeft: 27,
+                                            paddingRight: 27,
                                             paddingTop: 10,
                                             paddingBottom: 10
                                         }}>
@@ -264,8 +264,8 @@ export default class EventDetail extends Component {
                                         <div className="big_circle" key={index} style={{
                                             height: this.getHeight(0.089),
                                             width: this.getWidth(0.1083),
-                                            paddingLeft: 25,
-                                            paddingRight: 25,
+                                            paddingLeft: 27,
+                                            paddingRight: 27,
                                             paddingTop: 10,
                                             paddingBottom: 10
                                         }}>
@@ -287,8 +287,8 @@ export default class EventDetail extends Component {
                                 <div className="big_circle_last" style={{
                                     height: this.getHeight(0.089),
                                     width: this.getWidth(0.1083),
-                                    paddingLeft: 25,
-                                    paddingRight: 25,
+                                    paddingLeft: 27,
+                                    paddingRight: 27,
                                     paddingTop: 10,
                                     paddingBottom: 10
                                 }}>
@@ -317,8 +317,8 @@ export default class EventDetail extends Component {
                                         </div>
 
                                         <div className="queue" style={{
-                                            width: this.getWidth(0.1083), paddingLeft: 25,
-                                            paddingRight: 25
+                                            width: this.getWidth(0.1083), paddingLeft: 27,
+                                            paddingRight: 27
                                         }} key={index}>
                                             <div className="top_text_div">
 
@@ -326,8 +326,8 @@ export default class EventDetail extends Component {
                                             </div>
                                             <div className="queue_number_div"
                                                  style={{
-                                                     width: this.getWidth(0.1083), paddingLeft: 25,
-                                                     paddingRight: 25
+                                                     width: this.getWidth(0.1083), paddingLeft: 27,
+                                                     paddingRight: 27
                                                  }}>
                                                 {item.cash_items && item.cash_items.map((member_item, member_index) => {
                                                     if (member_index < 11) {
@@ -343,8 +343,8 @@ export default class EventDetail extends Component {
                                             </div>
 
                                             <div className="bottom_text_div" style={{
-                                                width: this.getWidth(0.1083), paddingLeft: 25,
-                                                paddingRight: 25
+                                                width: this.getWidth(0.1083), paddingLeft: 27,
+                                                paddingRight: 27
                                             }}>
 
                                                 <span
@@ -366,8 +366,8 @@ export default class EventDetail extends Component {
                                 </div>
 
                                 <div className="queue" style={{
-                                    width: this.getWidth(0.1083), paddingLeft: 25,
-                                    paddingRight: 25
+                                    width: this.getWidth(0.1083), paddingLeft: 27,
+                                    paddingRight: 27
                                 }}>
                                     <div className="top_text_div">
 
@@ -375,16 +375,16 @@ export default class EventDetail extends Component {
                                     </div>
                                     <div className="queue_number_div"
                                          style={{
-                                             width: this.getWidth(0.1083), paddingLeft: 25,
-                                             paddingRight: 25
+                                             width: this.getWidth(0.1083), paddingLeft: 27,
+                                             paddingRight: 27
                                          }}>
 
                                         <div style={{display: 'flex', flex: 1}}/>
 
                                     </div>
                                     <div className="bottom_text_div" style={{
-                                        width: this.getWidth(0.1083), paddingLeft: 25,
-                                        paddingRight: 25
+                                        width: this.getWidth(0.1083), paddingLeft: 27,
+                                        paddingRight: 27
                                     }}>
 
                                                 <span

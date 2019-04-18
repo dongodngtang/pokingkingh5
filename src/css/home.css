@@ -164,7 +164,8 @@
 }
 .text1{
     color:#282828;
-    font-size:20px;
+    font-size:35px;
+    font-weight: bold;
 }
 .queue_number_div{
     /*width:204px;*/
@@ -189,7 +190,7 @@
     justify-content: center;
     width:100%;
     height:45px;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 .name_span1{
     color:#444444;
@@ -222,11 +223,11 @@
     align-items: center;
     justify-content: center;
     height:45px;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 .number_span{
     color:#7F6333;
-    font-size:24px;
+    font-size:28px;
     font-weight: bold;
 }
 #dropdown{
