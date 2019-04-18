@@ -185,7 +185,7 @@ export default class EventDetail extends Component {
 
                     <div className="content_circle" style={{
                         height: this.getHeight(0.50),
-                        width: this.getWidth(0.16)
+                        width: this.getWidth(0.145)
                     }}>
                         <div className="circle_vip"
                              style={{
