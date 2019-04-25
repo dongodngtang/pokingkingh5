@@ -255,102 +255,105 @@ export default class QueueListPage extends Component {
 
 
                     <div className="col-sm-10 col-md-10 col-lg-10">
-                        <div className="row top_div">
-                            {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
-                                const {small_blind, big_blind, buy_in} = item;
+                        <div className="row">
+                            <div className="col-md-12 col-lg-12 top_div">
+                                {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
+                                    const {small_blind, big_blind, buy_in} = item;
 
-                                //这里是判断最后一个high_limit的status是不是true
-                                if (index === cash_queues.length - 1 && high_limit.status) {
-                                    return <div className={`${class_name} cash_div`}
-                                                key={index} >
-                                        <div className="left_math"/>
-                                        <div className="last_big_circle"/>
-                                    </div>
-                                }
-                                return (
-                                    <div className={`${class_name} cash_div`} key={index}>
-                                        <div className="left_math"/>
-                                        <div className="big_circle">
-                                            {strNotNull(buy_in) ?
-                                                <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
-
-                                            <span
-                                                className="big_circle_span">{this.get_cash(small_blind, big_blind)} NL</span>
+                                    //这里是判断最后一个high_limit的status是不是true
+                                    if (index === cash_queues.length - 1 && high_limit.status) {
+                                        return <div className={`${class_name} cash_div`}
+                                                    key={index} >
+                                            <div className="left_math"/>
+                                            <div className="last_big_circle"/>
                                         </div>
-                                    </div>
+                                    }
+                                    return (
+                                        <div className={`${class_name} cash_div`} key={index}>
+                                            <div className="left_math"/>
+                                            <div className="big_circle">
+                                                {strNotNull(buy_in) ?
+                                                    <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
 
-                                )
-                            })}
-                            {/*{!high_limit.status ? <div className={`${class_name} cash_div`}>*/}
+                                                <span
+                                                    className="big_circle_span">{this.get_cash(small_blind, big_blind)} NL</span>
+                                            </div>
+                                        </div>
+
+                                    )
+                                })}
+                                {/*{!high_limit.status ? <div className={`${class_name} cash_div`}>*/}
                                 {/*<div className="left_math"/>*/}
                                 {/*<div className="last_big_circle"/>*/}
-                            {/*</div> : null}*/}
+                                {/*</div> : null}*/}
+                            </div>
                         </div>
 
-                        <div className="row queue_bottom" style={{marginTop: this.getHeight(0.0185)}}>
-
-                            {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
-                                return (
-                                    <div className={`${class_name} item_div`} key={index}>
-                                        <div className="list_div">
-                                            {list.map((item, index) => {
-                                                return <div className="number_div">
-                                                    <span className="number_span" key={index}>{item}</span>
-                                                </div>
-                                            })}
-                                        </div>
-                                        <div className="queue" key={index}>
-                                            <div className="top_text_div">
+                        <div className="row">
+                            <div className="col-md-12 col-lg-12 queue_bottom" style={{marginTop: this.getHeight(0.0185)}}>
+                                {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
+                                    return (
+                                        <div className={`${class_name} item_div`} key={index}>
+                                            <div className="list_div">
+                                                {list.map((item, index) => {
+                                                    return <div className="number_div">
+                                                        <span className="number_span" key={index}>{item}</span>
+                                                    </div>
+                                                })}
+                                            </div>
+                                            <div className="queue" key={index}>
+                                                <div className="top_text_div">
                                                 <span
                                                     className="text1">{`${item.table_no}(${item.table_people})`}</span>
-                                            </div>
-                                            <div className="queue_number_div">
-                                                {item.cash_items && item.cash_items.map((member_item, member_index) => {
-                                                    if (member_index < 11) {
+                                                </div>
+                                                <div className="queue_number_div">
+                                                    {item.cash_items && item.cash_items.map((member_item, member_index) => {
+                                                        if (member_index < 11) {
 
-                                                        return <div className="number_name_div">
+                                                            return <div className="number_name_div">
                                                             <span
                                                                 className={member_item.nickname.length >= 6 ? "name_span1" : "name_span"}
                                                                 key={member_index}>{member_item.nickname}</span>
-                                                        </div>
-                                                    }
-                                                })}
+                                                            </div>
+                                                        }
+                                                    })}
 
-                                            </div>
-                                            {/*<div style={{display: 'flex', flex: 1}}/>*/}
-                                            <div className="bottom_text_div">
+                                                </div>
+                                                {/*<div style={{display: 'flex', flex: 1}}/>*/}
+                                                <div className="bottom_text_div">
 
                                                     <span
                                                         className="queue_all">{`Total Count：${item.cash_items.length}`}</span>
+                                                </div>
                                             </div>
+
+
                                         </div>
-
-
-                                    </div>
-                                )
-                            })}
-                            {/*{!high_limit.status ? <div className={`${class_name} item_div`} >*/}
+                                    )
+                                })}
+                                {/*{!high_limit.status ? <div className={`${class_name} item_div`} >*/}
                                 {/*<div className="list_div">*/}
-                                    {/*{list.map((item, index) => {*/}
-                                        {/*return <div className="number_div">*/}
-                                            {/*<span className="number_span" key={index}>{item}</span>*/}
-                                        {/*</div>*/}
-                                    {/*})}*/}
+                                {/*{list.map((item, index) => {*/}
+                                {/*return <div className="number_div">*/}
+                                {/*<span className="number_span" key={index}>{item}</span>*/}
+                                {/*</div>*/}
+                                {/*})}*/}
                                 {/*</div>*/}
 
                                 {/*<div className="queue">*/}
-                                    {/*<div className="top_text_div">*/}
-                                        {/*<span className="text1">0</span>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="queue_number_div"/>*/}
-                                    {/*<div style={{display: 'flex', flex: 1}}/>*/}
-                                    {/*<div className="bottom_text_div">*/}
-                                                {/*<span*/}
-                                                    {/*className="queue_all">{`Total Count：0`}</span>*/}
-                                    {/*</div>*/}
+                                {/*<div className="top_text_div">*/}
+                                {/*<span className="text1">0</span>*/}
+                                {/*</div>*/}
+                                {/*<div className="queue_number_div"/>*/}
+                                {/*<div style={{display: 'flex', flex: 1}}/>*/}
+                                {/*<div className="bottom_text_div">*/}
+                                {/*<span*/}
+                                {/*className="queue_all">{`Total Count：0`}</span>*/}
+                                {/*</div>*/}
                                 {/*</div>*/}
 
-                            {/*</div> : null}*/}
+                                {/*</div> : null}*/}
+                            </div>
 
                         </div>
                     </div>
