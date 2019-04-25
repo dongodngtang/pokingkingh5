@@ -3,15 +3,24 @@
     .div_5ths {
         width: 20%;
     }
+    .div_6ths{
+        width: 10%;
+    }
 }
 @media ( min-width : 992px) {
     .div_5ths {
         width: 20%;
     }
+    .div_6ths{
+        width: 10%;
+    }
 }
 @media ( min-width : 1200px) {
     .div_5ths {
         width: 20%;
+    }
+    .div_6ths{
+        width: 10%;
     }
 }
 

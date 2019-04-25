@@ -161,8 +161,19 @@ export default class QueueListPage extends Component {
     };
 
     getCircle = (length, status) => {
+        if(length === 6){
+            if (status) {
+                return "div_6ths"
+            } else {
+                return "col-md-2 col-lg-2"
+            }
+        }
         if(length === 5){
-            return "div_5ths"
+            if (status) {
+                return "col-md-2 col-lg-2"
+            } else {
+                return "div_5ths"
+            }
         }else if (length === 4) {
             if (status) {
                 return "div_5ths"
