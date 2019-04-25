@@ -7,10 +7,12 @@ import InfoDetail from './pages/InfoDetail'
 import LoadApp from "./pages/LoadApp";
 import EventDetail from "./pages/EventDetail";
 import HomePage from "./pages/HomePage";
+import QueueListPage from "./pages/QueueListPage";
 
 const Routes = () => (
     <Router>
         <App>
+            <Route path="/queue" component={QueueListPage}/>
             <Route path="/home" component={HomePage}/>
             <Route path="/loadApp/" component={LoadApp}/>
             <Route path="/infos/:id/" component={InfoDetail}/>
