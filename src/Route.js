@@ -8,10 +8,12 @@ import LoadApp from "./pages/LoadApp";
 import EventDetail from "./pages/EventDetail";
 import HomePage from "./pages/HomePage";
 import QueueListPage from "./pages/QueueListPage";
+import QueueListNewPage from "./pages/QueueListNewPage";
 
 const Routes = () => (
     <Router>
         <App>
+            <Route path="/queue_new" component={QueueListNewPage}/>
             <Route path="/queue" component={QueueListPage}/>
             <Route path="/home" component={HomePage}/>
             <Route path="/loadApp/" component={LoadApp}/>
