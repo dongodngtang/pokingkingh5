@@ -14,6 +14,10 @@
     font-family: 'Calibri_Bold';
     src: url('/assets/Calibri_Bold.ttf');
 }
+@font-face {
+    font-family: 'Italic';
+    src: url('/assets/AdobeArabic-Italic.otf');
+}
 @media ( min-width : 768px) {
     .div_5ths {
         width: 20%;
@@ -40,24 +44,23 @@
 }
 
 .queue_body {
-    position:absolute;
-    top:0;
-    bottom: 0;
-    left:0;
-    right: 0;
-    background-color: #F0D8AD;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /*background-color: #F0D8AD;*/
     overflow-x: hidden;
     overflow-y: hidden;
+    background: url('/images/bg.png') no-repeat center;
 }
 
-.left_div {
+.left_div_new {
     height: 100%;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1C1E23;
+    /*background-color: #1C1E23;*/
     text-align: center;
 }
 
@@ -136,91 +139,100 @@
     color: #cccccc;
 }
 
-.top_div {
+.top_div_new {
     margin-top: 4%;
-    height:150px;
-    background-color: #1C1E23;
+    height:100px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
 }
-.big_circle_span{
-    color:#44474E;
+.big_circle_span_new{
+    color:#d1d2d4;
     font-size:40px;
     font-weight: bold;
+    font-family: American_CaptainT;
 }
-.big_money_span{
-    color:#1C1E23;
-    font-size:22px;
+.big_money_span_new{
+    color:#d1d2d4;
+    font-size:28px;
     font-weight: bold;
+    font-family: American_CaptainT;
 }
-.last_big_circle{
-    height:120px;
+.last_big_circle_new{
+    height:90px;
     width:95%;
-    background: url('/images/limit.png') no-repeat center;
-    background-size: 100% 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.big_circle{
-    height:120px;
+.big_circle_new{
+    height:90px;
     width:95%;
-    background: url('/images/Rectangle.png') no-repeat center;
-    background-size: 100% 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .left_math{
     width:20px;
 }
-.cash_div{
+.cash_div_new{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     align-self: center;
 }
-.queue_bottom{
+.queue_bottom_new{
     width:100%;
+    /*height:100%;*/
     display: flex;
     flex-direction: row;
+    /*align-items: center;*/
     justify-content: center;
+    margin-top: 10px;
 }
 .queue_div{
     width:100% !important;
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
-.item_div{
+.item_div_new{
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
-.list_div{
+.list_div_new{
+    /*align-self: center;*/
     width:20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    margin-top: 32px;
+
 }
-.number_div{
+.number_div_new{
     width:20px;
     height:45px;
     margin-top: 18px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    margin-right: 5px;
+    align-items: center;
+    justify-content: center;
 }
-.number_span{
-    color:#7F6333;
-    font-size:28px;
+.number_span_new{
+    color:#FFFFFF;
+    font-size:24px;
     font-weight: bold;
 }
-.queue{
+.number_span_hidden{
+    color:#FFFFFF;
+    font-size:24px;
+    font-weight: bold;
+    display:none ;
+}
+.queue_new{
     width:100%;
     /*height:100%;*/
-    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -232,24 +244,32 @@
     align-items: center;
     justify-content: center;
     height:30px;
+    margin-bottom: 10px;
 }
-.text1{
-    color:#282828;
+.text1_new{
+    color:#d1d2d4;
     font-size:30px;
     font-family: American_CaptainT;
 }
-.queue_number_div{
+.number_div_left{
+    width:20px;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+}
+.queue_number_div_new{
     width:95%;
-    background-color: #FDF3D9;
-    border-radius: 19px;
-    border-width: 4px;
-    border-color: #6E6B6B;
+    height:100%;
+    border-width: 1px;
+    border-color: #FFFFFF;
     border-style: solid;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.number_name_div{
+.number_name_div_new{
+    align-self: center;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -258,26 +278,63 @@
     height:45px;
     margin-top: 18px;
 }
-.name_span1{
-    color:#444444;
+.name_span1_new{
+    color:#FFFFFF;
     font-size:30px;
     font-weight: bold;
     word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    font-family: Calibri;
 }
-.name_span{
-    color:#444444;
+.name_span_new{
+    color:#FFFFFF;
     font-size:35px;
     font-weight: bold;
     word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    font-family: Calibri;
 }
-.bottom_text_div{
-    width:95%;
-    height:90px;
-    margin-top: 20px;
-    border-radius: 19px;
-    background-color: #1C1E23;
+.bottom_text_div_new{
+    width:81%;
+    height:50px;
+    position:absolute;
+    bottom:1px;
+    border-width: 1px;
+    border-top-color: #FFFFFF;
+    border-style: solid;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+}
+.queue_all_new{
+    color:#BCBEC0;
+    font-size:28px;
+    font-weight: bold;
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    font-family: Calibri_Bold;
+}
+.queue_all_new_last{
+    color:#d2ff00;
+    font-size:30px;
+    font-weight: bold;
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    font-family: Italic;
+}
+.queue_all_new_last2{
+    color:#FFFFFF;
+    font-size:30px;
+    font-weight: bold;
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    font-family: Italic;
+}
+.span_line_1{
+    width:95%;
+    height:0px;
+    background-color: #FFFFFF;
+    margin-bottom: 15px;
+}
+.span_line_2{
+    width:95%;
+    height:1px;
+    background-color: #FFFFFF;
+    margin-bottom: 15px;
 }

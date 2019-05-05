@@ -209,20 +209,20 @@ export default class QueueListPage extends Component {
     // }
 
     getCircle = (length, status) => {
-        if(length === 6){
+        if (length === 6) {
             if (status) {
                 return "div_6ths"
             } else {
                 return "col-md-2 col-lg-2"
             }
         }
-        if(length === 5){
+        if (length === 5) {
             if (status) {
                 return "col-md-2 col-lg-2"
             } else {
                 return "div_5ths"
             }
-        }else if (length === 4) {
+        } else if (length === 4) {
             if (status) {
                 return "div_5ths"
             } else {
@@ -233,13 +233,21 @@ export default class QueueListPage extends Component {
         }
     }
 
+    showSpan = (item) => {
+        if (item === 1 || item === 5 || item === 10) {
+            return "number_span_new"
+        } else {
+            return "number_span_hidden"
+        }
+    }
+
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
         return (
-            <div className="container-fluid queue_body" style={{height: HEIGHT}}>
+            <div className="container-fluid queue_body">
                 <div className="row" style={{height: '100%'}}>
-                    <div className="col-sm-2 col-md-2 col-lg-2 left_div">
+                    <div className="col-sm-2 col-md-2 col-lg-2 left_div_new">
                         <img className="img-responsive center-block pukewang" src={Images.pukewang}/>
                         <div className="left_line"/>
                         <span className="left_span">TABLE &nbsp; PREVIEW</span>
@@ -291,28 +299,29 @@ export default class QueueListPage extends Component {
 
 
                     <div className="col-sm-10 col-md-10 col-lg-10">
-                        <div className="row">
-                            <div className="col-md-12 col-lg-12 top_div">
+                        <div className="row" style={{height: '17%'}}>
+                            <div className="col-md-12 col-lg-12 top_div_new">
                                 {!isEmptyObject(cash_queues) && cash_queues.map((item, index) => {
                                     const {small_blind, big_blind, buy_in} = item;
 
                                     //这里是判断最后一个high_limit的status是不是true
                                     if (index === cash_queues.length - 1 && high_limit.status) {
-                                        return <div className={`${class_name} cash_div`}
-                                                    key={index} >
+                                        return <div className={`${class_name} cash_div_new`}
+                                                    key={index}>
                                             <div className="left_math"/>
-                                            <div className="last_big_circle"/>
+                                            <div className="last_big_circle_new"/>
                                         </div>
                                     }
                                     return (
-                                        <div className={`${class_name} cash_div`} key={index}>
+                                        <div className={`${class_name} cash_div_new`} key={index}>
                                             <div className="left_math"/>
-                                            <div className="big_circle">
+                                            <div className="big_circle_new">
                                                 {strNotNull(buy_in) ?
-                                                    <span className="big_money_span">{`${buy_in} (HKD)`}</span> : null}
+                                                    <span
+                                                        className="big_money_span_new">{`${buy_in} (HKD)`}</span> : null}
 
                                                 <span
-                                                    className="big_circle_span">{this.get_cash(small_blind, big_blind)} NL</span>
+                                                    className="big_circle_span_new">{this.get_cash(small_blind, big_blind)} NL</span>
                                             </div>
                                         </div>
 
@@ -321,44 +330,56 @@ export default class QueueListPage extends Component {
                             </div>
                         </div>
 
-                        <div className="row">
-                            <div className="col-md-12 col-lg-12 queue_bottom" style={{marginTop: this.getHeight(0.0185)}}>
+                        <div className="row" style={{height: '80%'}}>
+                            <div className="col-md-12 col-lg-12 queue_bottom_new">
                                 {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
                                     return (
-                                        <div className={`${class_name} item_div`} key={index}>
-                                            <div className="list_div">
-                                                {list.map((item, index) => {
-                                                    return <div className="number_div" key={index}>
-                                                        <span className="number_span" key={index}>{item}</span>
-                                                    </div>
-                                                })}
+                                        <div className={`${class_name} item_div_new`} key={index}>
+                                            <div className="list_div_new">
+                                                <div className="span_line_1"/>
+                                                <div className="top_text_div"/>
+                                                <div className="number_div_left">
+                                                    {list.map((item, item_index) => {
+                                                        if(index === 0){
+                                                            return null;
+                                                        }
+                                                        return <div className="number_div_new" key={item_index}>
+                                                            <span className={this.showSpan(item)} key={index}>{item}</span>
+                                                        </div>
+                                                    })}
+                                                </div>
+
                                             </div>
-                                            <div className="queue" key={index}>
+
+                                            <div className="queue_new" key={index}>
+                                                <div className="span_line_2"/>
                                                 <div className="top_text_div">
                                                 <span
-                                                    className="text1">{`${item.table_no}(${item.table_people})`}</span>
+                                                    className="text1_new">{`${item.table_no}(${item.table_people})`}</span>
                                                 </div>
-                                                <div className="queue_number_div">
+                                                <div className="queue_number_div_new">
                                                     {item.cash_items && item.cash_items.map((member_item, member_index) => {
                                                         if (member_index < 11) {
 
-                                                            return <div className="number_name_div" key={member_index}>
+                                                            return <div className="number_name_div_new"
+                                                                        key={member_index}>
                                                             <span
-                                                                className={member_item.nickname.length >= 6 ? "name_span1" : "name_span"}
+                                                                className={member_item.nickname.length >= 8 ? "name_span1_new" : "name_span_new"}
                                                                 key={member_index}>{member_item.nickname}</span>
                                                             </div>
                                                         }
                                                     })}
 
-                                                </div>
-                                                {/*<div style={{display: 'flex', flex: 1}}/>*/}
-                                                <div className="bottom_text_div">
+                                                    <div className="bottom_text_div_new">
 
-                                                    <span
-                                                        className="queue_all">{`Total Count：${item.cash_items.length}`}</span>
+                                                        <span className="queue_all_new">{`Total Count：`}</span>
+                                                        <span
+                                                            className={item.cash_items.length > 0 ? "queue_all_new_last" : "queue_all_new_last2"}>{item.cash_items.length}</span>
+                                                    </div>
+
                                                 </div>
+
                                             </div>
-
 
                                         </div>
                                     )
