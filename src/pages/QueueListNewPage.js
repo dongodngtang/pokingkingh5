@@ -160,6 +160,54 @@ export default class QueueListPage extends Component {
         return Number(mul(WIDTH, float))
     };
 
+    // getCircle = (length, status) => {
+    //     if(length === 6){
+    //         if (status) {
+    //             return "div_6ths"
+    //         } else {
+    //             return "col-md-2 col-lg-2"
+    //         }
+    //     }
+    //     if(length === 5){
+    //         if (status) {
+    //             return "col-md-2 col-lg-2"
+    //         } else {
+    //             return "div_5ths"
+    //         }
+    //     }else if (length === 4) {
+    //         if (status) {
+    //             return "div_5ths"
+    //         } else {
+    //             return "col-md-3 col-lg-3"
+    //         }
+    //     } else if (length === 3) {
+    //         if (status) {
+    //             return 'col-md-3 col-lg-3'
+    //         } else {
+    //             return "col-md-4 col-lg-4"
+    //         }
+    //     } else if (length === 2) {
+    //         if (status) {
+    //             return 'col-md-4 col-lg-4'
+    //         } else {
+    //             return "col-md-6 col-lg-6"
+    //         }
+    //
+    //     } else if (length === 1) {
+    //         if (status) {
+    //             return 'col-md-6 col-lg-6'
+    //         } else {
+    //             return 'col-md-12'
+    //         }
+    //     } else {
+    //         if (status) {
+    //             return ''
+    //         } else {
+    //             return 'col-md-12'
+    //         }
+    //     }
+    // }
+
     getCircle = (length, status) => {
         if(length === 6){
             if (status) {
@@ -180,31 +228,8 @@ export default class QueueListPage extends Component {
             } else {
                 return "col-md-3 col-lg-3"
             }
-        } else if (length === 3) {
-            if (status) {
-                return 'col-md-3 col-lg-3'
-            } else {
-                return "col-md-4 col-lg-4"
-            }
-        } else if (length === 2) {
-            if (status) {
-                return 'col-md-4 col-lg-4'
-            } else {
-                return "col-md-6 col-lg-6"
-            }
-
-        } else if (length === 1) {
-            if (status) {
-                return 'col-md-6 col-lg-6'
-            } else {
-                return 'col-md-12'
-            }
-        } else {
-            if (status) {
-                return ''
-            } else {
-                return 'col-md-12'
-            }
+        } else if (length < 4) {
+            return "col-md-3 col-lg-3"
         }
     }
 
@@ -303,7 +328,7 @@ export default class QueueListPage extends Component {
                                         <div className={`${class_name} item_div`} key={index}>
                                             <div className="list_div">
                                                 {list.map((item, index) => {
-                                                    return <div className="number_div">
+                                                    return <div className="number_div" key={index}>
                                                         <span className="number_span" key={index}>{item}</span>
                                                     </div>
                                                 })}
@@ -317,7 +342,7 @@ export default class QueueListPage extends Component {
                                                     {item.cash_items && item.cash_items.map((member_item, member_index) => {
                                                         if (member_index < 11) {
 
-                                                            return <div className="number_name_div">
+                                                            return <div className="number_name_div" key={member_index}>
                                                             <span
                                                                 className={member_item.nickname.length >= 6 ? "name_span1" : "name_span"}
                                                                 key={member_index}>{member_item.nickname}</span>

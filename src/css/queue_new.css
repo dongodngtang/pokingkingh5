@@ -177,6 +177,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    align-self: center;
 }
 .queue_bottom{
     width:100%;
