@@ -16,8 +16,8 @@ const Routes = () => (
         <App>
             <Route path="/demo" component={DemoHome}/>
             <Route path="/queue_new" component={QueueListNewPage}/>
-            {/*<Route path="/queue" component={QueueListPage}/>*/}
-            {/*<Route path="/home" component={HomePage}/>*/}
+            <Route path="/queue" component={QueueListPage}/>
+            <Route path="/home" component={HomePage}/>
             <Route path="/loadApp/" component={LoadApp}/>
             <Route path="/infos/:id/" component={InfoDetail}/>
             <Route path="/main_events/:event_id/infos/:id/" component={EventDetail}/>

@@ -9,6 +9,7 @@ const HEIGHT = window.screen.height;
 const WIDTH = window.screen.width;
 const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 const top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
+const circle_list = [1,2,3,4,5,6,7,8];
 
 export default class QueueListPage extends Component {
 
@@ -254,7 +255,7 @@ export default class QueueListPage extends Component {
                         <div className="left_line"/>
 
                         <div className="left_circle">
-                            <div className="circle_vip" style={{
+                            <div className="circle_vip_new" style={{
                                 backgroundColor: this._color(cash_vip.small_blind, cash_vip.big_blind)
                             }}>
                                 {strNotNull(cash_vip.small_blind) || strNotNull(cash_vip.big_blind) ? <span
@@ -263,11 +264,11 @@ export default class QueueListPage extends Component {
 
                             </div>
 
-                            <div className="circle_div">
+                            <div className="circle_div_new">
 
                                 {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                     return (
-                                        <div className="circle" key={index}
+                                        <div className="circle_new" key={index}
                                              style={{
                                                  backgroundColor: item.info ? this._color(item.info.small_blind, item.info.big_blind) : this._color('', ''),
                                              }}>
@@ -279,6 +280,10 @@ export default class QueueListPage extends Component {
                                     )
                                 })}
                             </div>
+
+                            <div className="left_line2" style={{marginTop:20,marginBottom:5}}/>
+                            <span className="left_span2">NOTICE</span>
+                            <div className="left_line3" style={{marginTop:5,marginBottom:10}}/>
                         </div>
 
                         <select id="dropdown" ref={(input) => this.menu = input}
@@ -358,8 +363,9 @@ export default class QueueListPage extends Component {
                                             <div className="queue_new" key={index}>
                                                 <div className="span_line_2"/>
                                                 <div className="top_text_div">
-                                                <span
-                                                    className="text1_new">{`${item.table_no}(${item.table_people})`}</span>
+                                                    {circle_list.map((item,index)=>{
+                                                        return <div className="circle_item" key={index}/>
+                                                    })}
                                                 </div>
                                                 <div className="queue_number_div_new">
                                                     {item.cash_items && item.cash_items.map((member_item, member_index) => {
@@ -373,6 +379,8 @@ export default class QueueListPage extends Component {
                                                             </div>
                                                         }
                                                     })}
+
+                                                    <div style={{display:'flex',flex:1}}/>
 
                                                     <div className="bottom_text_div_new">
 
