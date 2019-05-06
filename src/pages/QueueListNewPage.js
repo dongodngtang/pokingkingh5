@@ -9,7 +9,7 @@ const HEIGHT = window.screen.height;
 const WIDTH = window.screen.width;
 const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 const top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
-const circle_list = [1,2,3,4,5,6,7,8];
+const circle_list = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default class QueueListPage extends Component {
 
@@ -281,9 +281,9 @@ export default class QueueListPage extends Component {
                                 })}
                             </div>
 
-                            <div className="left_line2" style={{marginTop:20,marginBottom:5}}/>
+                            <div className="left_line2" style={{marginTop: 20, marginBottom: 5}}/>
                             <span className="left_span2">NOTICE</span>
-                            <div className="left_line3" style={{marginTop:5,marginBottom:10}}/>
+                            <div className="left_line3" style={{marginTop: 5, marginBottom: 10}}/>
                         </div>
 
                         <select id="dropdown" ref={(input) => this.menu = input}
@@ -338,19 +338,16 @@ export default class QueueListPage extends Component {
                             </div>
                         </div>
 
-                        <div className="row" style={{height: '80%'}}>
+                        <div className="row" style={{height: '80%', marginRight: 0, marginLeft: 0}}>
                             <div className="col-md-12 col-lg-12 queue_bottom_new">
                                 {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
                                     return (
                                         <div className={`${class_name} item_div_new`} key={index}>
-                                            <div className="list_div_new">
+                                            {index === 0 ? null : <div className="list_div_new">
                                                 <div className="span_line_1"/>
                                                 <div className="top_text_div"/>
                                                 <div className="number_div_left">
                                                     {list.map((item, item_index) => {
-                                                        if (index === 0) {
-                                                            return null;
-                                                        }
                                                         return <div className="number_div_new" key={item_index}>
                                                             <span className={this.showSpan(item)}
                                                                   key={index}>{item}</span>
@@ -358,12 +355,13 @@ export default class QueueListPage extends Component {
                                                     })}
                                                 </div>
 
-                                            </div>
+                                            </div>}
+
 
                                             <div className="queue_new" key={index}>
                                                 <div className="span_line_2"/>
                                                 <div className="top_text_div">
-                                                    {circle_list.map((item,index)=>{
+                                                    {circle_list.map((item, index) => {
                                                         return <div className="circle_item" key={index}/>
                                                     })}
                                                 </div>
@@ -380,7 +378,7 @@ export default class QueueListPage extends Component {
                                                         }
                                                     })}
 
-                                                    <div style={{display:'flex',flex:1}}/>
+                                                    <div style={{display: 'flex', flex: 1}}/>
 
                                                     <div className="bottom_text_div_new">
 

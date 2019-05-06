@@ -46,7 +46,7 @@
 .queue_body {
     width: 100%;
     height: 100%;
-    position: absolute;
+    /*position: absolute;*/
     /*background-color: #F0D8AD;*/
     overflow-x: hidden;
     overflow-y: hidden;
@@ -238,13 +238,19 @@
 .item_div_new{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 .list_div_new{
     /*align-self: center;*/
     width:20px;
     display: flex;
     flex-direction: column;
+    margin-right: 10px;
 
+}
+[class*="col-"]{
+    padding-right: 3px !important;
+    padding-left: 3px !important;
 }
 .number_div_new{
     width:20px;
@@ -292,11 +298,10 @@
     height:100%;
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
 }
 .queue_number_div_new{
-    position:absolute;
-    width:83%;
+    /*position:absolute;*/
+    width:95%;
     height:95%;
     border-width: 1px;
     border-color: #FFFFFF;
@@ -304,7 +309,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 55px;
+    /*margin-top: 55px;*/
 }
 .number_name_div_new{
     align-self: center;
@@ -333,8 +338,6 @@
 .bottom_text_div_new{
     width:100%;
     height:6%;
-    /*position:absolute;*/
-    /*bottom:1px;*/
     border-top-width: 1px;
     border-top-color: #FFFFFF;
     border-style: solid;
