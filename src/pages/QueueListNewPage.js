@@ -257,8 +257,10 @@ export default class QueueListPage extends Component {
                             <div className="circle_vip" style={{
                                 backgroundColor: this._color(cash_vip.small_blind, cash_vip.big_blind)
                             }}>
-                                <span
-                                    className="circle_span">{this.get_cash(cash_vip.small_blind, cash_vip.big_blind)}</span>
+                                {strNotNull(cash_vip.small_blind) || strNotNull(cash_vip.big_blind) ? <span
+                                        className="circle_span">{this.get_cash(cash_vip.small_blind, cash_vip.big_blind)}</span> :
+                                    <span className="inner"/>}
+
                             </div>
 
                             <div className="circle_div">
@@ -270,7 +272,8 @@ export default class QueueListPage extends Component {
                                                  backgroundColor: item.info ? this._color(item.info.small_blind, item.info.big_blind) : this._color('', ''),
                                              }}>
                                             {item.info ? <span
-                                                className="circle_span">{this.get_cash(item.info.small_blind, item.info.big_blind)}</span> : null}
+                                                    className="circle_span">{this.get_cash(item.info.small_blind, item.info.big_blind)}</span> :
+                                                <span className="inner"/>}
 
                                         </div>
                                     )
@@ -340,11 +343,12 @@ export default class QueueListPage extends Component {
                                                 <div className="top_text_div"/>
                                                 <div className="number_div_left">
                                                     {list.map((item, item_index) => {
-                                                        if(index === 0){
+                                                        if (index === 0) {
                                                             return null;
                                                         }
                                                         return <div className="number_div_new" key={item_index}>
-                                                            <span className={this.showSpan(item)} key={index}>{item}</span>
+                                                            <span className={this.showSpan(item)}
+                                                                  key={index}>{item}</span>
                                                         </div>
                                                     })}
                                                 </div>

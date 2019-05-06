@@ -128,6 +128,21 @@
     text-align: center;
     margin-top: 6px;
 }
+.inner{
+    border-left: 1px solid #d61c24;
+    width: 0;
+    height: 120px;
+    transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    /*top: -41px;*/
+    /*left: 100px;*/
+}
 
 #dropdown {
     position: absolute;
