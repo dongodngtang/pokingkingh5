@@ -210,6 +210,8 @@ export default class QueueListPage extends Component {
     // }
 
     getCircle = (length, status) => {
+        logMsg("length",length)
+        logMsg("status",status)
         if (length === 6) {
             if (status) {
                 return "div_6ths"
@@ -219,7 +221,7 @@ export default class QueueListPage extends Component {
         }
         if (length === 5) {
             if (status) {
-                return "col-md-2 col-lg-2"
+                return "div_5ths"
             } else {
                 return "div_5ths"
             }
@@ -251,9 +253,9 @@ export default class QueueListPage extends Component {
                 <div className="row" style={{height: '100%'}}>
                     <div className="col-sm-2 col-md-2 col-lg-2 left_div_new">
                         <img className="img-responsive center-block pukewang" src={Images.pukewang}/>
-                        <div className="left_line"/>
+                        <div className="left_line_new"/>
                         <span className="left_span">TABLE &nbsp; PREVIEW</span>
-                        <div className="left_line"/>
+                        <div className="left_line_new"/>
 
                         <div className="left_circle">
                             <div className="circle_vip_new" style={{
@@ -285,6 +287,14 @@ export default class QueueListPage extends Component {
                             <div className="left_line2" style={{marginTop: 20, marginBottom: 5}}/>
                             <span className="left_span2">NOTICE</span>
                             <div className="left_line3" style={{marginTop: 5, marginBottom: 10}}/>
+                            <div className="title_div">
+                                <span className="title_spans">撲克王杯2020</span>
+                                <span className="title_spans">澳門威尼斯人</span>
+                                <span className="title_spans">////即將開始/////</span>
+                                <span className="title_spans">5,000,000 港元保底</span>
+                                <span className="title_spans">三月15日至22日</span>
+                            </div>
+
                         </div>
 
                         <select id="dropdown" ref={(input) => this.menu = input}
@@ -340,7 +350,10 @@ export default class QueueListPage extends Component {
                                                 <div className="right_top_div">
                                                     {index === cash_queues.length - 1 && high_limit.status ?
                                                         <div className="cash_div_new" key={index}>
-                                                            <div className="last_big_circle_new"/>
+                                                            <div className="last_big_circle_new">
+
+                                                                <span className="big_circle_span_new">HIGH LIMIT</span>
+                                                            </div>
                                                         </div> : <div className="cash_div_new" key={index}>
                                                             <div className="big_circle_new">
                                                                 {strNotNull(buy_in) ?
