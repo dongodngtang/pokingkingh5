@@ -240,11 +240,12 @@ export default class QueueListPage extends Component {
         } else {
             return "number_span_hidden"
         }
-    }
+    };
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
+        logMsg("cash_games", cash_games)
         return (
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
@@ -311,7 +312,7 @@ export default class QueueListPage extends Component {
                         <div className="row" style={{height: '100%', marginRight: 0, marginLeft: 0}}>
                             <div className="col-md-12 col-lg-12 queue_bottom_new">
                                 {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
-                                    const {small_blind, big_blind, buy_in} = item;
+                                    const {small_blind, big_blind, buy_in, table_numbers} = item;
                                     return (
                                         <div className={`${class_name} item_div_new`} key={index}>
                                             {index === 0 ? null : <div className="list_div_new">
@@ -353,13 +354,21 @@ export default class QueueListPage extends Component {
 
 
                                                     <div className="remarks">
-                                                        <span className="remark_span">begin to 18:50</span>
+                                                        <span className="remark_span">{item.notice}</span>
                                                     </div>
 
                                                     <div className="span_line_n"/>
                                                     <div className="top_text_div">
-                                                        {circle_list.map((item, index) => {
-                                                            return <div className="circle_item" key={index}/>
+                                                        {circle_list.map((circle_item, index) => {
+                                                            if (table_numbers >= circle_item) {
+                                                                return <div
+                                                                    className="circle_item"
+                                                                    style={{backgroundColor: this._color(small_blind, big_blind)}}
+                                                                    key={index}/>
+                                                            } else {
+                                                                return <div
+                                                                    className="circle_item" key={index}/>
+                                                            }
                                                         })}
                                                     </div>
                                                 </div>
