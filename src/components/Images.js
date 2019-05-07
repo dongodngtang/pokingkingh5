@@ -6,6 +6,9 @@ const images = {
     safari:'/images/safari.png',
     pukewang:'/images/pukewang.png',
     point:'/images/point.png',
+    bottom:'/images/bottom.png',
+    left:'/images/left.png',
+    right:'/images/right.png',
     bg:'/images/bg.jpeg',
 
 }

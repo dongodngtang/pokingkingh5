@@ -319,8 +319,14 @@ export default class QueueListPage extends Component {
                                                 <div className="number_div_left">
                                                     {list.map((item, item_index) => {
                                                         return <div className="number_div_new" key={item_index}>
+                                                            {item === 1 || item === 5 || item === 10 ?
+                                                                <img src={Images.left}
+                                                                     className={item === 10 ? "img_left2" : "img_left"}/> : null}
                                                             <span className={this.showSpan(item)}
                                                                   key={index}>{item}</span>
+                                                            {item === 1 || item === 5 || item === 10 ?
+                                                                <img src={Images.right}
+                                                                     className={item === 10 ? "img_right2" : "img_right"}/> : null}
                                                         </div>
                                                     })}
                                                 </div>
