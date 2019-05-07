@@ -359,17 +359,17 @@ export default class QueueListPage extends Component {
                                                 </div>
 
                                                 <div className="queue_number_div_new">
-                                                    {/*{item.cash_items && item.cash_items.map((member_item, member_index) => {*/}
-                                                        {/*if (member_index < 11) {*/}
+                                                    {item.cash_items && item.cash_items.map((member_item, member_index) => {
+                                                        if (member_index < 11) {
 
-                                                            {/*return <div className="number_name_div_new"*/}
-                                                                        {/*key={member_index}>*/}
-                                                {/*<span*/}
-                                                    {/*className={member_item.nickname.length >= 8 ? "name_span1_new" : "name_span_new"}*/}
-                                                    {/*key={member_index}>{member_item.nickname}</span>*/}
-                                                            {/*</div>*/}
-                                                        {/*}*/}
-                                                    {/*})}*/}
+                                                            return <div className="number_name_div_new"
+                                                                        key={member_index}>
+                                                <span
+                                                    className={member_item.nickname.length >= 8 ? "name_span1_new" : "name_span_new"}
+                                                    key={member_index}>{member_item.nickname}</span>
+                                                            </div>
+                                                        }
+                                                    })}
 
                                                     <div style={{display: 'flex', flex: 1}}/>
 

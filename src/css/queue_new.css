@@ -270,8 +270,7 @@
 }
 .number_div_new{
     width:20px;
-    height:6%;
-    margin-top: 18px;
+    height:8%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -319,7 +318,7 @@
 }
 .number_div_left{
     width:20px;
-    height:100%;
+    height: 72%;
     display: flex;
     flex-direction: column;
 }
@@ -336,14 +335,14 @@
     /*margin-top: 25px;*/
 }
 .number_name_div_new{
+    width:100%;
+    height:8%;
     align-self: center;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width:100%;
-    /*height:6%;*/
-    margin-top: 18px;
+    /*margin-top: 18px;*/
 }
 .name_span1_new{
     color:#FFFFFF;
@@ -394,7 +393,7 @@
 }
 .span_line_1{
     /*width:95%;*/
-    height:30%;
+    height:26%;
     padding-bottom: 10px;
 }
 .span_line_n{
