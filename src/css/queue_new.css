@@ -509,9 +509,4 @@
     line-height: 26px;
     font-family: Calibri;
 }
-#marquees{
-    position:relative;
-    width: 100%;
-    overflow:hidden;
-    border: 1px solid #B45B3E;
-}
+/**/

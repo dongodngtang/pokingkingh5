@@ -252,9 +252,10 @@ export default class QueueListPage extends Component {
                                             return <div
                                                 className="circle_new"
                                                 key={index}>
-                                                <img src={this.getImg(item.info.small_blind, item.info.big_blind)} className="AVAILABLE"/>
-                                            <span
-                                                className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
+                                                <img src={this.getImg(item.info.small_blind, item.info.big_blind)}
+                                                     className="AVAILABLE"/>
+                                                <span
+                                                    className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
 
                                             </div>
                                         }
@@ -389,15 +390,15 @@ export default class QueueListPage extends Component {
                                                                     <div className="none_img"/>}
 
                                                                 <div className="middle_name">
-                                                                    {member_item.nickname.length < 10 ? <span
-                                                                            className="name_span_new"
-                                                                            key={member_index}>{member_item.nickname}</span> :
-                                                                        <div id="marquees">
-                                                                    <span
-                                                                        className="name_span_new"
-                                                                        key={member_index}>{member_item.nickname}</span>
-                                                                        </div>
+                                                                    {member_item.nickname.length < 10 ?
+                                                                        <span className="name_span_new"
+                                                                              key={member_index}>{member_item.nickname}</span> :
 
+                                                                        <div className="name_span_new">
+                                                                            <span className="name_span_new"
+                                                                                  key={member_index}>{member_item.nickname}</span>
+
+                                                                        </div>
                                                                     }
 
                                                                 </div>
