@@ -322,106 +322,124 @@ export default class QueueListPage extends Component {
                                 {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
                                     const {small_blind, big_blind, buy_in, table_numbers, cash_items} = item;
                                     let name_list = cash_items;
-                                    if (isEmptyObject(cash_items) || cash_items.length < 10){
-                                        let length = sub(10,cash_items.length);
-                                        for(let i = 0;i<length;i++){
-                                            name_list.push({nickname:""})
+                                    if (isEmptyObject(cash_items) || cash_items.length < 10) {
+                                        let length = sub(10, cash_items.length);
+                                        for (let i = 0; i < length; i++) {
+                                            name_list.push({nickname: ""})
                                         }
                                     }
-                                        return (
-                                            <div className={`${class_name} item_div_new`} key={index}>
-                                                {index === 0 ? null : <div className="list_div_new">
-                                                    <div className="span_line_1"/>
-                                                    <div className="number_div_left">
-                                                        {list.map((list_item, item_index) => {
-                                                            return <div className="number_div_new" key={item_index}>
+                                    return (
+                                        <div className={`${class_name} item_div_new`} key={index}>
+                                            {index === 0 ? null : <div className="list_div_new">
+                                                <div className="span_line_1"/>
+                                                <div className="number_div_left">
+                                                    {list.map((list_item, item_index) => {
+                                                        return <div className="number_div_new" key={item_index}>
                                                             <span className={this.showSpan(list_item)}
                                                                   key={item_index}>{list_item}</span>
 
-                                                            </div>
-                                                        })}
-                                                    </div>
+                                                        </div>
+                                                    })}
+                                                </div>
 
-                                                </div>}
+                                            </div>}
 
 
-                                                <div className="queue_new" key={index}>
+                                            <div className="queue_new" key={index}>
 
-                                                    <div className="right_top_div">
-                                                        {index === cash_queues.length - 1 && high_limit.status ?
-                                                            <div className="cash_div_new" key={index}>
-                                                                <div className="last_big_circle_new">
+                                                <div className="right_top_div">
+                                                    {index === cash_queues.length - 1 && high_limit.status ?
+                                                        <div className="cash_div_new" key={index}>
+                                                            <div className="last_big_circle_new">
 
                                                                     <span
                                                                         className="big_circle_span_new">HIGH LIMIT</span>
-                                                                </div>
-                                                            </div> : <div className="cash_div_new" key={index}>
-                                                                <div className="big_circle_new">
-                                                                    {strNotNull(buy_in) ?
-                                                                        <span
-                                                                            className="big_money_span_new">{`${buy_in} (HKD)`}</span> : null}
-
+                                                            </div>
+                                                        </div> : <div className="cash_div_new" key={index}>
+                                                            <div className="big_circle_new">
+                                                                {strNotNull(buy_in) ?
                                                                     <span
-                                                                        className="big_circle_span_new">{this.get_cash(small_blind, big_blind)} NL</span>
-                                                                </div>
-                                                            </div>}
+                                                                        className="big_money_span_new">{`${buy_in} (HKD)`}</span> : null}
+
+                                                                <span
+                                                                    className="big_circle_span_new">{this.get_cash(small_blind, big_blind)} NL</span>
+                                                            </div>
+                                                        </div>}
 
 
-                                                        <div className="remarks">
-                                                            <span className="remark_span">{item.notice}</span>
-                                                        </div>
-
-                                                        <div className="span_line_n"/>
-                                                        <div className="top_text_div">
-                                                            {circle_list.map((circle_item, index) => {
-                                                                if (table_numbers >= circle_item) {
-                                                                    return <div
-                                                                        className="circle_item"
-                                                                        style={{backgroundColor: this._color(small_blind, big_blind)}}
-                                                                        key={index}/>
-                                                                } else {
-                                                                    return <div
-                                                                        className="circle_item" key={index}/>
-                                                                }
-                                                            })}
-                                                        </div>
+                                                    <div className="remarks">
+                                                        <span className="remark_span">{item.notice}</span>
                                                     </div>
 
-                                                    <div className="queue_number_div_new">
-                                                        {name_list.map((member_item, member_index) => {
-                                                            if (member_index < 11) {
-
-                                                                return <div className="number_name_div_new"
-                                                                            key={member_index}>
-                                                                    {index !== 0 && (member_index === 0 || member_index === 4 || member_index === 9) ?
-                                                                        <img className="left_img"  src={Images.right}/> : <div className="none_img"/>}
-
-                                                                    <div className="middle_name">
-                                                                       <span
-                                                                           className={member_item.nickname.length >= 8 ? "name_span1_new" : "name_span_new"}
-                                                                           key={member_index}>{member_item.nickname}</span>
-                                                                    </div>
-                                                                    {index!== cash_queues.length-1 && (member_index === 0 || member_index === 4 || member_index === 9) ?
-                                                                        <img className="right_img" src={Images.left}/> : <div className="none_img"/>}
-                                                                </div>
+                                                    <div className="span_line_n"/>
+                                                    <div className="top_text_div">
+                                                        {circle_list.map((circle_item, index) => {
+                                                            if (table_numbers >= circle_item) {
+                                                                return <div
+                                                                    className="circle_item"
+                                                                    style={{backgroundColor: this._color(small_blind, big_blind)}}
+                                                                    key={index}/>
+                                                            } else {
+                                                                return <div
+                                                                    className="circle_item" key={index}/>
                                                             }
                                                         })}
+                                                    </div>
+                                                </div>
 
-                                                        <div style={{display: 'flex', flex: 1}}/>
+                                                <div className="queue_number_div_new">
+                                                    {name_list.map((member_item, member_index) => {
+                                                        if (member_index < 11) {
 
-                                                        <div className="bottom_text_div_new">
+                                                            return <div className="number_name_div_new"
+                                                                        key={member_index}>
+                                                                {index !== 0 && (member_index === 0 || member_index === 4 || member_index === 9) ?
+                                                                    <img className="left_img" src={Images.right}/> :
+                                                                    <div className="none_img"/>}
 
-                                                            <span className="queue_all_new">{`Total Count：`}</span>
-                                                            <span
-                                                                className={item.cash_queue_members_count > 0 ? "queue_all_new_last" : "queue_all_new_last2"}>{item.cash_queue_members_count}</span>
-                                                        </div>
+                                                                <div className="middle_name">
+                                                                    {member_item.nickname.length < 8 ? <span
+                                                                            className="name_span_new"
+                                                                            key={member_index}>{member_item.nickname}</span> :
+                                                                        <marquee className="name_span_new"
+                                                                            // STRONG//设定滚动字幕的文字加粗
+                                                                            // color="#FFFFFF"
+                                                                            // size="30"
+                                                                                 align="middle"
+                                                                                 behavior="scroll"
+                                                                                 direction="left"//设定滚动字幕内容的对齐方式
+                                                                                 loop="-1"//设定滚动循环的次数(默认值是-1，滚动会不断的循环下去)
+                                                                                 scrollamount="5"//滚动速度
+                                                                                 scrolldelay="10"//设定滚动两次之间的延迟时间
+                                                                                 onMouseOut="this.start()"
+                                                                                 onMouseOver="this.stop()">
+                                                                            {member_item.nickname}
 
+                                                                        </marquee>}
+
+                                                                </div>
+                                                                {index !== cash_queues.length - 1 && (member_index === 0 || member_index === 4 || member_index === 9) ?
+                                                                    <img className="right_img" src={Images.left}/> :
+                                                                    <div className="none_img"/>}
+                                                            </div>
+                                                        }
+                                                    })}
+
+                                                    <div style={{display: 'flex', flex: 1}}/>
+
+                                                    <div className="bottom_text_div_new">
+
+                                                        <span className="queue_all_new">{`Total Count：`}</span>
+                                                        <span
+                                                            className={item.cash_queue_members_count > 0 ? "queue_all_new_last" : "queue_all_new_last2"}>{item.cash_queue_members_count}</span>
                                                     </div>
 
                                                 </div>
 
                                             </div>
-                                        )
+
+                                        </div>
+                                    )
                                 })}
 
                             </div>

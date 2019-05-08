@@ -348,19 +348,17 @@
     /*margin-top: 18px;*/
 }
 .name_span1_new{
-    display: block;
-    color:#FFFFFF;
-    font-size:30px;
-    font-weight: bold;
-    word-break:normal; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
-    font-family: Calibri;
-}
-.name_span_new{
-    display: block;
     color:#FFFFFF;
     font-size:35px;
     font-weight: bold;
-    word-break:normal; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    /*word-break:normal; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;*/
+    font-family: Calibri;
+}
+.name_span_new{
+    color:#FFFFFF;
+    font-size:35px;
+    font-weight: bold;
+    /*word-break:normal; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;*/
     font-family: Calibri;
 }
 .middle_name{
