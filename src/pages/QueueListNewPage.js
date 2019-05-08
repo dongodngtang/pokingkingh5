@@ -394,14 +394,15 @@ export default class QueueListPage extends Component {
                                                                 return <div className="number_name_div_new"
                                                                             key={member_index}>
                                                                     {index !== 0 && (member_index === 0 || member_index === 4 || member_index === 9) ?
-                                                                        <img src={Images.right}/> : null}
-                                                                    <div style={{display: 'flex', flex: 1}}/>
-                                                                    <span
-                                                                        className={member_item.nickname.length >= 8 ? "name_span1_new" : "name_span_new"}
-                                                                        key={member_index}>{member_item.nickname}</span>
-                                                                    <div style={{display: 'flex', flex: 1}}/>
+                                                                        <img className="left_img"  src={Images.right}/> : <div className="none_img"/>}
+
+                                                                    <div className="middle_name">
+                                                                       <span
+                                                                           className={member_item.nickname.length >= 8 ? "name_span1_new" : "name_span_new"}
+                                                                           key={member_index}>{member_item.nickname}</span>
+                                                                    </div>
                                                                     {index!== cash_queues.length-1 && (member_index === 0 || member_index === 4 || member_index === 9) ?
-                                                                        <img src={Images.left}/> : null}
+                                                                        <img className="right_img" src={Images.left}/> : <div className="none_img"/>}
                                                                 </div>
                                                             }
                                                         })}
