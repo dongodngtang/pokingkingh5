@@ -216,18 +216,18 @@ export default class QueueListPage extends Component {
             if (status) {
                 return "div_6ths"
             } else {
-                return "col-md-2 col-lg-2"
+                return "div_5ths"
             }
         }
         if (length === 5) {
             if (status) {
                 return "div_5ths"
             } else {
-                return "div_5ths"
+                return "col-md-3 col-lg-3"
             }
         } else if (length === 4) {
             if (status) {
-                return "div_5ths"
+                return "col-md-3 col-lg-3"
             } else {
                 return "col-md-3 col-lg-3"
             }
@@ -247,7 +247,8 @@ export default class QueueListPage extends Component {
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
-        logMsg("cash_games", cash_games)
+
+        logMsg("cash_queues", cash_queues)
         return (
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
