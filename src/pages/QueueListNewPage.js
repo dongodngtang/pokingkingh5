@@ -118,24 +118,22 @@ export default class QueueListPage extends Component {
         }
     };
 
-
+    //圆点的颜色
     _color = (small_blind, big_blind) => {
-        if (isStrNull(small_blind) || isStrNull(big_blind)) {
-            return '#1C1E23'
-        } else if (small_blind === 50 && big_blind === 100) {
-            return '#4CB564'
+        if (small_blind === 50 && big_blind === 100) {
+            return '#0baf4d'
         } else if (small_blind === 100 && big_blind === 200) {
-            return '#C14C33'
-        } else if (small_blind === 25 && big_blind === 50) {
-            return '#717171'
+            return '#ed1c24'
         } else if (small_blind === 300 && big_blind === 600) {
-            return '#4A90E2'
+            return '#0072bc'
         } else if (small_blind === 1000 && big_blind === 2000) {
-            return '#D8A655'
+            return '#ffffff'
         } else if (small_blind === 2000 && big_blind === 4000) {
-            return '#942CEF'
+            return '#f7941d'
         } else if (small_blind === 5000 && big_blind === 10000) {
-            return '#893505'
+            return '#8dc63f'
+        } else if (small_blind === 10000 && big_blind === 20000) {
+            return '#ed145b'
         }
     };
 
@@ -197,6 +195,29 @@ export default class QueueListPage extends Component {
         }
     };
 
+    //最左边圈圈的颜色
+    get_circle_bg = (small_blind, big_blind) => {
+        logMsg(big_blind, small_blind)
+        if (small_blind === 50 && big_blind === 100) {
+            return 'circle_new get_bgImg3'
+        } else if (small_blind === 100 && big_blind === 200) {
+            return 'circle_new get_bgImg5'
+        } else if (small_blind === 300 && big_blind === 600) {
+            return 'circle_new get_bgImg7'
+        } else if (small_blind === 1000 && big_blind === 2000) {
+            return 'circle_new get_bgImg1'
+        } else if (small_blind === 2000 && big_blind === 4000) {
+            return 'circle_new get_bgImg2'
+        } else if (small_blind === 5000 && big_blind === 10000) {
+            return 'circle_new get_bgImg4'
+        } else if (small_blind === 10000 && big_blind === 20000) {
+            return 'circle_new get_bgImg6'
+        } else {
+            return 'circle_new get_bgImg0'
+        }
+    };
+
+
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
@@ -208,22 +229,18 @@ export default class QueueListPage extends Component {
                         <img className="img-responsive center-block pukewang" src={Images.pukewang}/>
                         <div className="left_line_new"/>
                         <span className="left_span_new">TABLE PREVIEW</span>
-                        <div className="left_line_new2" />
+                        <div className="left_line_new2"/>
                         <img className="img_bottom" src={Images.bottom}/>
 
                         <div className="left_circle">
                             <div className="only_circle">
-                                {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ? <div className="circle_vip_new" style={{
-                                    backgroundColor: this._color(cash_vip.small_blind, cash_vip.big_blind)
-                                }}>
+                                {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
+                                    <div className="circle_vip_new">
                                 <span
                                     className="circle_span_new">v1</span>
-                                </div>:<div className="circle_vip_new" style={{
-                                    backgroundColor: this._color('', '')
-                                }}>
-                                    <span  className="circle_span_new2">v1</span>
-                                    <span className="inner"/>
-                                </div>}
+                                    </div> : <div className="circle_vip_new_none">
+                                        <span className="circle_span_new2">V1</span>
+                                    </div>}
                                 {/*<div className="circle_vip_new" style={{*/}
                                 {/*backgroundColor: this._color(cash_vip.small_blind, cash_vip.big_blind)*/}
                                 {/*}}>*/}
@@ -237,22 +254,17 @@ export default class QueueListPage extends Component {
 
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
-                                            return <div className="circle_new" key={index}
-                                                        style={{
-                                                            backgroundColor: item.info ? this._color(item.info.small_blind, item.info.big_blind, item.id) : this._color('', ''),
-                                                        }}>
+                                            return <div
+                                                className={this.get_circle_bg(item.info.small_blind, item.info.big_blind)}
+                                                key={index}>
                                             <span
-                                                className="circle_span_new">{item.id===10?item.id:`0${item.id}`}</span>
+                                                className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
 
                                             </div>
                                         }
                                         return (
-                                            <div className="circle_new" key={index}
-                                                 style={{
-                                                     backgroundColor: this._color('', ''),
-                                                 }}>
-                                                <span  className="circle_span_new2">{item.id}</span>
-                                                <span className="inner"/>
+                                            <div className="circle_new_none" key={index}>
+                                                <span className="circle_span_new2">{item.id}</span>
 
                                             </div>
                                         )
@@ -260,9 +272,11 @@ export default class QueueListPage extends Component {
                                 </div>
                             </div>
 
-                            <div className="left_line2" style={{marginTop: 20, marginBottom: 3}}/>
-                            <span className="left_span2">NOTICE</span>
-                            <div className="left_line3" style={{marginTop: 3, marginBottom: 10}}/>
+                            <div className="left_line2" style={{marginBottom: 3}}/>
+                            <span className="left_span_new">NOTICE</span>
+                            <div className="left_line3" style={{marginTop: -5}}/>
+                            <img className="img_bottom" src={Images.bottom}/>
+
                             <div className="title_div">
                                 <span className="title_spans">撲克王杯2020</span>
                                 <span className="title_spans">澳門威尼斯人</span>
@@ -308,7 +322,8 @@ export default class QueueListPage extends Component {
                                     }
                                     return (
                                         <div className={`${class_name} item_div_new`} key={index}>
-                                            {index === 0 ? null : <div className="list_div_new">
+                                            {index === 0 ? null : <div
+                                                className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
                                                 <div className="span_line_1"/>
                                                 <div className="number_div_left">
                                                     {list.map((list_item, item_index) => {
@@ -329,9 +344,9 @@ export default class QueueListPage extends Component {
                                                     {index === cash_queues.length - 1 && high_limit.status ?
                                                         <div className="cash_div_new" key={index}>
                                                             <div className="last_big_circle_new">
-
-                                                                    <span
-                                                                        className="big_circle_span_new">HIGH LIMIT</span>
+                                                                <div style={{display: 'flex', flex: 1}}/>
+                                                                <span
+                                                                    className="big_circle_span_new">HIGH LIMIT</span>
                                                             </div>
                                                         </div> : <div className="cash_div_new" key={index}>
                                                             <div className="big_circle_new">
@@ -354,12 +369,13 @@ export default class QueueListPage extends Component {
                                                         {circle_list.map((circle_item, index) => {
                                                             if (table_numbers >= circle_item) {
                                                                 return <div
-                                                                    className="circle_item"
+                                                                    className={cash_queues.length > 4 ? "circle_item_small" : "circle_item"}
                                                                     style={{backgroundColor: this._color(small_blind, big_blind)}}
                                                                     key={index}/>
                                                             } else {
                                                                 return <div
-                                                                    className="circle_item" key={index}/>
+                                                                    className={cash_queues.length > 4 ? "circle_item_small" : "circle_item"}
+                                                                    key={index}/>
                                                             }
                                                         })}
                                                     </div>
@@ -377,13 +393,13 @@ export default class QueueListPage extends Component {
 
                                                                 <div className="middle_name">
                                                                     {/*{member_item.nickname.length < 10 ? <span*/}
-                                                                            {/*className="name_span_new"*/}
-                                                                            {/*key={member_index}>{member_item.nickname}</span> :*/}
-                                                                        {/*<div id="marquees">*/}
-                                                                            {/*<span*/}
-                                                                                {/*className="name_span_new"*/}
-                                                                                {/*key={member_index}>{member_item.nickname}</span>*/}
-                                                                        {/*</div>*/}
+                                                                    {/*className="name_span_new"*/}
+                                                                    {/*key={member_index}>{member_item.nickname}</span> :*/}
+                                                                    {/*<div id="marquees">*/}
+                                                                    {/*<span*/}
+                                                                    {/*className="name_span_new"*/}
+                                                                    {/*key={member_index}>{member_item.nickname}</span>*/}
+                                                                    {/*</div>*/}
 
                                                                     {/*}*/}
 

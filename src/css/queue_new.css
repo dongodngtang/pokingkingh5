@@ -93,7 +93,7 @@
 }
 .left_line3 {
     width: 80%;
-    height: 2px;
+    height: 1px;
     background-color: #757575;
 }
 
@@ -154,6 +154,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: url('/images/300_600_NLH.png') no-repeat center;
+}
+.circle_vip_new_none {
+    width: 47%;
+    height: 15%;
+    border-radius: 33px;
+    border-width: 3px;
+    border-color: #6D6E71;
+    border-style: solid;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('/images/AVAILABLE.png') no-repeat center;
 }
 .circle_new {
     width: 47%;
@@ -167,6 +181,44 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.circle_new_none {
+    width: 47%;
+    height: 17%;
+    border-radius: 33px;
+    border-width: 3px;
+    border-color: #6D6E71;
+    border-style: solid;
+    text-align: center;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('/images/AVAILABLE.png') no-repeat center;
+}
+.get_bgImg0{
+    background: url('/images/AVAILABLE.png') no-repeat center;
+}
+.get_bgImg1{
+    background: url('/images/1K_2K_NLH.png') no-repeat center;
+}
+.get_bgImg2{
+    background: url('/images/2K_4K_NLH.png') no-repeat center;
+}
+.get_bgImg3{
+    background: url('/images/50_100_NLH.png') no-repeat center;
+}
+.get_bgImg4{
+    background: url('/images/50_100_PLO.png') no-repeat center;
+}
+.get_bgImg5{
+    background: url('/images/100_200_NLH.png') no-repeat center;
+}
+.get_bgImg6{
+    background: url('/images/100_200_PLO.png') no-repeat center;
+}
+.get_bgImg7{
+    background: url('/images/300_600_NLH.png') no-repeat center;
 }
 
 .circle_div_new {
@@ -211,24 +263,22 @@
 }
 .big_circle_span_new{
     color:#d1d2d4;
-    font-size:40px;
-    font-weight: bold;
-    font-family: American_CaptainT;
+    font-size:55px;
+    font-family: American_CaptainO;
+    line-height: 60px;
 }
 .big_money_span_new{
     color:#d1d2d4;
-    font-size:28px;
-    font-weight: bold;
-    font-family: American_CaptainT;
+    font-size:35px;
+    font-family: American_CaptainO;
 }
 .last_big_circle_new{
-    height:85px;
+    height:115px;
     width:95%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 30px;
 }
 .big_circle_new{
     height:85px;
@@ -292,6 +342,13 @@
     margin-right: 10px;
 
 }
+.list_div_new_more{
+    width:20px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+
+}
 [class*="col-"]{
     padding-right: 3px !important;
     padding-left: 3px !important;
@@ -305,9 +362,9 @@
     justify-content: space-around;
 }
 .number_span_new{
-    color:#FFFFFF;
+    color:#939598;
     font-size:24px;
-    font-weight: bold;
+    font-family: "American Captain";
 }
 .number_span_hidden{
     color:#FFFFFF;
@@ -424,21 +481,21 @@
 }
 .queue_all_new_last{
     color:#d2ff00;
-    font-size:30px;
+    font-size:40px;
     font-weight: bold;
     word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
     font-family: Italic;
 }
 .queue_all_new_last2{
-    color:#FFFFFF;
-    font-size:30px;
+    color:#d1d2d4;
+    font-size:40px;
     font-weight: bold;
     word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
     font-family: Italic;
 }
 .span_line_1{
     /*width:95%;*/
-    height:26%;
+    height:26.3%;
     padding-bottom: 10px;
 }
 .span_line_n{
@@ -447,6 +504,14 @@
     background-color: #FFFFFF;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.circle_item_small{
+    width:22px;
+    height:22px;
+    border-radius: 11px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff;
 }
 .circle_item{
     width:24px;
@@ -460,11 +525,13 @@
     width:85%;
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 }
 .title_spans{
-    color:#ffffff;
+    color:#d1d2d4;
     font-size:20px;
     line-height: 26px;
+    font-family: Calibri;
 }
 #marquees{
     position:relative;
