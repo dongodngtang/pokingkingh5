@@ -118,7 +118,7 @@
 }
 
 .left_circle {
-    margin-top: 10%;
+    margin-top: 6%;
     width: 95%;
     height: 60%;
     display: flex;
@@ -126,7 +126,7 @@
     align-items: center;
 }
 .only_circle {
-    width: 84%;
+    width: 85%;
     height: 70%;
     overflow-y: scroll;
     display: flex;
@@ -141,88 +141,64 @@
 .circle_span_new {
     color: #FFFFFF;
     font-size: 24px;
+    z-index: 99;
+}
+
+.AVAILABLE{
+    position:absolute;
+    width:35%;
+    height:6%;
 }
 
 .circle_vip_new {
     width: 47%;
     height: 15%;
-    border-radius: 33px;
-    border-width: 3px;
-    border-color: #6D6E71;
-    border-style: solid;
+    border-radius: 10%;
+    /*border-width: 3px;*/
+    /*border-color: #6D6E71;*/
+    /*border-style: solid;*/
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('/images/300_600_NLH.png') no-repeat center;
+
 }
 .circle_vip_new_none {
     width: 47%;
     height: 15%;
-    border-radius: 33px;
-    border-width: 3px;
-    border-color: #6D6E71;
-    border-style: solid;
+    border-radius: 10%;
+    /*border-width: 3px;*/
+    /*border-color: #6D6E71;*/
+    /*border-style: solid;*/
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('/images/AVAILABLE.png') no-repeat center;
 }
 .circle_new {
     width: 47%;
-    height: 17%;
-    border-radius: 33px;
-    border-width: 3px;
-    border-color: #6D6E71;
-    border-style: solid;
-    text-align: center;
-    margin-top: 6px;
+    height: 15%;
+    border-radius: 10%;
+    /*border-width: 3px;*/
+    /*border-color: #6D6E71;*/
+    /*border-style: solid;*/
+    margin-top: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .circle_new_none {
     width: 47%;
-    height: 17%;
-    border-radius: 33px;
-    border-width: 3px;
-    border-color: #6D6E71;
-    border-style: solid;
-    text-align: center;
-    margin-top: 6px;
+    height: 15%;
+    border-radius: 10%;
+    margin-top: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('/images/AVAILABLE.png') no-repeat center;
 }
-.get_bgImg0{
-    background: url('/images/AVAILABLE.png') no-repeat center;
-}
-.get_bgImg1{
-    background: url('/images/1K_2K_NLH.png') no-repeat center;
-}
-.get_bgImg2{
-    background: url('/images/2K_4K_NLH.png') no-repeat center;
-}
-.get_bgImg3{
-    background: url('/images/50_100_NLH.png') no-repeat center;
-}
-.get_bgImg4{
-    background: url('/images/50_100_PLO.png') no-repeat center;
-}
-.get_bgImg5{
-    background: url('/images/100_200_NLH.png') no-repeat center;
-}
-.get_bgImg6{
-    background: url('/images/100_200_PLO.png') no-repeat center;
-}
-.get_bgImg7{
-    background: url('/images/300_600_NLH.png') no-repeat center;
-}
-
 .circle_div_new {
-    height:78%;
+    width:100%;
+    height:80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

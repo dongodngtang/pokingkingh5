@@ -196,25 +196,26 @@ export default class QueueListPage extends Component {
     };
 
     //最左边圈圈的颜色
-    get_circle_bg = (small_blind, big_blind) => {
+    getImg = (small_blind, big_blind) => {
         logMsg(big_blind, small_blind)
         if (small_blind === 50 && big_blind === 100) {
-            return 'circle_new get_bgImg3'
+            return Images.NLH510
         } else if (small_blind === 100 && big_blind === 200) {
-            return 'circle_new get_bgImg5'
+            return Images.NLH1020
         } else if (small_blind === 300 && big_blind === 600) {
-            return 'circle_new get_bgImg7'
+            return Images.NLH36
         } else if (small_blind === 1000 && big_blind === 2000) {
-            return 'circle_new get_bgImg1'
+            return Images.NLH12
         } else if (small_blind === 2000 && big_blind === 4000) {
-            return 'circle_new get_bgImg2'
+            return Images.NLH24
         } else if (small_blind === 5000 && big_blind === 10000) {
-            return 'circle_new get_bgImg4'
+            return Images.PLO5010
         } else if (small_blind === 10000 && big_blind === 20000) {
-            return 'circle_new get_bgImg6'
+            return Images.PLO1020
         } else {
-            return 'circle_new get_bgImg0'
+            return Images.AVAILABLE
         }
+
     };
 
 
@@ -236,27 +237,22 @@ export default class QueueListPage extends Component {
                             <div className="only_circle">
                                 {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
                                     <div className="circle_vip_new">
-                                <span
-                                    className="circle_span_new">v1</span>
-                                    </div> : <div className="circle_vip_new_none">
+                                        <img src={Images.NLH36} className="AVAILABLE"/>
+                                        <span className="circle_span_new">V1</span>
+                                    </div> :
+                                    <div className="circle_vip_new_none">
+                                        <img src={Images.AVAILABLE} className="AVAILABLE"/>
                                         <span className="circle_span_new2">V1</span>
                                     </div>}
-                                {/*<div className="circle_vip_new" style={{*/}
-                                {/*backgroundColor: this._color(cash_vip.small_blind, cash_vip.big_blind)*/}
-                                {/*}}>*/}
-                                {/*{strNotNull(cash_vip.small_blind) || strNotNull(cash_vip.big_blind) ? <span*/}
-                                {/*className="circle_span">{this.get_cash(cash_vip.small_blind, cash_vip.big_blind, 11)}</span> :*/}
-                                {/*<span className="inner"/>}*/}
-
-                                {/*</div>*/}
 
                                 <div className="circle_div_new">
 
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
                                             return <div
-                                                className={this.get_circle_bg(item.info.small_blind, item.info.big_blind)}
+                                                className="circle_new"
                                                 key={index}>
+                                                <img src={this.getImg(item.info.small_blind, item.info.big_blind)} className="AVAILABLE"/>
                                             <span
                                                 className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
 
@@ -264,6 +260,7 @@ export default class QueueListPage extends Component {
                                         }
                                         return (
                                             <div className="circle_new_none" key={index}>
+                                                <img src={Images.AVAILABLE} className="AVAILABLE"/>
                                                 <span className="circle_span_new2">{item.id}</span>
 
                                             </div>
@@ -392,16 +389,16 @@ export default class QueueListPage extends Component {
                                                                     <div className="none_img"/>}
 
                                                                 <div className="middle_name">
-                                                                    {/*{member_item.nickname.length < 10 ? <span*/}
-                                                                    {/*className="name_span_new"*/}
-                                                                    {/*key={member_index}>{member_item.nickname}</span> :*/}
-                                                                    {/*<div id="marquees">*/}
-                                                                    {/*<span*/}
-                                                                    {/*className="name_span_new"*/}
-                                                                    {/*key={member_index}>{member_item.nickname}</span>*/}
-                                                                    {/*</div>*/}
+                                                                    {member_item.nickname.length < 10 ? <span
+                                                                            className="name_span_new"
+                                                                            key={member_index}>{member_item.nickname}</span> :
+                                                                        <div id="marquees">
+                                                                    <span
+                                                                        className="name_span_new"
+                                                                        key={member_index}>{member_item.nickname}</span>
+                                                                        </div>
 
-                                                                    {/*}*/}
+                                                                    }
 
                                                                 </div>
                                                                 {index !== cash_queues.length - 1 && (member_index === 0 || member_index === 4 || member_index === 9) ?
