@@ -398,7 +398,7 @@ export default class QueueListPage extends Component {
                                                                     <div className="none_img"/>}
 
                                                                 <div className="middle_name">
-                                                                    {member_item.nickname.length < 8 ? <span
+                                                                    {member_item.nickname.length < 10 ? <span
                                                                             className="name_span_new"
                                                                             key={member_index}>{member_item.nickname}</span> :
                                                                         <marquee className="name_span_new"
