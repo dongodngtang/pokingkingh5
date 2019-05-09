@@ -3,6 +3,7 @@ import {getCashQueues, getCashQueuesNumber, getCashGames} from '../services/Info
 import {add, div, isEmptyObject, isStrNull, logMsg, mul, strNotNull, sub, weiXinShare} from "../utils/utils";
 import {Images, MarkDown} from '../components';
 import '../css/queue_new.css';
+import Marquee from "./Marquee";
 
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const HEIGHT = window.screen.height;
@@ -28,24 +29,25 @@ export default class QueueListPage extends Component {
 
     componentWillMount() {
         clearInterval(this.intervalId);
+
     }
 
     componentDidMount() {
 
         getCashGames(data => {
-            logMsg("现金桌", data);
             this.setState({
                 cash_games: data.items
             })
             this.getlist(data.items[0].id)
             this.intervalId = setInterval(() => {
-                this.getlist(data.items[0].id)
+                this.getlist(data.items[0].id);
             }, 5000)
-
 
         })
 
+
     };
+
 
     getlist = (id) => {
         getCashQueues({cash_game_id: id}, data => {
@@ -152,15 +154,7 @@ export default class QueueListPage extends Component {
             return `${small_blind}/${big_blind}`
         }
 
-
     }
-
-    getHeight = (float) => {
-        return Number(mul(HEIGHT, float))
-    };
-    getWidth = (float) => {
-        return Number(mul(WIDTH, float))
-    };
 
     getCircle = (length, status) => {
         if (length === 6) {
@@ -197,7 +191,7 @@ export default class QueueListPage extends Component {
 
     //最左边圈圈的颜色
     getImg = (small_blind, big_blind) => {
-        logMsg(big_blind, small_blind)
+
         if (small_blind === 50 && big_blind === 100) {
             return Images.NLH510
         } else if (small_blind === 100 && big_blind === 200) {
@@ -205,6 +199,7 @@ export default class QueueListPage extends Component {
         } else if (small_blind === 300 && big_blind === 600) {
             return Images.NLH36
         } else if (small_blind === 1000 && big_blind === 2000) {
+            logMsg(small_blind,big_blind)
             return Images.NLH12
         } else if (small_blind === 2000 && big_blind === 4000) {
             return Images.NLH24
@@ -357,9 +352,14 @@ export default class QueueListPage extends Component {
                                                             </div>
                                                         </div>}
 
-
                                                     <div className="remarks">
-                                                        <span className="remark_span">{item.notice}</span>
+                                                        {strNotNull(item.notice) && this.getBLen(item.notice) > 20 ?
+                                                            <Marquee styles={{width: '100%',height:25}}>
+                                                                <span className="remark_span">{item.notice}----------</span>
+                                                            </Marquee> :
+                                                            <span className="remark_span">{item.notice}</span>
+                                                        }
+
                                                     </div>
 
                                                     <div className="span_line_n"/>
@@ -394,11 +394,10 @@ export default class QueueListPage extends Component {
                                                                         <span className="name_span_new"
                                                                               key={member_index}>{member_item.nickname}</span> :
 
-                                                                        <div className="name_span_new">
+                                                                        <Marquee styles={{width: '100%'}}>
                                                                             <span className="name_span_new"
-                                                                                  key={member_index}>{member_item.nickname}</span>
-
-                                                                        </div>
+                                                                                  key={member_index}>{member_item.nickname}--------------</span>
+                                                                        </Marquee>
                                                                     }
 
                                                                 </div>
@@ -433,6 +432,14 @@ export default class QueueListPage extends Component {
                 </div>
             </div>
         )
+    }
+
+    getBLen =(str)=> {
+        if (!strNotNull(str)) return 0;
+        if (typeof str != "string"){
+            str += "";
+        }
+        return str.replace(/[^\x00-\xff]/g,"01").length;
     }
 
 }

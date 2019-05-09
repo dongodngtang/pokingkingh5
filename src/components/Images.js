@@ -10,7 +10,7 @@ const images = {
     left:'/images/left.png',
     right:'/images/right.png',
     bg:'/images/bg.jpeg',
-    NLH12:'/images/K_2K_NLH.png',
+    NLH12:'/images/1K_2K_NLH.png',
     NLH24:'/images/2K_4K_NLH.png',
     NLH510:'/images/50_100_NLH.png',
     NLH1020:'/images/100_200_NLH.png',

@@ -297,11 +297,12 @@
     height:25px;
 }
 .remarks{
-    width:90%;
+    width:85%;
     height:25px;
     text-align: center;
-    word-break:normal; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden;
+    /*word-break:normal; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden;*/
 }
+
 .remark_span{
     color:#c6f002;
 }
@@ -424,6 +425,7 @@
     /*flex: 1 1 80%;*/
     width:80%;
     text-align: center;
+    height:8%;
 }
 .left_img{
     width:5%;
@@ -510,3 +512,22 @@
     font-family: Calibri;
 }
 /**/
+
+#marquee,#marquee li {
+    float:left;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#marquee {
+    position:relative;
+    height:100px;
+    width:100%;
+    overflow:hidden;
+}
+#marquee a {
+    display:block;
+    padding:5px;
+    text-decoration:none;
+    white-space: nowrap;
+}
