@@ -295,12 +295,15 @@ export default class QueueListPage extends Component {
                                 </div>
                             </div>
 
-                            <div className="left_line2" style={{marginTop:20,marginBottom: 3}}/>
-                            <span className="left_span_new">NOTICE</span>
-                            <div className="left_line2" />
-                            <img className="img_bottom" src={Images.bottom}/>
+
 
                             <div className="title_div">
+
+                                <div className="left_line2" style={{marginTop:20,marginBottom: 3}}/>
+                                <span className="left_span_new">NOTICE</span>
+                                <div className="left_line2" />
+                                <img className="img_bottom" src={Images.bottom}/>
+                                <div style={{height:20}}/>
                                 <span className="title_spans">撲克王杯2020</span>
                                 <span className="title_spans">澳門威尼斯人</span>
                                 <span className="title_spans">////即將開始/////</span>

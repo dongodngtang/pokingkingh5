@@ -186,6 +186,7 @@
     width: 80%;
     height: 1px;
     background-color: #757575;
+
 }
 
 .left_span_new {
@@ -211,14 +212,14 @@
 .left_circle {
     margin-top: 6%;
     width: 95%;
-    height: 62%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .only_circle {
     width: 85%;
-    height: 70%;
+    height: 60%;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -258,9 +259,6 @@
     width: 47%;
     height: 15%;
     border-radius: 10%;
-    /*border-width: 3px;*/
-    /*border-color: #6D6E71;*/
-    /*border-style: solid;*/
     text-align: center;
     display: flex;
     align-items: center;
@@ -270,9 +268,6 @@
     width: 47%;
     height: 15%;
     border-radius: 10%;
-    /*border-width: 3px;*/
-    /*border-color: #6D6E71;*/
-    /*border-style: solid;*/
     margin-top: 8px;
     display: flex;
     align-items: center;
@@ -289,7 +284,7 @@
 }
 .circle_div_new {
     width:100%;
-    height:85%;
+    height:90%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -312,7 +307,7 @@
 
 #dropdown {
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     height: 30px;
     background-color: transparent;
     border-color: transparent;
@@ -600,14 +595,16 @@
 }
 .title_div{
     width:85%;
+    height:40%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 20px;
 }
 .title_spans{
     color:#d1d2d4;
     font-size:20px;
-    line-height: 26px;
+    line-height: 24px;
     font-family: Calibri;
 }
 /**/
