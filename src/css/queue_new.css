@@ -25,6 +25,36 @@
     .div_6ths{
         width: 10%;
     }
+    .font_size1{
+        font-size: 40px;
+    }
+    .font_size_big1{
+        font-size: 60px;
+    }
+    .font_size2{
+        font-size: 35px;
+    }
+    .font_size_big2{
+        font-size: 55px;
+    }
+    .font_size3{
+        font-size: 32px;
+    }
+    .font_size_big3{
+        font-size: 52px;
+    }
+    .font_size4{
+        font-size: 30px;
+    }
+    .font_size_big4{
+        font-size: 50px;
+    }
+    .font_size5{
+        font-size: 28px;
+    }
+    .font_size_big5{
+        font-size: 38px;
+    }
 }
 @media ( min-width : 992px) {
     .div_5ths {
@@ -33,6 +63,37 @@
     .div_6ths{
         width: 10%;
     }
+    .font_size1{
+        font-size: 40px;
+    }
+    .font_size_big1{
+        font-size: 60px;
+    }
+    .font_size2{
+        font-size: 35px;
+    }
+    .font_size_big2{
+        font-size: 55px;
+    }
+    .font_size3{
+        font-size: 32px;
+    }
+    .font_size_big3{
+        font-size: 52px;
+    }
+    .font_size4{
+        font-size: 30px;
+    }
+    .font_size_big4{
+        font-size: 50px;
+    }
+    .font_size5{
+        font-size: 28px;
+    }
+    .font_size_big5{
+        font-size: 38px;
+    }
+
 }
 @media ( min-width : 1200px) {
     .div_5ths {
@@ -40,6 +101,36 @@
     }
     .div_6ths{
         width: 10%;
+    }
+    .font_size1{
+        font-size: 45px;
+    }
+    .font_size_big1{
+        font-size: 65px;
+    }
+    .font_size2{
+        font-size: 38px;
+    }
+    .font_size_big2{
+        font-size: 58px;
+    }
+    .font_size3{
+        font-size: 34px;
+    }
+    .font_size_big3{
+        font-size: 54px;
+    }
+    .font_size4{
+        font-size: 32px;
+    }
+    .font_size_big4{
+        font-size: 52px;
+    }
+    .font_size5{
+        font-size: 30px;
+    }
+    .font_size_big5{
+        font-size: 45px;
     }
 }
 
@@ -239,17 +330,19 @@
 }
 .big_circle_span_new{
     color:#d1d2d4;
-    font-size:55px;
+    /*font-size:55px;*/
+    /*line-height: 60px;*/
     font-family: American_CaptainO;
-    line-height: 60px;
+    word-break:normal; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden;
 }
 .big_money_span_new{
     color:#d1d2d4;
-    font-size:35px;
+    /*font-size:35px;*/
     font-family: American_CaptainO;
+    word-break:normal; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden;
 }
 .last_big_circle_new{
-    height:115px;
+    height:100%;
     width:95%;
     display: flex;
     flex-direction: column;
@@ -257,19 +350,19 @@
     justify-content: flex-end;
 }
 .big_circle_new{
-    height:85px;
+    height:80%;
     width:95%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
 }
 .left_math{
     width:20px;
 }
 .cash_div_new{
     width:100%;
+    height:60%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -351,7 +444,7 @@
 }
 .queue_new{
     width:98%;
-    /*height:100%;*/
+    height:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -404,8 +497,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /*justify-content: center;*/
-    /*margin-top: 18px;*/
 }
 .name_span1_new{
     color:#FFFFFF;
@@ -425,7 +516,6 @@
     /*flex: 1 1 80%;*/
     width:80%;
     text-align: center;
-    height:8%;
 }
 .left_img{
     width:5%;

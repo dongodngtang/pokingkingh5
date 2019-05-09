@@ -213,6 +213,36 @@ export default class QueueListPage extends Component {
 
     };
 
+    font_size=(type)=>{
+        const {cash_queues} = this.state;
+        let length = cash_queues.length;
+        if(type === 'HKD'){
+            if(length > 4){
+                return "font_size5"
+            }else if(length === 4){
+                return "font_size4"
+            }else if(length ===3){
+                return "font_size3"
+            }else if(length ===2){
+                return "font_size2"
+            }else if(length ===1){
+                return "font_size1"
+            }
+        }else if (type === 'NL'){
+            if(length > 4){
+                return "font_size_big5"
+            }else if(length === 4){
+                return "font_size_big4"
+            }else if(length === 3){
+                return "font_size_big3"
+            }else if(length === 2){
+                return "font_size_big2"
+            }else if(length === 1){
+                return "font_size_big1"
+            }
+        }
+
+    }
 
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit} = this.state;
@@ -339,16 +369,15 @@ export default class QueueListPage extends Component {
                                                             <div className="last_big_circle_new">
                                                                 <div style={{display: 'flex', flex: 1}}/>
                                                                 <span
-                                                                    className="big_circle_span_new">HIGH LIMIT</span>
+                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
                                                             </div>
                                                         </div> : <div className="cash_div_new" key={index}>
                                                             <div className="big_circle_new">
                                                                 {strNotNull(buy_in) ?
-                                                                    <span
-                                                                        className="big_money_span_new">{`${buy_in} (HKD)`}</span> : null}
-
+                                                                    <span className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
+                                                                <div style={{display: 'flex', flex: 1}}/>
                                                                 <span
-                                                                    className="big_circle_span_new">{this.get_cash(small_blind, big_blind)} NL</span>
+                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
                                                             </div>
                                                         </div>}
 
@@ -394,7 +423,7 @@ export default class QueueListPage extends Component {
                                                                         <span className="name_span_new"
                                                                               key={member_index}>{member_item.nickname}</span> :
 
-                                                                        <Marquee styles={{width: '100%'}}>
+                                                                        <Marquee styles={{width: '100%',height:'8%'}}>
                                                                             <span className="name_span_new"
                                                                                   key={member_index}>{member_item.nickname}--------------</span>
                                                                         </Marquee>
