@@ -274,15 +274,15 @@ export default class QueueListPage extends Component {
 
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
-                                            return <div
-                                                className="circle_new"
-                                                key={index}>
-                                                <img src={this.getImg(item.info.small_blind, item.info.big_blind)}
-                                                     className="AVAILABLE"/>
-                                                <span
-                                                    className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
+                                            return (
+                                                <div className="circle_new" key={index}>
+                                                    <img src={this.getImg(item.info.small_blind, item.info.big_blind)}
+                                                         className="AVAILABLE"/>
+                                                    <span
+                                                        className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
 
-                                            </div>
+                                                </div>
+                                            )
                                         }
                                         return (
                                             <div className="circle_new_none" key={index}>
@@ -295,9 +295,9 @@ export default class QueueListPage extends Component {
                                 </div>
                             </div>
 
-                            <div className="left_line2" style={{marginBottom: 3}}/>
+                            <div className="left_line2" style={{marginTop:20,marginBottom: 3}}/>
                             <span className="left_span_new">NOTICE</span>
-                            <div className="left_line3" style={{marginTop: -5}}/>
+                            <div className="left_line2" />
                             <img className="img_bottom" src={Images.bottom}/>
 
                             <div className="title_div">
