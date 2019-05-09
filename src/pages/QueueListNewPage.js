@@ -199,7 +199,7 @@ export default class QueueListPage extends Component {
         } else if (small_blind === 300 && big_blind === 600) {
             return Images.NLH36
         } else if (small_blind === 1000 && big_blind === 2000) {
-            logMsg(small_blind,big_blind)
+            logMsg(small_blind, big_blind)
             return Images.NLH12
         } else if (small_blind === 2000 && big_blind === 4000) {
             return Images.NLH24
@@ -213,31 +213,31 @@ export default class QueueListPage extends Component {
 
     };
 
-    font_size=(type)=>{
+    font_size = (type) => {
         const {cash_queues} = this.state;
         let length = cash_queues.length;
-        if(type === 'HKD'){
-            if(length > 4){
+        if (type === 'HKD') {
+            if (length > 4) {
                 return "font_size5"
-            }else if(length === 4){
+            } else if (length === 4) {
                 return "font_size4"
-            }else if(length ===3){
+            } else if (length === 3) {
                 return "font_size3"
-            }else if(length ===2){
+            } else if (length === 2) {
                 return "font_size2"
-            }else if(length ===1){
+            } else if (length === 1) {
                 return "font_size1"
             }
-        }else if (type === 'NL'){
-            if(length > 4){
+        } else if (type === 'NL') {
+            if (length > 4) {
                 return "font_size_big5"
-            }else if(length === 4){
+            } else if (length === 4) {
                 return "font_size_big4"
-            }else if(length === 3){
+            } else if (length === 3) {
                 return "font_size_big3"
-            }else if(length === 2){
+            } else if (length === 2) {
                 return "font_size_big2"
-            }else if(length === 1){
+            } else if (length === 1) {
                 return "font_size_big1"
             }
         }
@@ -365,31 +365,28 @@ export default class QueueListPage extends Component {
 
                                                 <div className="right_top_div">
                                                     {index === cash_queues.length - 1 && high_limit.status ?
-                                                        <div className="cash_div_new" key={index}>
-                                                            <div className="last_big_circle_new">
-                                                                <div style={{display: 'flex', flex: 1}}/>
+                                                        <div className="last_big_circle_new" key={index}>
+                                                            <div style={{width: '100%'}}/>
+                                                            <span
+                                                                className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
+                                                        </div> :
+                                                        <div className="big_circle_new" key={index}>
+                                                            {strNotNull(buy_in) ?
                                                                 <span
-                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
-                                                            </div>
-                                                        </div> : <div className="cash_div_new" key={index}>
-                                                            <div className="big_circle_new">
-                                                                {strNotNull(buy_in) ?
-                                                                    <span className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
-                                                                <div style={{display: 'flex', flex: 1}}/>
-                                                                <span
-                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
-                                                            </div>
+                                                                    className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
+                                                            <span
+                                                                className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
                                                         </div>}
 
-                                                    <div className="remarks">
-                                                        {strNotNull(item.notice) && this.getBLen(item.notice) > 20 ?
-                                                            <Marquee styles={{width: '100%',height:25}}>
-                                                                <span className="remark_span">{item.notice}----------</span>
-                                                            </Marquee> :
+                                                    {strNotNull(item.notice) && this.getBLen(item.notice) > 20 ?
+                                                        <Marquee
+                                                            styles={{width: '85%', height: 25, textAlign: 'center'}}>
+                                                            <span className="remark_span">{item.notice}----------</span>
+                                                        </Marquee> :
+                                                        <div style={{width: '85%', height: 25, textAlign: 'center'}}>
                                                             <span className="remark_span">{item.notice}</span>
-                                                        }
-
-                                                    </div>
+                                                        </div>
+                                                    }
 
                                                     <div className="span_line_n"/>
                                                     <div className="top_text_div">
@@ -406,6 +403,7 @@ export default class QueueListPage extends Component {
                                                             }
                                                         })}
                                                     </div>
+
                                                 </div>
 
                                                 <div className="queue_number_div_new">
@@ -423,7 +421,7 @@ export default class QueueListPage extends Component {
                                                                         <span className="name_span_new"
                                                                               key={member_index}>{member_item.nickname}</span> :
 
-                                                                        <Marquee styles={{width: '100%',height:'8%'}}>
+                                                                        <Marquee styles={{width: '100%', height: '8%'}}>
                                                                             <span className="name_span_new"
                                                                                   key={member_index}>{member_item.nickname}--------------</span>
                                                                         </Marquee>
@@ -463,12 +461,12 @@ export default class QueueListPage extends Component {
         )
     }
 
-    getBLen =(str)=> {
+    getBLen = (str) => {
         if (!strNotNull(str)) return 0;
-        if (typeof str != "string"){
+        if (typeof str != "string") {
             str += "";
         }
-        return str.replace(/[^\x00-\xff]/g,"01").length;
+        return str.replace(/[^\x00-\xff]/g, "01").length;
     }
 
 }

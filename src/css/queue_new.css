@@ -202,7 +202,7 @@
 }
 
 .pukewang {
-    margin-top: 16%;
+    margin-top: 10%;
     width: 80%;
     align-self: center;
     margin-bottom: 20px;
@@ -330,52 +330,68 @@
 }
 .big_circle_span_new{
     color:#d1d2d4;
-    /*font-size:55px;*/
-    /*line-height: 60px;*/
     font-family: American_CaptainO;
     word-break:normal; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden;
+    line-height: normal;
+
 }
 .big_money_span_new{
     color:#d1d2d4;
     /*font-size:35px;*/
     font-family: American_CaptainO;
     word-break:normal; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden;
+   line-height: normal;
 }
 .last_big_circle_new{
-    height:100%;
+    /*height:80%;*/
     width:95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.big_circle_new{
+    /*height:80%;*/
+    width:95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+}
+.left_math{
+    width:20px;
+}
+
+.right_top_div{
+    width:100%;
+    height:26%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
 }
-.big_circle_new{
-    height:80%;
-    width:95%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.left_math{
-    width:20px;
-}
+
 .cash_div_new{
     width:100%;
-    height:60%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    align-self: center;
-    /*margin-top: 20px;*/
+}
+.top_right_bottom{
+    width:100%;
+    height:10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
 }
 .queue_bottom_new{
     width:100%;
-    /*height:100%;*/
     display: flex;
     flex-direction: row;
-    /*align-items: center;*/
     justify-content: center;
     margin-top: 25px;
 }
@@ -389,6 +405,7 @@
     width:100%;
     height:25px;
 }
+
 .remarks{
     width:85%;
     height:25px;
@@ -444,26 +461,20 @@
 }
 .queue_new{
     width:98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height:100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
 }
-.right_top_div{
-    width:100%;
-    height:26%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
+
 .top_text_div{
-    width:90%;
+    width:85%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    height:30px;
+    height:20px;
     margin-bottom: 10px;
 }
 .text1_new{
@@ -487,7 +498,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*margin-top: 25px;*/
 }
 .number_name_div_new{
     width:100%;
@@ -570,21 +580,21 @@
     width:95%;
     height:1px;
     background-color: #FFFFFF;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 .circle_item_small{
-    width:22px;
-    height:22px;
-    border-radius: 11px;
+    width:16px;
+    height:16px;
+    border-radius: 8px;
     border-style: solid;
     border-width: 1px;
     border-color: #ffffff;
 }
 .circle_item{
-    width:24px;
-    height:24px;
-    border-radius: 12px;
+    width:20px;
+    height:20px;
+    border-radius: 10px;
     border-style: solid;
     border-width: 1px;
     border-color: #ffffff;
