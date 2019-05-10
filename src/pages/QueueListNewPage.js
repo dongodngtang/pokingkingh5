@@ -426,7 +426,7 @@ export default class QueueListPage extends Component {
 
                                                                         <Marquee styles={{width: '100%', height: '8%'}}>
                                                                             <span className="name_span_new"
-                                                                                  key={member_index}>{member_item.nickname}--------------</span>
+                                                                                  key={member_index}>{member_item.nickname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                                         </Marquee>
                                                                     }
 
