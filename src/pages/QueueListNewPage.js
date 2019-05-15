@@ -309,7 +309,6 @@ export default class QueueListPage extends Component {
                                 <div style={{height: 20}}/>
                                 <span
                                     className="title_spans">{!isEmptyObject(cash_games[notice_id]) ? cash_games[notice_id].notice : ''}</span>
-                                {/*<span className="title_spans">澳門威尼斯人</span>*/}
                                 {/*<span className="title_spans">////即將開始/////</span>*/}
                                 {/*<span className="title_spans">5,000,000 港元保底</span>*/}
                                 {/*<span className="title_spans">三月15日至22日</span>*/}

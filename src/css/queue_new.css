@@ -606,6 +606,8 @@
     font-size:20px;
     line-height: 24px;
     font-family: Calibri;
+    height:100px;
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
 }
 /**/
 
