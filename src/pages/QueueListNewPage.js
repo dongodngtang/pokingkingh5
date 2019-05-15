@@ -256,11 +256,13 @@ export default class QueueListPage extends Component {
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
                     <div className="col-sm-2 col-md-2 col-lg-2 left_div_new">
-                        <img className="img-responsive center-block pukewang" src={Images.pukewang}/>
-                        <div className="left_line_new"/>
-                        <span className="left_span_new">TABLE PREVIEW</span>
-                        <div className="left_line_new2"/>
-                        <img className="img_bottom" src={Images.bottom}/>
+                        <div className="left_div_top">
+                            <img className="img-responsive center-block pukewang_new" src={Images.pukewang}/>
+                            <div className="left_line_new"/>
+                            <span className="left_span_new"  style={{marginBottom:5,marginTop:5}}>TABLE PREVIEW</span>
+                            <div className="left_line_new2"/>
+                            <img className="img_bottom" src={Images.bottom}/>
+                        </div>
 
                         <div className="left_circle">
                             <div className="only_circle">
@@ -302,7 +304,7 @@ export default class QueueListPage extends Component {
 
                             <div className="title_div">
 
-                                <div className="left_line2" style={{marginTop: 20, marginBottom: 3}}/>
+                                <div className="left_line2" style={{marginTop: 20, marginBottom: 8}}/>
                                 <span className="left_span_new">NOTICE</span>
                                 <div className="left_line2"/>
                                 <img className="img_bottom" src={Images.bottom}/>
@@ -390,7 +392,7 @@ export default class QueueListPage extends Component {
                                                     {strNotNull(item.notice) && this.getBLen(item.notice) > 20 ?
                                                         <Marquee
                                                             styles={{width: '85%', height: 25, textAlign: 'center'}}>
-                                                            <span className="remark_span">{item.notice}----------</span>
+                                                            <span className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                         </Marquee> :
                                                         <div style={{width: '85%', height: 25, textAlign: 'center'}}>
                                                             <span className="remark_span">{item.notice}</span>

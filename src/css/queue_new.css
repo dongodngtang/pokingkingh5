@@ -148,7 +148,13 @@
     overflow-y: hidden;
     background: url('/images/bg.png') no-repeat center;
 }
-
+.left_div_top{
+    height:25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
 .left_div_new {
     height: 100%;
     padding: 0;
@@ -174,8 +180,8 @@
     margin-top: -6px;
 }
 .left_line2 {
-    width: 80%;
-    height: 2px;
+    width: 100%;
+    height: 1px;
     background-color: #757575;
 }
 .img_bottom{
@@ -194,6 +200,7 @@
     font-size: 35px;
     font-weight: bold;
     font-family: American_CaptainO;
+    line-height: 40px;
 }
 
 .left_span2 {
@@ -202,7 +209,7 @@
     font-weight: bold;
 }
 
-.pukewang {
+.pukewang_new {
     margin-top: 10%;
     width: 80%;
     align-self: center;
@@ -283,7 +290,7 @@
     justify-content: center;
 }
 .circle_div_new {
-    width:100%;
+    width:95%;
     height:90%;
     display: flex;
     flex-direction: row;
@@ -359,7 +366,7 @@
 
 .right_top_div{
     width:100%;
-    height:26%;
+    height:23%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -387,7 +394,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 25px;
 }
 .item_div_new{
     width:100%;
@@ -478,14 +484,14 @@
 }
 .number_div_left{
     width:20px;
-    height: 72%;
+    height: 75%;
     display: flex;
     flex-direction: column;
 }
 .queue_number_div_new{
     /*position:absolute;*/
     width:95%;
-    height:72%;
+    height:75%;
     border-width: 1px;
     border-color: #FFFFFF;
     border-style: solid;
@@ -567,7 +573,7 @@
 }
 .span_line_1{
     /*width:95%;*/
-    height:26.3%;
+    height:23.5%;
     padding-bottom: 10px;
 }
 .span_line_n{
