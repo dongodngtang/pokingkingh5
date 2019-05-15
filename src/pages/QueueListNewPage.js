@@ -22,7 +22,8 @@ export default class QueueListPage extends Component {
             all_cash_queues: [],
             cash_queue_members: [],
             cash_vip: {small_blind: '', big_blind: ""},
-            high_limit: {}
+            high_limit: {},
+            notice_id: 0
         }
 
     }
@@ -35,6 +36,7 @@ export default class QueueListPage extends Component {
     componentDidMount() {
 
         getCashGames(data => {
+            logMsg("现金桌", data)
             this.setState({
                 cash_games: data.items
             })
@@ -245,8 +247,10 @@ export default class QueueListPage extends Component {
     }
 
     render() {
-        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit} = this.state;
+        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
+
+        logMsg("notice",cash_games[notice_id])
 
         return (
             <div className="container-fluid queue_body_new">
@@ -296,25 +300,28 @@ export default class QueueListPage extends Component {
                             </div>
 
 
-
                             <div className="title_div">
 
-                                <div className="left_line2" style={{marginTop:20,marginBottom: 3}}/>
+                                <div className="left_line2" style={{marginTop: 20, marginBottom: 3}}/>
                                 <span className="left_span_new">NOTICE</span>
-                                <div className="left_line2" />
+                                <div className="left_line2"/>
                                 <img className="img_bottom" src={Images.bottom}/>
-                                <div style={{height:20}}/>
-                                <span className="title_spans">撲克王杯2020</span>
-                                <span className="title_spans">澳門威尼斯人</span>
-                                <span className="title_spans">////即將開始/////</span>
-                                <span className="title_spans">5,000,000 港元保底</span>
-                                <span className="title_spans">三月15日至22日</span>
+                                <div style={{height: 20}}/>
+                                <span
+                                    className="title_spans">{!isEmptyObject(cash_games[notice_id]) ? cash_games[notice_id].notice : ''}</span>
+                                {/*<span className="title_spans">澳門威尼斯人</span>*/}
+                                {/*<span className="title_spans">////即將開始/////</span>*/}
+                                {/*<span className="title_spans">5,000,000 港元保底</span>*/}
+                                {/*<span className="title_spans">三月15日至22日</span>*/}
                             </div>
 
                         </div>
 
                         <select id="dropdown" ref={(input) => this.menu = input}
                                 onChange={() => {
+                                    this.setState({
+                                        notice_id: this.menu.selectedIndex
+                                    })
                                     clearInterval(this.intervalId);
                                     this.getlist(this.menu.value)
                                     this.intervalId = setInterval(() => {
@@ -327,7 +334,7 @@ export default class QueueListPage extends Component {
 
                                 }}>
                             {cash_games.map((item, index) => {
-                                return <option key={index} value={item.id}>{item.name}</option>
+                                return <option key={index} id={index} value={item.id}>{item.name}</option>
                             })}
                         </select>
                     </div>
