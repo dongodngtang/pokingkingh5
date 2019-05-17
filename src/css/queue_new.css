@@ -187,12 +187,14 @@
     font-size: 30px;
     font-family: American_CaptainO;
     /*line-height: 40px;*/
+    letter-spacing: 2px;
 }
 .left_span_new {
     color: #D1D3D4;
     font-size: 35px;
     font-family: American_CaptainO;
     line-height: 40px;
+    letter-spacing: 2px;
 }
 
 .left_span2 {
