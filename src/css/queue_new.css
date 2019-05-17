@@ -182,6 +182,12 @@
     width:20px;
     height:13px;
 }
+.left_span_new1 {
+    color: #D1D3D4;
+    font-size: 30px;
+    font-family: American_CaptainO;
+    /*line-height: 40px;*/
+}
 .left_span_new {
     color: #D1D3D4;
     font-size: 35px;
@@ -570,17 +576,17 @@
     margin-bottom: 10px;
 }
 .circle_item_small{
-    width:16px;
-    height:16px;
-    border-radius: 8px;
+    width:14px;
+    height:14px;
+    border-radius: 7px;
     border-style: solid;
     border-width: 1px;
     border-color: #ffffff;
 }
 .circle_item{
-    width:20px;
-    height:20px;
-    border-radius: 10px;
+    width:18px;
+    height:18px;
+    border-radius: 9px;
     border-style: solid;
     border-width: 1px;
     border-color: #ffffff;

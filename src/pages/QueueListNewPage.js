@@ -259,7 +259,7 @@ export default class QueueListPage extends Component {
                         <div className="left_div_top">
                             <img className="img-responsive center-block pukewang_new" src={Images.pukewang}/>
                             <div className="left_line_new"/>
-                            <span className="left_span_new"  style={{marginTop:8}}>TABLE PREVIEW</span>
+                            <span className="left_span_new1"  style={{marginTop:8}}>TABLE PREVIEW</span>
                             <div className="left_line_new"/>
                             <img className="img_bottom" src={Images.bottom}/>
                         </div>
