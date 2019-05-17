@@ -159,6 +159,8 @@ export default class QueueListPage extends Component {
     }
 
     getCircle = (length, status) => {
+        logMsg("length",length)
+        logMsg("status",status)
         if (length === 6) {
             if (status) {
                 return "div_6ths"
@@ -170,7 +172,7 @@ export default class QueueListPage extends Component {
             if (status) {
                 return "div_5ths"
             } else {
-                return "col-md-3 col-lg-3"
+                return "div_5ths"
             }
         } else if (length === 4) {
             if (status) {
@@ -249,8 +251,6 @@ export default class QueueListPage extends Component {
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
-
-        logMsg("notice",cash_games[notice_id])
 
         return (
             <div className="container-fluid queue_body_new">
