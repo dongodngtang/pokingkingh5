@@ -304,8 +304,8 @@ export default class QueueListPage extends Component {
 
                             <div className="title_div">
 
-                                <div className="left_line2" style={{marginTop: 20, marginBottom: 8}}/>
-                                <span className="left_span_new">NOTICE</span>
+                                <div className="left_line2" style={{marginTop: 20}}/>
+                                <span className="left_span_new" style={{marginTop: 10}}>NOTICE</span>
                                 <div className="left_line2"/>
                                 <img className="img_bottom" src={Images.bottom}/>
                                 <div style={{height: 20}}/>
