@@ -356,7 +356,7 @@ export default class QueueListPage extends Component {
                                     }
                                     return (
                                         <div className={`${class_name} item_div_new`} key={index}>
-                                            {index === 0 ? <div>
+                                            {index === 0 ? <div className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
                                                 <div className="span_line_1"/>
                                                 <div className="number_div_left"/>
                                             </div> : <div
