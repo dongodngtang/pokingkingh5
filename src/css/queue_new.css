@@ -164,7 +164,9 @@
     flex-direction: column;
     align-items: center;
     /*background-color: #1C1E23;*/
-    text-align: center;
+    /*text-align: center;*/
+    /*margin-left: 55pt;*/
+    /*background-color: red;*/
 }
 
 .left_line_new {
@@ -210,7 +212,7 @@
     margin-bottom: 20px;
 }
 
-.left_circle {
+.left_circle_new {
     margin-top: 6%;
     width: 95%;
     height: 65%;

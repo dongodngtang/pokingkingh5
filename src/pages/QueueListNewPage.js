@@ -264,7 +264,7 @@ export default class QueueListPage extends Component {
                             <img className="img_bottom" src={Images.bottom}/>
                         </div>
 
-                        <div className="left_circle">
+                        <div className="left_circle_new">
                             <div className="only_circle">
                                 {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
                                     <div className="circle_vip_new">
