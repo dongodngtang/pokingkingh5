@@ -61,7 +61,7 @@ export default class QueueListPage extends Component {
             if (!isEmptyObject(hight_limit) && hight_limit.status) {
                 queues.push(hight_limit);
             }
-            logMsg('ordinary_queues', queues)
+            logMsg('ordinary_queues', data)
 
 
             let cash_queues1 = data.tables;
