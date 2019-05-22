@@ -421,14 +421,15 @@
     width:20px;
     display: flex;
     flex-direction: column;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
+    background-color: red;
 
 }
 .list_div_new_more{
     width:20px;
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
+    /*margin-right: 5px;*/
 
 }
 [class*="col-"]{
