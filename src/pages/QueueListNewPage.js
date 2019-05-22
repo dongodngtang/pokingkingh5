@@ -9,7 +9,7 @@ const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const HEIGHT = window.screen.height;
 const WIDTH = window.screen.width;
 const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
-const top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
+
 const circle_list = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default class QueueListPage extends Component {
@@ -77,17 +77,18 @@ export default class QueueListPage extends Component {
 
 
             let cash_queues1 = data.tables;
-
+            let top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
             let newTables = top_content.map(item => {
                 cash_queues1.forEach(x => {
                     if (parseInt(x.table_no) === 11) {
                         vip = {small_blind: x.small_blind, big_blind: x.big_blind, no: 11};
-                    }
-                    else if (parseInt(x.table_no) === item.id)
+                    } else if (parseInt(x.table_no) === item.id) {
                         item.info = x
+                    }
                 })
                 return item
             })
+
             let members = [];
             let valid = 0
             queues.forEach((item, index, arr) => {
@@ -208,8 +209,12 @@ export default class QueueListPage extends Component {
 
     //最左边圈圈的颜色
     getImg = (small_blind, big_blind) => {
-        let bg_img = Images.AVAILABLE
-        if (small_blind === 50 && big_blind === 100) {
+
+        let bg_img = Images.AVAILABLE;
+
+        if (!strNotNull(small_blind) || !strNotNull(big_blind)) {
+            bg_img = Images.AVAILABLE
+        } else if (small_blind === 50 && big_blind === 100) {
             bg_img = Images.NLH510
         } else if (small_blind === 100 && big_blind === 200) {
             bg_img = Images.NLH1020
@@ -280,7 +285,7 @@ export default class QueueListPage extends Component {
                             <div className="only_circle">
                                 {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
                                     <div className="circle_vip_new">
-                                        <img src={this.getImg(cash_vip.small_blind, cash_vip.big_blind)}
+                                        <img src={this.getImg(cash_vip.small_blind,cash_vip.big_blind)}
                                              className="AVAILABLE"/>
                                         <span className="circle_span_new">V1</span>
                                     </div> :
@@ -292,11 +297,9 @@ export default class QueueListPage extends Component {
                                 <div className="circle_div_new">
 
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
+
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
                                             let bg_img = this.getImg(item.info.small_blind, item.info.big_blind)
-                                            // if(item.id === 4)
-                                            // console.log("变化5",bg_img,item.info.small_blind)
-
                                             return (
                                                 <div className="circle_new" key={index}>
                                                     <img src={bg_img}
@@ -306,14 +309,16 @@ export default class QueueListPage extends Component {
 
                                                 </div>
                                             )
-                                        }
-                                        return (
-                                            <div className="circle_new_none" key={index}>
-                                                <img src={Images.AVAILABLE} className="AVAILABLE"/>
-                                                <span className="circle_span_new2">{item.id}</span>
+                                        } else {
+                                            return (
+                                                <div className="circle_new_none" key={index}>
+                                                    <img src={Images.AVAILABLE} className="AVAILABLE"/>
+                                                    <span className="circle_span_new2">{item.id}</span>
 
-                                            </div>
-                                        )
+                                                </div>
+                                            )
+                                        }
+
                                     })}
                                 </div>
                             </div>
@@ -377,7 +382,8 @@ export default class QueueListPage extends Component {
                                                     {index === cash_queues.length - 1 && high_limit.status ?
                                                         strNotNull(high_limit.navigation) ?
                                                             <div className="last_big_circle_new" key={index}>
-                                                                <img src={high_limit.navigation} className="navigation_img"/>
+                                                                <img src={high_limit.navigation}
+                                                                     className="navigation_img"/>
                                                             </div> :
                                                             <div className="last_big_circle_new" key={index}>
                                                                 <div style={{width: '100%'}}/>
