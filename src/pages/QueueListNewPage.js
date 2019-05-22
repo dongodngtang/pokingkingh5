@@ -376,9 +376,8 @@ export default class QueueListPage extends Component {
                                                             </div>
                                                     }
 
-                                                    {strNotNull(item.notice) && this.getBLen(item.notice) > 20 ?
-                                                        <Marquee
-                                                            styles={{width: '85%', height: 25, textAlign: 'center'}}>
+                                                    {strNotNull(item.notice) && this.getBLen(item.notice)?
+                                                        <Marquee styles={{width: '85%', height: 25, textAlign: 'center'}}>
                                                             <span
                                                                 className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                         </Marquee> :
@@ -487,7 +486,13 @@ export default class QueueListPage extends Component {
         if (typeof str != "string") {
             str += "";
         }
-        return str.replace(/[^\x00-\xff]/g, "01").length;
+        let length = str.replace(/[^\x00-\xff]/g, "01").length;
+        if(length >= 25){
+            return true
+        }else{
+            return false
+        }
+
     }
 
 }
