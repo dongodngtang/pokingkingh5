@@ -311,9 +311,6 @@ export default class QueueListPage extends Component {
                                 <div style={{height: 20}}/>
                                 <span
                                     className="title_spans">{!isEmptyObject(cash_games[notice_id]) ? cash_games[notice_id].notice : ''}</span>
-                                {/*<span className="title_spans">////即將開始/////</span>*/}
-                                {/*<span className="title_spans">5,000,000 港元保底</span>*/}
-                                {/*<span className="title_spans">三月15日至22日</span>*/}
                             </div>
 
                         </div>
@@ -356,25 +353,6 @@ export default class QueueListPage extends Component {
                                     }
                                     return (
                                         <div className={`${class_name} item_div_new`} key={index}>
-                                            {index === 0 ? <div
-                                                className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
-                                                <div className="span_line_1"/>
-                                                <div className="number_div_left"/>
-                                            </div> : <div
-                                                className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
-                                                <div className="span_line_1"/>
-                                                <div className="number_div_left">
-                                                    {list.map((list_item, item_index) => {
-                                                        return <div className="number_div_new" key={item_index}>
-                                                            <span className={this.showSpan(list_item)}
-                                                                  key={item_index}>{list_item}</span>
-
-                                                        </div>
-                                                    })}
-                                                </div>
-
-                                            </div>}
-
 
                                             <div className="queue_new" key={index}>
 
@@ -468,6 +446,28 @@ export default class QueueListPage extends Component {
                                                 </div>
 
                                             </div>
+
+                                            {index === cash_queues.length - 1 ? <div
+                                                    className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
+                                                    <div className="span_line_1"/>
+                                                    <div className="number_div_left"/>
+                                                </div> :
+                                                <div
+                                                    className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
+                                                    <div className="span_line_1"/>
+                                                    <div className="number_div_left">
+                                                        {list.map((list_item, item_index) => {
+                                                            return <div className="number_div_new" key={item_index}>
+                                                            <span className={this.showSpan(list_item)}
+                                                                  key={item_index}>{list_item}</span>
+
+                                                            </div>
+                                                        })}
+                                                    </div>
+
+                                                </div>
+                                            }
+
 
                                         </div>
                                     )
