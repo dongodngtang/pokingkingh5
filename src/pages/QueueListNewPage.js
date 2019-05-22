@@ -195,7 +195,6 @@ export default class QueueListPage extends Component {
 
     //最左边圈圈的颜色
     getImg = (small_blind, big_blind) => {
-
         if (small_blind === 50 && big_blind === 100) {
             return Images.NLH510
         } else if (small_blind === 100 && big_blind === 200) {
@@ -203,7 +202,6 @@ export default class QueueListPage extends Component {
         } else if (small_blind === 300 && big_blind === 600) {
             return Images.NLH36
         } else if (small_blind === 1000 && big_blind === 2000) {
-            logMsg(small_blind, big_blind)
             return Images.NLH12
         } else if (small_blind === 2000 && big_blind === 4000) {
             return Images.NLH24
@@ -268,7 +266,7 @@ export default class QueueListPage extends Component {
                             <div className="only_circle">
                                 {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
                                     <div className="circle_vip_new">
-                                        <img src={Images.NLH36} className="AVAILABLE"/>
+                                        <img src={this.getImg(cash_vip.small_blind, cash_vip.big_blind)} className="AVAILABLE"/>
                                         <span className="circle_span_new">V1</span>
                                     </div> :
                                     <div className="circle_vip_new_none">
@@ -280,9 +278,10 @@ export default class QueueListPage extends Component {
 
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
+                                            let bg_img = this.getImg(item.info.small_blind, item.info.big_blind)
                                             return (
                                                 <div className="circle_new" key={index}>
-                                                    <img src={this.getImg(item.info.small_blind, item.info.big_blind)}
+                                                    <img src={bg_img}
                                                          className="AVAILABLE"/>
                                                     <span
                                                         className="circle_span_new">{item.id === 10 ? item.id : `0${item.id}`}</span>
