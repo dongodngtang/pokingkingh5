@@ -77,6 +77,7 @@ export default class QueueListPage extends Component {
 
 
             let cash_queues1 = data.tables;
+
             let newTables = top_content.map(item => {
                 cash_queues1.forEach(x => {
                     if (parseInt(x.table_no) === 11) {
@@ -293,6 +294,8 @@ export default class QueueListPage extends Component {
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
                                             let bg_img = this.getImg(item.info.small_blind, item.info.big_blind)
+                                            // if(item.id === 4)
+                                            // console.log("变化5",bg_img,item.info.small_blind)
 
                                             return (
                                                 <div className="circle_new" key={index}>
