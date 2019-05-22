@@ -159,8 +159,8 @@ export default class QueueListPage extends Component {
     }
 
     getCircle = (length, status) => {
-        logMsg("length",length)
-        logMsg("status",status)
+        logMsg("length", length)
+        logMsg("status", status)
         if (length === 6) {
             if (status) {
                 return "div_6ths"
@@ -257,7 +257,7 @@ export default class QueueListPage extends Component {
                         <div className="left_div_top">
                             <img className="img-responsive center-block pukewang_new" src={Images.pukewang}/>
                             <div className="left_line_new"/>
-                            <span className="left_span_new1"  style={{marginTop:8}}>TABLE PREVIEW</span>
+                            <span className="left_span_new1" style={{marginTop: 8}}>TABLE PREVIEW</span>
                             <div className="left_line_new"/>
                             <img className="img_bottom" src={Images.bottom}/>
                         </div>
@@ -266,7 +266,8 @@ export default class QueueListPage extends Component {
                             <div className="only_circle">
                                 {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
                                     <div className="circle_vip_new">
-                                        <img src={this.getImg(cash_vip.small_blind, cash_vip.big_blind)} className="AVAILABLE"/>
+                                        <img src={this.getImg(cash_vip.small_blind, cash_vip.big_blind)}
+                                             className="AVAILABLE"/>
                                         <span className="circle_span_new">V1</span>
                                     </div> :
                                     <div className="circle_vip_new_none">
@@ -345,7 +346,7 @@ export default class QueueListPage extends Component {
                         <div className="row" style={{height: '100%', marginRight: 0, marginLeft: 0}}>
                             <div className="col-md-12 col-lg-12 queue_bottom_new">
                                 {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
-                                    const {small_blind, big_blind, buy_in, table_numbers, cash_items} = item;
+                                    const {small_blind, big_blind, buy_in, table_numbers, cash_items, navigation} = item;
                                     let name_list = cash_items;
                                     if (isEmptyObject(cash_items) || cash_items.length < 10) {
                                         let length = sub(10, cash_items.length);
@@ -355,7 +356,8 @@ export default class QueueListPage extends Component {
                                     }
                                     return (
                                         <div className={`${class_name} item_div_new`} key={index}>
-                                            {index === 0 ? <div className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
+                                            {index === 0 ? <div
+                                                className={cash_queues.length > 4 ? "list_div_new_more" : "list_div_new"}>
                                                 <div className="span_line_1"/>
                                                 <div className="number_div_left"/>
                                             </div> : <div
@@ -383,18 +385,24 @@ export default class QueueListPage extends Component {
                                                             <span
                                                                 className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
                                                         </div> :
-                                                        <div className="big_circle_new" key={index}>
-                                                            {strNotNull(buy_in) ?
+                                                        strNotNull(navigation) ?
+                                                            <div className="big_circle_new" key={index}>
+                                                                <img src={navigation} className="navigation_img"/>
+                                                            </div> :
+                                                            <div className="big_circle_new" key={index}>
+                                                                {strNotNull(buy_in) ?
+                                                                    <span
+                                                                        className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
                                                                 <span
-                                                                    className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
-                                                            <span
-                                                                className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
-                                                        </div>}
+                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
+                                                            </div>
+                                                    }
 
                                                     {strNotNull(item.notice) && this.getBLen(item.notice) > 20 ?
                                                         <Marquee
                                                             styles={{width: '85%', height: 25, textAlign: 'center'}}>
-                                                            <span className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                            <span
+                                                                className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                         </Marquee> :
                                                         <div style={{width: '85%', height: 25, textAlign: 'center'}}>
                                                             <span className="remark_span">{item.notice}</span>

@@ -17,7 +17,8 @@ const images = {
     NLH36:'/images/300_600_NLH.png',
     PLO5010:'/images/50_100_PLO.png',
     PLO1020:'/images/100_200_PLO.png',
-    AVAILABLE:'/images/AVAILABLE.png'
+    AVAILABLE:'/images/AVAILABLE.png',
+    bg_03:'/images/bg_03.png'
 
 
 }
