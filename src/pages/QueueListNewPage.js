@@ -43,7 +43,7 @@ export default class QueueListPage extends Component {
             this.getlist(data.items[0].id)
             this.intervalId = setInterval(() => {
                 this.getlist(data.items[0].id);
-            }, 20*1000)
+            }, 20 * 1000)
 
         })
 
@@ -372,11 +372,15 @@ export default class QueueListPage extends Component {
 
                                                 <div className="right_top_div">
                                                     {index === cash_queues.length - 1 && high_limit.status ?
-                                                        <div className="last_big_circle_new" key={index}>
-                                                            <div style={{width: '100%'}}/>
-                                                            <span
-                                                                className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
-                                                        </div> :
+                                                        strNotNull(high_limit.navigation) ?
+                                                            <div className="last_big_circle_new" key={index}>
+                                                                <img src={high_limit.navigation} className="navigation_img"/>
+                                                            </div> :
+                                                            <div className="last_big_circle_new" key={index}>
+                                                                <div style={{width: '100%'}}/>
+                                                                <span
+                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
+                                                            </div> :
                                                         strNotNull(navigation) ?
                                                             <div className="big_circle_new" key={index}>
                                                                 <img src={navigation} className="navigation_img"/>
@@ -390,8 +394,9 @@ export default class QueueListPage extends Component {
                                                             </div>
                                                     }
 
-                                                    {strNotNull(item.notice) && this.getBLen(item.notice)?
-                                                        <Marquee styles={{width: '85%', height: 25, textAlign: 'center'}}>
+                                                    {strNotNull(item.notice) && this.getBLen(item.notice) ?
+                                                        <Marquee
+                                                            styles={{width: '85%', height: 25, textAlign: 'center'}}>
                                                             <span
                                                                 className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                         </Marquee> :
@@ -501,9 +506,9 @@ export default class QueueListPage extends Component {
             str += "";
         }
         let length = str.replace(/[^\x00-\xff]/g, "01").length;
-        if(length >= 25){
+        if (length >= 25) {
             return true
-        }else{
+        } else {
             return false
         }
 
