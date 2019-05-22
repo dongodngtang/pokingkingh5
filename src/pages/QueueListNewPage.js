@@ -43,9 +43,21 @@ export default class QueueListPage extends Component {
             this.getlist(data.items[0].id)
             this.intervalId = setInterval(() => {
                 this.getlist(data.items[0].id);
-            }, 5000)
+            }, 20*1000)
 
         })
+
+        // setTimeout(()=>{
+        //     const {all_cash_queues} = this.state
+        //     logMsg("没变前",all_cash_queues)
+        //     let change = all_cash_queues.slice()
+        //     change[4].info.small_blind = 30
+        //     change[4].info.big_blind = 600
+        //     logMsg("变后",change)
+        //     this.setState({
+        //         all_cash_queues:change
+        //     })
+        // },10*1000)
 
 
     };
@@ -195,23 +207,24 @@ export default class QueueListPage extends Component {
 
     //最左边圈圈的颜色
     getImg = (small_blind, big_blind) => {
+        let bg_img = Images.AVAILABLE
         if (small_blind === 50 && big_blind === 100) {
-            return Images.NLH510
+            bg_img = Images.NLH510
         } else if (small_blind === 100 && big_blind === 200) {
-            return Images.NLH1020
+            bg_img = Images.NLH1020
         } else if (small_blind === 300 && big_blind === 600) {
-            return Images.NLH36
+            bg_img = Images.NLH36
         } else if (small_blind === 1000 && big_blind === 2000) {
-            return Images.NLH12
+            bg_img = Images.NLH12
         } else if (small_blind === 2000 && big_blind === 4000) {
-            return Images.NLH24
+            bg_img = Images.NLH24
         } else if (small_blind === 5000 && big_blind === 10000) {
-            return Images.PLO5010
+            bg_img = Images.PLO5010
         } else if (small_blind === 10000 && big_blind === 20000) {
-            return Images.PLO1020
-        } else {
-            return Images.AVAILABLE
+            bg_img = Images.PLO1020
         }
+
+        return bg_img
 
     };
 
@@ -280,6 +293,7 @@ export default class QueueListPage extends Component {
                                     {!isEmptyObject(all_cash_queues) && all_cash_queues.map((item, index, arr) => {
                                         if (item.info && strNotNull(item.info.small_blind) && strNotNull(item.info.big_blind)) {
                                             let bg_img = this.getImg(item.info.small_blind, item.info.big_blind)
+
                                             return (
                                                 <div className="circle_new" key={index}>
                                                     <img src={bg_img}
