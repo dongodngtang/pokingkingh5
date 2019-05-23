@@ -43,7 +43,7 @@ export default class QueueListPage extends Component {
             this.getlist(data.items[0].id)
             this.intervalId = setInterval(() => {
                 this.getlist(data.items[0].id);
-            }, 20 * 1000)
+            }, 8000)
 
         })
 
