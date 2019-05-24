@@ -221,9 +221,9 @@ export default class QueueListPage extends Component {
         } else if (small_blind === 300 && big_blind === 600) {
             bg_img = Images.NLH36
         } else if (small_blind === 1000 && big_blind === 2000) {
-            bg_img = Images.NLH12
-        } else if (small_blind === 2000 && big_blind === 4000) {
             bg_img = Images.NLH24
+        } else if (small_blind === 2000 && big_blind === 4000) {
+            bg_img = Images.NLH12
         } else if (small_blind === 5000 && big_blind === 10000) {
             bg_img = Images.PLO5010
         } else if (small_blind === 10000 && big_blind === 20000) {
