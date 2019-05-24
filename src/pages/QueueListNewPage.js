@@ -145,9 +145,9 @@ export default class QueueListPage extends Component {
         } else if (small_blind === 300 && big_blind === 600) {
             return '#0072bc'
         } else if (small_blind === 1000 && big_blind === 2000) {
-            return '#ffffff'
-        } else if (small_blind === 2000 && big_blind === 4000) {
             return '#f7941d'
+        } else if (small_blind === 2000 && big_blind === 4000) {
+            return '#ffffff'
         } else if (small_blind === 5000 && big_blind === 10000) {
             return '#8dc63f'
         } else if (small_blind === 10000 && big_blind === 20000) {
