@@ -61,7 +61,7 @@ export default class QueueListPage extends Component {
                 queues.push(hight_limit);
             }
             logMsg('ordinary_queues', data)
-            let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 14 : 10;
+            let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
 
             let cash_queues1 = data.tables;
             let top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
