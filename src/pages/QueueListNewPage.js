@@ -23,7 +23,8 @@ export default class QueueListPage extends Component {
             cash_queue_members: [],
             cash_vip: {small_blind: '', big_blind: ""},
             high_limit: {},
-            notice_id: 0
+            notice_id: 0,
+            marquee_name: 10
         }
 
     }
@@ -60,7 +61,7 @@ export default class QueueListPage extends Component {
                 queues.push(hight_limit);
             }
             logMsg('ordinary_queues', data)
-
+            let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 14 : 10;
 
             let cash_queues1 = data.tables;
             let top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
@@ -102,7 +103,8 @@ export default class QueueListPage extends Component {
                 cash_queues: queues,
                 all_cash_queues: newTables,
                 cash_vip: vip,
-                high_limit: hight_limit
+                high_limit: hight_limit,
+                marquee_name: marquee_length
 
             });
 
@@ -250,7 +252,7 @@ export default class QueueListPage extends Component {
     }
 
     render() {
-        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id} = this.state;
+        const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id, marquee_name} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
 
         return (
@@ -428,7 +430,7 @@ export default class QueueListPage extends Component {
                                                                     <div className="none_img"/>}
 
                                                                 <div className="middle_name">
-                                                                    {member_item.nickname.length < 10 ?
+                                                                    {member_item.nickname.length < marquee_name ?
                                                                         <span className="name_span_new"
                                                                               key={member_index}>{member_item.nickname}</span> :
 
