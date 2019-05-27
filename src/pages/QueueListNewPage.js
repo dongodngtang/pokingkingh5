@@ -46,20 +46,6 @@ export default class QueueListPage extends Component {
             }, 8000)
 
         })
-
-        // setTimeout(()=>{
-        //     const {all_cash_queues} = this.state
-        //     logMsg("没变前",all_cash_queues)
-        //     let change = all_cash_queues.slice()
-        //     change[4].info.small_blind = 30
-        //     change[4].info.big_blind = 600
-        //     logMsg("变后",change)
-        //     this.setState({
-        //         all_cash_queues:change
-        //     })
-        // },10*1000)
-
-
     };
 
 
@@ -173,8 +159,6 @@ export default class QueueListPage extends Component {
     }
 
     getCircle = (length, status) => {
-        logMsg("length", length)
-        logMsg("status", status)
         if (length === 6) {
             if (status) {
                 return "div_6ths"
@@ -285,7 +269,7 @@ export default class QueueListPage extends Component {
                             <div className="only_circle">
                                 {strNotNull(cash_vip.small_blind) && strNotNull(cash_vip.big_blind) ?
                                     <div className="circle_vip_new">
-                                        <img src={this.getImg(cash_vip.small_blind,cash_vip.big_blind)}
+                                        <img src={this.getImg(cash_vip.small_blind, cash_vip.big_blind)}
                                              className="AVAILABLE"/>
                                         <span className="circle_span_new">V1</span>
                                     </div> :
@@ -403,15 +387,17 @@ export default class QueueListPage extends Component {
                                                             </div>
                                                     }
 
-                                                    {strNotNull(item.notice) && this.getBLen(item.notice) ?
-                                                        <Marquee>
+
+                                                    <div style={{width: '85%', height: 25, textAlign: 'center'}}>
+                                                        {strNotNull(item.notice) && this.getBLen(item.notice) ?
+                                                            <Marquee>
                                                             <span
                                                                 className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                        </Marquee> :
-                                                        <div style={{width: '85%', height: 25, textAlign: 'center'}}>
+                                                            </Marquee> :
                                                             <span className="remark_span">{item.notice}</span>
-                                                        </div>
-                                                    }
+                                                        }
+                                                    </div>
+
 
                                                     <div className="span_line_n"/>
                                                     <div className="top_text_div">
