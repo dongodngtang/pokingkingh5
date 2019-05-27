@@ -404,8 +404,7 @@ export default class QueueListPage extends Component {
                                                     }
 
                                                     {strNotNull(item.notice) && this.getBLen(item.notice) ?
-                                                        <Marquee
-                                                            styles={{width: '85%', height: 25, textAlign: 'center'}}>
+                                                        <Marquee>
                                                             <span
                                                                 className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                         </Marquee> :
@@ -447,7 +446,7 @@ export default class QueueListPage extends Component {
                                                                         <span className="name_span_new"
                                                                               key={member_index}>{member_item.nickname}</span> :
 
-                                                                        <Marquee styles={{width: '100%', height: '8%'}}>
+                                                                        <Marquee>
                                                                             <span className="name_span_new"
                                                                                   key={member_index}>{member_item.nickname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                                         </Marquee>

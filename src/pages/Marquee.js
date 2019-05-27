@@ -20,6 +20,7 @@ export default class Marquee extends Component {
         let rolling = function(){
             if(container.scrollLeft == clone.offsetLeft){
                 container.scrollLeft = 0;
+                // container.scrollLeft -= clone.scrollLeft;
             }else{
                 container.scrollLeft++;
             }
