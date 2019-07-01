@@ -502,7 +502,7 @@ export default class QueueListPage extends Component {
             str += "";
         }
         let length = str.replace(/[^\x00-\xff]/g, "01").length;
-        if (length >= 25) {
+        if (length >= 32) {
             return true
         } else {
             return false
