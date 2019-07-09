@@ -556,14 +556,14 @@
     color:#d2ff00;
     font-size:50px;
     font-weight: bold;
-    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    /*word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;*/
     font-family: Italic;
 }
 .queue_all_new_last2{
     color:#d1d2d4;
     font-size:50px;
     font-weight: bold;
-    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    /*word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;*/
     font-family: Italic;
 }
 .span_line_1{
