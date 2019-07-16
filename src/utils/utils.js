@@ -243,3 +243,6 @@ export function sub(a, b) {
     }
     return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
 }
+export function getWidth(){
+    return window.screen.width
+}

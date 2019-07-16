@@ -9,12 +9,12 @@ import EventDetail from "./pages/EventDetail";
 import HomePage from "./pages/HomePage";
 import QueueListPage from "./pages/QueueListPage";
 import QueueListNewPage from "./pages/QueueListNewPage";
-import DemoHome from './pages/DemoHome'
+import QueueMaNiLa from './pages/QueueMaNiLa'
 
 const Routes = () => (
     <Router>
         <App>
-            {/*<Route path="/demo" component={DemoHome}/>*/}
+            <Route path="/manila" component={QueueMaNiLa}/>
             <Route path="/queue_new" component={QueueListNewPage}/>
             {/*<Route path="/queue" component={QueueListPage}/>*/}
             {/*<Route path="/home" component={HomePage}/>*/}

@@ -18,7 +18,10 @@ const images = {
     PLO5010:'/images/50_100_PLO.png',
     PLO1020:'/images/100_200_PLO.png',
     AVAILABLE:'/images/AVAILABLE.png',
-    bg_03:'/images/bg_03.png'
+    bg_03:'/images/bg_03.png',
+    manila_left:'/images/manila_left.png',
+    middle_img:'/images/middle_img.png',
+    minila_right:'/images/minila_right.png'
 
 
 }
