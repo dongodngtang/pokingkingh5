@@ -312,8 +312,7 @@ export default class QueueMaNiLa extends Component {
 
                                             <span className="queue_all_manila">{`Total Count`}</span>
                                             <span className="opopp">|</span>
-                                            <span
-                                                className={item.cash_queue_members_count > 0 ? "queue_all_manila_last" : "queue_all_manila_last2"}>{item.cash_queue_members_count}</span>
+                                            <span className={this.getCountColor(item,index)}>{item.cash_queue_members_count}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -342,18 +341,29 @@ export default class QueueMaNiLa extends Component {
                         )
                     })}
                 </div>
-                <div className="top_bottom_div">
-                    <div style={{
-                        width: '95%',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center'
-                    }}>
-                        <span className="floor_note">FLOOR NOTE :</span>
-                    </div>
-                </div>
+                {/*<div className="top_bottom_div">*/}
+                    {/*<div style={{*/}
+                        {/*width: '95%',*/}
+                        {/*display: 'flex',*/}
+                        {/*flexDirection: 'row',*/}
+                        {/*alignItems: 'center'*/}
+                    {/*}}>*/}
+                        {/*<span className="floor_note">FLOOR NOTE :</span>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
             </div>
         )
+    }
+
+    getCountColor=(item,index)=>{
+        const {cash_queue_members_count} = item;
+        if(index === this.state.cash_queue_members.length-1){
+            return "queue_last"
+        }else if(cash_queue_members_count && cash_queue_members_count>0){
+            return "queue_all_manila_last"
+        }else{
+            return "queue_all_manila_last2"
+        }
     }
 
     getBLen = (str) => {

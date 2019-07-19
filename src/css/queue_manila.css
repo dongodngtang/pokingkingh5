@@ -71,11 +71,11 @@
     font-weight: bold;
     font-family: "American Captain";
 }
+/*中间部分总体的高度*/
 .middle_div{
     width:98%;
     margin-left: 2%;
-
-    height:78%;
+    height:87%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -87,7 +87,7 @@
 }
 .item_left_view{
     height:100%;
-    width:90%;
+    width:95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +109,7 @@
 }
 .notice_div{
     width:90%;
-    height:4%;
+    height:3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,7 +124,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    height:5%;
+    height:3%;
     margin-bottom: 10px;
 }
 .circle_item_small_manila{
@@ -154,7 +154,7 @@
 }
 .queue_div_manila{
     width:100%;
-    height:70%;
+    height:72%;
     border-width: 1px;
     border-color: #FFFFFF;
     border-style: solid;
@@ -164,10 +164,11 @@
 }
 .number_div_manila{
     width:100%;
-    height: 70%;
+    height: 72%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5px;
 }
 .number_name_div_manila{
     width:100%;
@@ -233,7 +234,7 @@
     margin-right: 10px;
 }
 .queue_all_manila_last{
-    color:#d2ff00;
+    color:#38B549;
     font-size:50px;
     font-weight: bold;
     font-family: Italic;
@@ -263,4 +264,10 @@
     font-size:24px;
     font-weight: bold;
     display:none ;
+}
+.queue_last{
+    color:#C2B59B;
+    font-size:50px;
+    font-weight: bold;
+    font-family: Italic;
 }
