@@ -14,8 +14,11 @@ import QueueMaNiLa from './pages/QueueMaNiLa'
 const Routes = () => (
     <Router>
         <App>
-            <Route path="/manila" component={QueueMaNiLa}/>
+
             <Route path="/queue_new" component={QueueListNewPage}/>
+
+            <Route path="/manila" component={QueueMaNiLa}/>
+
             {/*<Route path="/queue" component={QueueListPage}/>*/}
             {/*<Route path="/home" component={HomePage}/>*/}
             <Route path="/loadApp/" component={LoadApp}/>

@@ -4,6 +4,7 @@ import {add, div, isEmptyObject, isStrNull, logMsg, mul, strNotNull, sub, weiXin
 import {Images, MarkDown} from '../components';
 import '../css/queue_new.css';
 import Marquee from "./Marquee";
+import QueueMaNiLa from "./QueueMaNiLa";
 
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const HEIGHT = window.screen.height;
@@ -254,7 +255,6 @@ export default class QueueListPage extends Component {
     render() {
         const {all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id, marquee_name} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
-
         return (
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
@@ -324,14 +324,22 @@ export default class QueueListPage extends Component {
                         </div>
 
                         <select id="dropdown" ref={(input) => this.menu = input}
-                                onChange={() => {
+                                onChange={(event) => {
+
+                                    let selectItem = cash_games[event.target.value]
+                                    if(selectItem.table_type === 'Asia'){
+                                        this.props.history.push('/manila', {
+                                            cash_table: selectItem
+                                        })
+                                    }
                                     this.setState({
-                                        notice_id: this.menu.selectedIndex
+                                        notice_id: event.target.value,
                                     })
+
                                     clearInterval(this.intervalId);
-                                    this.getlist(this.menu.value)
+                                    this.getlist(selectItem.id)
                                     this.intervalId = setInterval(() => {
-                                        this.getlist(this.menu.value)
+                                        this.getlist(selectItem.id)
                                     }, 5000)
                                     this.setState({
                                         cash_queue_members: []
@@ -340,7 +348,7 @@ export default class QueueListPage extends Component {
 
                                 }}>
                             {cash_games.map((item, index) => {
-                                return <option key={index} id={index} value={item.id}>{item.name}</option>
+                                return <option key={index} id={index} value={index}>{item.name}</option>
                             })}
                         </select>
                     </div>

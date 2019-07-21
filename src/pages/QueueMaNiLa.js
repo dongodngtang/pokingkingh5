@@ -35,18 +35,8 @@ export default class QueueMaNiLa extends Component {
     }
 
     componentDidMount() {
-
-        getCashGames(data => {
-            logMsg("现金桌", data)
-            this.setState({
-                cash_games: data.items
-            })
-            this.getlist(data.items[0].id)
-            this.intervalId = setInterval(() => {
-                this.getlist(data.items[0].id);
-            }, 8000)
-
-        })
+        const {cash_table} = this.props.location.state;
+        this.getlist(cash_table.id)
     };
 
 
@@ -55,10 +45,14 @@ export default class QueueMaNiLa extends Component {
 
             let queues = data.ordinary_queues;
             let hight_limit = data.high_limit_queues;
+            let transfer = data.transfer_request_queues;
             let vip = {small_blind: '', big_blind: ""};
 
             if (!isEmptyObject(hight_limit) && hight_limit.status) {
                 queues.push(hight_limit);
+            }
+            if (!isEmptyObject(transfer) && transfer.status) {
+                queues.push(transfer);
             }
             logMsg('ordinary_queues', data)
             let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
@@ -238,6 +232,7 @@ export default class QueueMaNiLa extends Component {
                 <div className="line"/>
                 <div className="middle_div">
                     {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {
+
                         const {small_blind, big_blind, buy_in, table_numbers, cash_items, navigation} = item;
                         let name_list = cash_items;
                         if (isEmptyObject(cash_items) || cash_items.length < 10) {
@@ -247,7 +242,7 @@ export default class QueueMaNiLa extends Component {
                             }
                         }
                         return (
-                            <div className="item_view" style={{width: div(WIDTH, cash_queue_members.length)}}>
+                            <div className="item_view" style={{width: div(WIDTH, cash_queue_members.length)}} key={index}>
                                 <div className="item_left_view">
                                     <div className="img_div">
                                         <img src={navigation}
