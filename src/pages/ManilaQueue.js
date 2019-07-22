@@ -44,19 +44,17 @@ export default class ManilaQueue extends Component {
                         <div className="row" style={{height: '8%', marginRight: 0, marginLeft: 10,marginTop:20}}>
                             <div className="col-md-12 col-lg-12 top_bar_div2">
                                 <div style={{height:'100%',marginLeft:30}}>
-                                    <select id="dropdown" ref={(input) => this.menu = input}
+                                    <select id="dropdown"
+                                            ref={(input) => this.menu = input}
                                             onChange={(event) => {
                                                 let selectItem = cash_games[event.target.value]
 
                                                 this.props.changeId(event.target.value,selectItem.table_type)
 
-                                                clearInterval(this.intervalId);
-                                                this.props.getlist(selectItem.id)
-                                                this.intervalId = setInterval(() => {
-                                                    this.props.getlist(selectItem.id)
-                                                }, 5000)
+                                                this.props.refreshLoop(selectItem.id)
 
-                                                this.props.changeMember()
+
+                                                // this.props.changeMember()
 
                                             }}>
                                         {cash_games.map((item, index) => {

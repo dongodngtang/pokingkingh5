@@ -264,16 +264,25 @@ export default class QueueListPage extends Component {
             cash_queue_members: []
         })
     }
-    changeId = (value,table_type) => {
+    changeId = (value, table_type) => {
         this.setState({
             notice_id: value,
             table_type: table_type
         })
     }
 
+    refreshLoop = (id) => {
+        this.intervalId && clearInterval(this.intervalId)
+        this.getlist(id)
+        this.intervalId = setInterval(() => {
+            this.getlist(id)
+        }, 5000)
+    }
+
     render() {
-        const {table_type,all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id, marquee_name} = this.state;
+        const {table_type, all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id, marquee_name} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
+        logMsg("table_type", table_type)
         if (table_type === 'Asia') {
             return <ManilaQueue
                 cash_queue_members={cash_queue_members}
@@ -281,7 +290,7 @@ export default class QueueListPage extends Component {
                 cash_queues={cash_queues}
                 high_limit={high_limit}
                 marquee_name={marquee_name}
-                getlist={this.getlist}
+                refreshLoop={this.refreshLoop}
                 showSpan={this.showSpan}
                 _color={this._color}
                 cash_games={cash_games}
@@ -289,7 +298,7 @@ export default class QueueListPage extends Component {
                 get_cash={this.get_cash}
                 changeMember={this.changeMember}
                 changeId={this.changeId}/>
-        }else{
+        } else {
             return (
                 <div className="container-fluid queue_body_new">
                     <div className="row" style={{height: '100%'}}>
@@ -368,11 +377,7 @@ export default class QueueListPage extends Component {
                                             table_type: selectItem.table_type
                                         })
 
-                                        clearInterval(this.intervalId);
-                                        this.getlist(selectItem.id)
-                                        this.intervalId = setInterval(() => {
-                                            this.getlist(selectItem.id)
-                                        }, 5000)
+                                        this.refreshLoop(selectItem.id)
                                         this.setState({
                                             cash_queue_members: []
                                         })
