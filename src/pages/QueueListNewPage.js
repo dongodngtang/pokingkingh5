@@ -512,7 +512,7 @@ export default class QueueListPage extends Component {
     getCountColor = (item, index) => {
         const {cash_queue_members_count} = item;
         if (index === this.state.cash_queue_members.length - 1 && item.transfer_type === 'transfer') {
-            return "queue_last"
+            return "queue_last2"
         } else if (cash_queue_members_count && cash_queue_members_count > 0) {
             return "queue_all_new_last"
         } else {

@@ -342,16 +342,6 @@ export default class QueueMaNiLa extends Component {
                         )
                     })}
                 </div>
-                {/*<div className="top_bottom_div">*/}
-                {/*<div style={{*/}
-                {/*width: '95%',*/}
-                {/*display: 'flex',*/}
-                {/*flexDirection: 'row',*/}
-                {/*alignItems: 'center'*/}
-                {/*}}>*/}
-                {/*<span className="floor_note">FLOOR NOTE :</span>*/}
-                {/*</div>*/}
-                {/*</div>*/}
             </div>
         )
     }
