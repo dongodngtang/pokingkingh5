@@ -53,6 +53,7 @@ export default class QueueMaNiLa extends Component {
                 queues.push(hight_limit);
             }
             if (!isEmptyObject(transfer) && transfer.status) {
+                transfer.transfer_type = 'transfer'
                 queues.push(transfer);
             }
             logMsg('ordinary_queues', data)
@@ -243,7 +244,8 @@ export default class QueueMaNiLa extends Component {
                             }
                         }
                         return (
-                            <div className="item_view" style={{width: div(WIDTH, cash_queue_members.length)}} key={index}>
+                            <div className="item_view" style={{width: div(WIDTH, cash_queue_members.length)}}
+                                 key={index}>
                                 <div className="item_left_view">
                                     <div className="img_div">
                                         <img src={navigation}
@@ -308,7 +310,8 @@ export default class QueueMaNiLa extends Component {
 
                                             <span className="queue_all_manila">{`Total Count`}</span>
                                             <span className="opopp">|</span>
-                                            <span className={this.getCountColor(item,index)}>{item.cash_queue_members_count}</span>
+                                            <span
+                                                className={this.getCountColor(item, index)}>{item.cash_queue_members_count}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -338,26 +341,26 @@ export default class QueueMaNiLa extends Component {
                     })}
                 </div>
                 {/*<div className="top_bottom_div">*/}
-                    {/*<div style={{*/}
-                        {/*width: '95%',*/}
-                        {/*display: 'flex',*/}
-                        {/*flexDirection: 'row',*/}
-                        {/*alignItems: 'center'*/}
-                    {/*}}>*/}
-                        {/*<span className="floor_note">FLOOR NOTE :</span>*/}
-                    {/*</div>*/}
+                {/*<div style={{*/}
+                {/*width: '95%',*/}
+                {/*display: 'flex',*/}
+                {/*flexDirection: 'row',*/}
+                {/*alignItems: 'center'*/}
+                {/*}}>*/}
+                {/*<span className="floor_note">FLOOR NOTE :</span>*/}
+                {/*</div>*/}
                 {/*</div>*/}
             </div>
         )
     }
 
-    getCountColor=(item,index)=>{
+    getCountColor = (item, index) => {
         const {cash_queue_members_count} = item;
-        if(index === this.state.cash_queue_members.length-1){
+        if (index === this.state.cash_queue_members.length - 1 && item.transfer_type === 'transfer') {
             return "queue_last"
-        }else if(cash_queue_members_count && cash_queue_members_count>0){
+        } else if (cash_queue_members_count && cash_queue_members_count > 0) {
             return "queue_all_manila_last"
-        }else{
+        } else {
             return "queue_all_manila_last2"
         }
     }
