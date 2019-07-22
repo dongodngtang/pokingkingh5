@@ -35,6 +35,7 @@ export default class QueueMaNiLa extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         const {cash_table} = this.props.location.state;
         this.getlist(cash_table.id)
     };

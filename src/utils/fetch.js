@@ -12,9 +12,18 @@ import api from './api'
 import {isStrNull, logMsg} from "../utils/utils";
 
 
+function basic_api() {
+    const api_env = process.env.REACT_APP_KKAPI_ENV
+    if (api_env === 'dev') return api.dev
+
+    if (api_env === 'test') return api.test
+
+    return api.production
+}
+
 // define the api
 const client = create({
-  baseURL: api.production,
+  baseURL: basic_api(),
   timeout: 20000
 });
 
