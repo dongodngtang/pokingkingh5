@@ -35,7 +35,7 @@ export default class ManilaQueue extends Component {
 
     }
     render() {
-        const {cash_queue_members,class_name,cash_queues,high_limit,marquee_name,cash_games} = this.props;
+        const {cash_queue_members,class_name,cash_queues,high_limit,marquee_name,cash_games,notice_id} = this.props;
         return (
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
@@ -46,6 +46,7 @@ export default class ManilaQueue extends Component {
                                 <div style={{height:'100%',marginLeft:30}}>
                                     <select id="dropdown"
                                             ref={(input) => this.menu = input}
+                                            value={notice_id}
                                             onChange={(event) => {
                                                 let selectItem = cash_games[event.target.value]
 
@@ -58,7 +59,9 @@ export default class ManilaQueue extends Component {
 
                                             }}>
                                         {cash_games.map((item, index) => {
-                                            return <option key={index} id={index} value={index}>{item.name}</option>
+                                            return <option key={index}
+                                                           id={index}
+                                                           value={index}>{item.name}</option>
                                         })}
                                     </select>
                                 </div>

@@ -265,6 +265,7 @@ export default class QueueListPage extends Component {
         })
     }
     changeId = (value, table_type) => {
+
         this.setState({
             notice_id: value,
             table_type: table_type
@@ -279,10 +280,11 @@ export default class QueueListPage extends Component {
         }, 5000)
     }
 
+
     render() {
         const {table_type, all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id, marquee_name} = this.state;
         let class_name = this.getCircle(cash_queues.length, high_limit.status);
-        logMsg("table_type", table_type)
+
         if (table_type === 'Asia') {
             return <ManilaQueue
                 cash_queue_members={cash_queue_members}
@@ -297,6 +299,7 @@ export default class QueueListPage extends Component {
                 font_size={this.font_size}
                 get_cash={this.get_cash}
                 changeMember={this.changeMember}
+                notice_id={notice_id}
                 changeId={this.changeId}/>
         } else {
             return (
@@ -367,15 +370,13 @@ export default class QueueListPage extends Component {
 
                             </div>
 
-                            <select id="dropdown" ref={(input) => this.menu = input}
+                            <select id="dropdown"
+                                    ref={(input) => this.menu = input}
+                                    value={notice_id}
                                     onChange={(event) => {
 
                                         let selectItem = cash_games[event.target.value]
-
-                                        this.setState({
-                                            notice_id: event.target.value,
-                                            table_type: selectItem.table_type
-                                        })
+                                        this.changeId(event.target.value,selectItem.table_type)
 
                                         this.refreshLoop(selectItem.id)
                                         this.setState({
@@ -385,7 +386,9 @@ export default class QueueListPage extends Component {
 
                                     }}>
                                 {cash_games.map((item, index) => {
-                                    return <option key={index} id={index} value={index}>{item.name}</option>
+                                    return <option key={index}
+                                                   id={index}
+                                                   value={index}>{item.name}</option>
                                 })}
                             </select>
                         </div>
