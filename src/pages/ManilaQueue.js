@@ -34,45 +34,19 @@ export default class ManilaQueue extends Component {
         }
 
     }
+
     render() {
-        const {cash_queue_members,class_name,cash_queues,high_limit,marquee_name,cash_games,notice_id} = this.props;
+        const {cash_queue_members, class_name, cash_queues, high_limit, marquee_name, cash_games, notice_id} = this.props;
         return (
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
                     <div className="col-sm-12 col-md-12 col-lg-12">
 
-                        <div className="row" style={{height: '8%', marginRight: 0, marginLeft: 10,marginTop:20}}>
+                        <div className="row" style={{height: '8%', marginRight: 0, marginLeft: 10, marginTop: 20}}>
                             <div className="col-md-12 col-lg-12 top_bar_div2">
-                                <div style={{height:'100%',marginLeft:30}}>
-                                    <select id="dropdown"
-                                            ref={(input) => this.menu = input}
-                                            value={notice_id}
-                                            onChange={(event) => {
-                                                let selectItem = cash_games[event.target.value]
-
-                                                this.props.changeId(event.target.value,selectItem.table_type)
-
-                                                this.props.refreshLoop(selectItem.id)
-
-
-                                                // this.props.changeMember()
-
-                                            }}>
-                                        {cash_games.map((item, index) => {
-                                            return <option key={index}
-                                                           id={index}
-                                                           value={index}>{item.name}</option>
-                                        })}
-                                    </select>
-                                </div>
-                                <div style={{display:'flex',flex:1}}/>
-                                <div style={{display:'flex',alignSelf:'center'}}>
-                                    <img src={Images.manila_left}/>
-                                    <img className="middle_img" src={Images.middle_img}/>
-                                    <img src={Images.minila_right}/>
-                                </div>
-                                <div style={{display:'flex',flex:1}}/>
-                                <div style={{marginRight:40}}/>
+                                <img src={Images.manila_left}/>
+                                {/*<img className="middle_img" src={Images.middle_img}/>*/}
+                                {/*<img src={Images.minila_right}/>*/}
                             </div>
                             <div className="line2"/>
                         </div>
@@ -220,12 +194,42 @@ export default class ManilaQueue extends Component {
                             </div>
 
                         </div>
+                        <div className="row" style={{position: 'absolute', bottom: 0, width:'100%',height: 50}}>
+                            <div className="col-sm-12 col-md-12 col-lg-12" style={{
+                                marginLeft: 30,
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}>
+                                <select id="dropdown2"
+                                        ref={(input) => this.menu = input}
+                                        value={notice_id}
+                                        onChange={(event) => {
+                                            let selectItem = cash_games[event.target.value]
+
+                                            this.props.changeId(event.target.value, selectItem.table_type)
+
+                                            this.props.refreshLoop(selectItem.id)
+
+
+                                            // this.props.changeMember()
+
+                                        }}>
+                                    {cash_games.map((item, index) => {
+                                        return <option key={index}
+                                                       id={index}
+                                                       value={index}>{item.name}</option>
+                                    })}
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         )
 
     }
+
     showSpan = (item) => {
         if (item === 1 || item === 4 || item === 9) {
             return "number_span_new"
