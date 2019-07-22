@@ -619,3 +619,9 @@
 .kime{
     /*position: absolute;*/
 }
+.queue_last{
+    color:#C2B59B;
+    font-size:50px;
+    font-weight: bold;
+    font-family: Italic;
+}

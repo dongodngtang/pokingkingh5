@@ -227,10 +227,12 @@ export default class QueueMaNiLa extends Component {
         return (
             <div className="queue_body_manila">
                 <div className="top_bar_div">
+
                     <img src={Images.manila_left}/>
                     <img className="middle_img" src={Images.middle_img}/>
                     <img src={Images.minila_right}/>
                 </div>
+
                 <div className="line"/>
                 <div className="middle_div">
                     {!isEmptyObject(cash_queue_members) && cash_queue_members.map((item, index) => {

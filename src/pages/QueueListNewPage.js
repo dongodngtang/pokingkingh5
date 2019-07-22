@@ -56,10 +56,15 @@ export default class QueueListPage extends Component {
 
             let queues = data.ordinary_queues;
             let hight_limit = data.high_limit_queues;
+            let transfer = data.transfer_request_queues;
             let vip = {small_blind: '', big_blind: ""};
 
             if (!isEmptyObject(hight_limit) && hight_limit.status) {
                 queues.push(hight_limit);
+            }
+            if (!isEmptyObject(transfer) && transfer.status) {
+                transfer.transfer_type = 'transfer'
+                queues.push(transfer);
             }
             logMsg('ordinary_queues', data)
             let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
@@ -462,7 +467,7 @@ export default class QueueListPage extends Component {
 
                                                         <span className="queue_all_new">{`Total Count：`}</span>
                                                         <span
-                                                            className={item.cash_queue_members_count > 0 ? "queue_all_new_last" : "queue_all_new_last2"}>{item.cash_queue_members_count}</span>
+                                                            className={this.getCountColor(item, index)}>{item.cash_queue_members_count}</span>
                                                     </div>
 
                                                 </div>
@@ -502,6 +507,17 @@ export default class QueueListPage extends Component {
                 </div>
             </div>
         )
+    }
+
+    getCountColor = (item, index) => {
+        const {cash_queue_members_count} = item;
+        if (index === this.state.cash_queue_members.length - 1 && item.transfer_type === 'transfer') {
+            return "queue_last"
+        } else if (cash_queue_members_count && cash_queue_members_count > 0) {
+            return "queue_all_new_last"
+        } else {
+            return "queue_all_new_last2"
+        }
     }
 
     getBLen = (str) => {
