@@ -9,6 +9,7 @@
 
 import {create, SERVER_ERROR, TIMEOUT_ERROR, NETWORK_ERROR} from 'apisauce';
 import api from './api'
+import api2 from './api2'
 import {isStrNull, logMsg} from "../utils/utils";
 
 
@@ -21,11 +22,34 @@ function basic_api() {
     return api.production
 }
 
+function basic_api2() {
+    const api_env = process.env.REACT_APP_KKAPI_ENV
+    if (api_env === 'dev') return api2.dev
+
+    if (api_env === 'test') return api2.test
+
+    return api2.production
+}
+
 // define the api
 const client = create({
   baseURL: basic_api(),
   timeout: 20000
 });
+//cash_queue特定的v2
+const client2 = create({
+  baseURL: basic_api2(),
+  timeout: 20000
+});
+
+client2.addMonitor(response => {
+    const {url} = response.config;
+    logMsg('响应' + url, response)
+})
+
+client2.addRequestTransform(request => {
+    logMsg('请求' + request.url, request)
+})
 
 client.addMonitor(response => {
     const {url} = response.config;
@@ -40,6 +64,14 @@ export function getBaseUrl(){
     return client.getBaseURL();
 }
 
+
+export function get2(url, body, resolve, reject) {
+    return client2.get(url, body).then(res => {
+        handle(res, resolve, reject)
+    }).catch(err => {
+        errReject(err)
+    })
+}
 
 
 export function setToken(access_token) {

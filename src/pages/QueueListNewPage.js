@@ -24,7 +24,6 @@ export default class QueueListPage extends Component {
             all_cash_queues: [],
             cash_queue_members: [],
             cash_vip: {small_blind: '', big_blind: ""},
-            high_limit: {},
             notice_id: 0,
             marquee_name: 10,
             table_type: ''
@@ -53,25 +52,23 @@ export default class QueueListPage extends Component {
         })
     };
 
-
     getlist = (id) => {
         getCashQueues({cash_game_id: id}, data => {
-
-            let queues = data.ordinary_queues;
-            let hight_limit = data.high_limit_queues;
-            let transfer = data.transfer_request_queues;
+            logMsg("datadata", data)
+            let queues = data.queues;
+            let table_type = data.table_type;
             let vip = {small_blind: '', big_blind: ""};
-
-            if (!isEmptyObject(hight_limit) && hight_limit.status) {
-                queues.push(hight_limit);
-            }
-            if (!isEmptyObject(transfer) && transfer.status) {
-                transfer.transfer_type = 'transfer'
-                queues.push(transfer);
-            }
-            logMsg('ordinary_queues', data)
+            //
+            // if (!isEmptyObject(hight_limit) && hight_limit.status) {
+            //     queues.push(hight_limit);
+            // }
+            // if (!isEmptyObject(transfer) && transfer.status) {
+            //     transfer.transfer_type = 'transfer'
+            //     queues.push(transfer);
+            // }
+            // logMsg('ordinary_queues', data)
             let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
-
+            //
             let cash_queues1 = data.tables;
             let top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
             let newTables = top_content.map(item => {
@@ -88,7 +85,6 @@ export default class QueueListPage extends Component {
             let members = [];
             let valid = 0
             queues.forEach((item, index, arr) => {
-
                 if (item.status === undefined || item.status) {
                     valid++
                     getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
@@ -106,19 +102,82 @@ export default class QueueListPage extends Component {
                 }
 
             });
-
-
+            //
             this.setState({
                 cash_queues: queues,
                 all_cash_queues: newTables,
                 cash_vip: vip,
-                high_limit: hight_limit,
                 marquee_name: marquee_length
 
             });
 
         });
-    };
+    }
+    // getlist = (id) => {
+    //     getCashQueues({cash_game_id: id}, data => {
+    //
+    //         let queues = data.ordinary_queues;
+    //         let hight_limit = data.high_limit_queues;
+    //         let transfer = data.transfer_request_queues;
+    //         let vip = {small_blind: '', big_blind: ""};
+    //
+    //         if (!isEmptyObject(hight_limit) && hight_limit.status) {
+    //             queues.push(hight_limit);
+    //         }
+    //         if (!isEmptyObject(transfer) && transfer.status) {
+    //             transfer.transfer_type = 'transfer'
+    //             queues.push(transfer);
+    //         }
+    //         logMsg('ordinary_queues', data)
+    //         let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
+    //
+    //         let cash_queues1 = data.tables;
+    //         let top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
+    //         let newTables = top_content.map(item => {
+    //             cash_queues1.forEach(x => {
+    //                 if (parseInt(x.table_no) === 11) {
+    //                     vip = {small_blind: x.small_blind, big_blind: x.big_blind, no: 11};
+    //                 } else if (parseInt(x.table_no) === item.id) {
+    //                     item.info = x
+    //                 }
+    //             })
+    //             return item
+    //         })
+    //
+    //         let members = [];
+    //         let valid = 0
+    //         queues.forEach((item, index, arr) => {
+    //
+    //             if (item.status === undefined || item.status) {
+    //                 valid++
+    //                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
+    //
+    //                     item.cash_items = data2.items
+    //                     members.push(data2.items)
+    //
+    //                     if (valid === members.length) {
+    //
+    //                         this.setState({
+    //                             cash_queue_members: arr
+    //                         })
+    //                     }
+    //                 });
+    //             }
+    //
+    //         });
+    //
+    //
+    //         this.setState({
+    //             cash_queues: queues,
+    //             all_cash_queues: newTables,
+    //             cash_vip: vip,
+    //             high_limit: hight_limit,
+    //             marquee_name: marquee_length
+    //
+    //         });
+    //
+    //     });
+    // };
 
     getRandomColor = () => {
         let color = "";
@@ -169,26 +228,14 @@ export default class QueueListPage extends Component {
 
     }
 
-    getCircle = (length, status) => {
+    getCircle = (length) => {
         if (length === 6) {
-            if (status) {
-                return "div_6ths"
-            } else {
-                return "div_5ths"
-            }
+            return "div_6ths"
         }
         if (length === 5) {
-            if (status) {
-                return "div_5ths"
-            } else {
-                return "div_5ths"
-            }
+            return "div_5ths"
         } else if (length === 4) {
-            if (status) {
-                return "col-md-3 col-lg-3"
-            } else {
-                return "col-md-3 col-lg-3"
-            }
+            return "col-md-3 col-lg-3"
         } else if (length < 4) {
             return "col-md-3 col-lg-3"
         }
@@ -282,15 +329,14 @@ export default class QueueListPage extends Component {
 
 
     render() {
-        const {table_type, all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, high_limit, notice_id, marquee_name} = this.state;
-        let class_name = this.getCircle(cash_queues.length, high_limit.status);
+        const {table_type, all_cash_queues, cash_queues, cash_queue_members, cash_games, cash_vip, notice_id, marquee_name} = this.state;
+        let class_name = this.getCircle(cash_queues.length);
 
         if (table_type === 'Asia') {
             return <ManilaQueue
                 cash_queue_members={cash_queue_members}
                 class_name={class_name}
                 cash_queues={cash_queues}
-                high_limit={high_limit}
                 marquee_name={marquee_name}
                 refreshLoop={this.refreshLoop}
                 showSpan={this.showSpan}
@@ -375,7 +421,7 @@ export default class QueueListPage extends Component {
                                     onChange={(event) => {
 
                                         let selectItem = cash_games[event.target.value]
-                                        this.changeId(event.target.value,selectItem.table_type)
+                                        this.changeId(event.target.value, selectItem.table_type)
 
                                         this.refreshLoop(selectItem.id)
                                         this.setState({
@@ -412,28 +458,17 @@ export default class QueueListPage extends Component {
                                                 <div className="queue_new" key={index}>
 
                                                     <div className="right_top_div">
-                                                        {index === cash_queues.length - 1 && high_limit.status ?
-                                                            strNotNull(high_limit.navigation) ?
-                                                                <div className="last_big_circle_new" key={index}>
-                                                                    <img src={high_limit.navigation}
-                                                                         className="navigation_img"/>
-                                                                </div> :
-                                                                <div className="last_big_circle_new" key={index}>
-                                                                    <div style={{width: '100%'}}/>
+                                                        {strNotNull(navigation) ?
+                                                            <div className="big_circle_new" key={index}>
+                                                                <img src={navigation} className="navigation_img"/>
+                                                            </div> :
+                                                            <div className="big_circle_new" key={index}>
+                                                                {strNotNull(buy_in) ?
                                                                     <span
-                                                                        className={`big_circle_span_new ${this.font_size("NL")}`}>HIGH LIMIT</span>
-                                                                </div> :
-                                                            strNotNull(navigation) ?
-                                                                <div className="big_circle_new" key={index}>
-                                                                    <img src={navigation} className="navigation_img"/>
-                                                                </div> :
-                                                                <div className="big_circle_new" key={index}>
-                                                                    {strNotNull(buy_in) ?
-                                                                        <span
-                                                                            className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
-                                                                    <span
-                                                                        className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
-                                                                </div>
+                                                                        className={`big_money_span_new ${this.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
+                                                                <span
+                                                                    className={`big_circle_span_new ${this.font_size("NL")}`}>{this.get_cash(small_blind, big_blind)} NL</span>
+                                                            </div>
                                                         }
 
 
@@ -563,13 +598,13 @@ export default class QueueListPage extends Component {
             str += "";
         }
         let length = str.replace(/[^\x00-\xff]/g, "01").length;
-        if(cash_length > 5){
-            if (length >= 25) {
+        if (cash_length > 5) {
+            if (length >= 20) {
                 return true
             } else {
                 return false
             }
-        }else{
+        } else {
             if (length >= 32) {
                 return true
             } else {

@@ -1,5 +1,7 @@
 import api from '../utils/api'
-import {get,post} from '../utils/fetch'
+import api2 from '../utils/api2'
+import {get,post,get2} from '../utils/fetch'
+import {logMsg} from "../utils/utils";
 
 export function getInfoDetail(body, resolved, reject) {
     get(api.info_detail(body),{},ret=>{
@@ -21,7 +23,7 @@ export function getEventDetail(body,resolve, reject) {
 
 /*现金桌排队进程列表*/
 export function getCashQueues(body,resolve, reject) {
-    get(api.cash_queues(body), {from:'h5'}, ret => {
+    get2(api2.cash_queues(body), {from:'h5'}, ret => {
         resolve(ret.data)
     }, reject)
 }

@@ -30,7 +30,7 @@ export default class ManilaQueue extends Component {
         }
         let length = str.replace(/[^\x00-\xff]/g, "01").length;
         if(cash_length > 5){
-            if (length >= 25) {
+            if (length >= 20) {
                 return true
             } else {
                 return false
@@ -51,7 +51,7 @@ export default class ManilaQueue extends Component {
     };
 
     render() {
-        const {cash_queue_members, class_name, cash_queues, high_limit, marquee_name, cash_games, notice_id} = this.props;
+        const {cash_queue_members, class_name, cash_queues, marquee_name, cash_games, notice_id} = this.props;
         return (
             <div className="container-fluid queue_body_new">
                 <div className="row" style={{height: '100%'}}>
@@ -84,28 +84,17 @@ export default class ManilaQueue extends Component {
                                             <div className="queue_new2" key={index}>
 
                                                 <div className="right_top_div">
-                                                    {index === cash_queues.length - 1 && high_limit.status ?
-                                                        strNotNull(high_limit.navigation) ?
-                                                            <div className="last_big_circle_new" key={index}>
-                                                                <img src={high_limit.navigation}
-                                                                     className="navigation_img"/>
-                                                            </div> :
-                                                            <div className="last_big_circle_new" key={index}>
-                                                                <div style={{width: '100%'}}/>
+                                                    {strNotNull(navigation) ?
+                                                        <div className="big_circle_new" key={index}>
+                                                            <img src={navigation} className="navigation_img"/>
+                                                        </div> :
+                                                        <div className="big_circle_new" key={index}>
+                                                            {strNotNull(buy_in) ?
                                                                 <span
-                                                                    className={`big_circle_span_new ${this.props.font_size("NL")}`}>HIGH LIMIT</span>
-                                                            </div> :
-                                                        strNotNull(navigation) ?
-                                                            <div className="big_circle_new" key={index}>
-                                                                <img src={navigation} className="navigation_img"/>
-                                                            </div> :
-                                                            <div className="big_circle_new" key={index}>
-                                                                {strNotNull(buy_in) ?
-                                                                    <span
-                                                                        className={`big_money_span_new ${this.props.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
-                                                                <span
-                                                                    className={`big_circle_span_new ${this.props.font_size("NL")}`}>{this.props.get_cash(small_blind, big_blind)} NL</span>
-                                                            </div>
+                                                                    className={`big_money_span_new ${this.props.font_size('HKD')}`}>{`${buy_in} (HKD)`}</span> : null}
+                                                            <span
+                                                                className={`big_circle_span_new ${this.props.font_size("NL")}`}>{this.props.get_cash(small_blind, big_blind)} NL</span>
+                                                        </div>
                                                     }
 
 
