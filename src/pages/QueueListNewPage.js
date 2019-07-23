@@ -556,16 +556,27 @@ export default class QueueListPage extends Component {
     }
 
     getBLen = (str) => {
+        const {cash_queue_members} = this.state;
+        let cash_length = cash_queue_members.length;
         if (!strNotNull(str)) return 0;
         if (typeof str != "string") {
             str += "";
         }
         let length = str.replace(/[^\x00-\xff]/g, "01").length;
-        if (length >= 32) {
-            return true
-        } else {
-            return false
+        if(cash_length > 5){
+            if (length >= 25) {
+                return true
+            } else {
+                return false
+            }
+        }else{
+            if (length >= 32) {
+                return true
+            } else {
+                return false
+            }
         }
+
 
     }
 
