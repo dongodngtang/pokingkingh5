@@ -34,6 +34,10 @@ export default class ManilaQueue extends Component {
         }
 
     }
+    //圆点的颜色
+    _color = (small_blind, big_blind) => {
+        return '#0baf4d'
+    };
 
     render() {
         const {cash_queue_members, class_name, cash_queues, high_limit, marquee_name, cash_games, notice_id} = this.props;
@@ -111,7 +115,7 @@ export default class ManilaQueue extends Component {
                                                             if (table_numbers >= circle_item) {
                                                                 return <div
                                                                     className={cash_queues.length > 4 ? "circle_item_small" : "circle_item"}
-                                                                    style={{backgroundColor: this.props._color(small_blind, big_blind)}}
+                                                                    style={{backgroundColor: this._color(small_blind, big_blind)}}
                                                                     key={index}/>
                                                             } else {
                                                                 return <div

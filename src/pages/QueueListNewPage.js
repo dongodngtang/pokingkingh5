@@ -294,7 +294,6 @@ export default class QueueListPage extends Component {
                 marquee_name={marquee_name}
                 refreshLoop={this.refreshLoop}
                 showSpan={this.showSpan}
-                _color={this._color}
                 cash_games={cash_games}
                 font_size={this.font_size}
                 get_cash={this.get_cash}
