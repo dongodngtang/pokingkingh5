@@ -74,7 +74,7 @@ export function isFollowing(user_id) {
 }
 
 export function logMsg(...msg) {
-    console.log(...msg)
+    // console.log(...msg)
 }
 
 export function isLogin() {

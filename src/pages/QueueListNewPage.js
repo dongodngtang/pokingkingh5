@@ -54,19 +54,10 @@ export default class QueueListPage extends Component {
 
     getlist = (id) => {
         getCashQueues({cash_game_id: id}, data => {
-            logMsg("datadata", data)
             let queues = data.queues;
             let table_type = data.table_type;
             let vip = {small_blind: '', big_blind: ""};
             //
-            // if (!isEmptyObject(hight_limit) && hight_limit.status) {
-            //     queues.push(hight_limit);
-            // }
-            // if (!isEmptyObject(transfer) && transfer.status) {
-            //     transfer.transfer_type = 'transfer'
-            //     queues.push(transfer);
-            // }
-            // logMsg('ordinary_queues', data)
             let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
             //
             let cash_queues1 = data.tables;
