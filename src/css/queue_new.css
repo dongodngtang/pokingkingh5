@@ -421,6 +421,7 @@
 .remark_span{
     color:#c6f002;
     font-weight: normal;
+    display:inline-block
 }
 .queue_div{
     width:100% !important;
@@ -532,7 +533,7 @@
     font-family: Calibri;
 }
 .name_span_new{
-    display: block;
+    display:inline-block;
     width:auto;
     color:#FFFFFF;
     font-size:35px;
