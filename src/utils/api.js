@@ -10,10 +10,16 @@ const api = {
     info_detail:info_detail,//获取热门资讯详情
     weixin_js_sign:'weixin_js_sign',
     event_detail:event_detail,//获取主赛的新闻详情
+    event_new_info:event_new_info,//获取主赛介绍详情
     cash_queues:cash_queues,//现金桌排队进程列表
     cash_queues_number:cash_queues_number,//现金桌排队进程报名人列表
     cash_games:"cash_games",//现金桌列表
 
+}
+
+function event_new_info(body) {
+    const {id} = body;
+    return `main_events/${id}`;
 }
 
 function cash_queues_number(body){

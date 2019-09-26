@@ -40,3 +40,9 @@ export function getCashGames(resolve, reject) {
         resolve(ret.data)
     }, reject)
 }
+/*获取主赛介绍详情*/
+export function getRaceNewDetail(body,resolve, reject) {
+    get(api.event_new_info(body),{},ret=>{
+        resolve(ret.data)
+    },reject)
+}
