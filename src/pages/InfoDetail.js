@@ -28,7 +28,7 @@ export default class SecondPage extends Component {
 
             const message = {
                 title: title,
-                desc: 'Pokerkinglive',//分享描述
+                desc: 'Kings Live',//分享描述
                 link: window.location.href, // 分享链接，该链接域名必须与当前企业的可信域名一致
                 imgUrl: isEmptyObject(image) ? Images.empty_img : image, // 分享图标
                 type: '', // 分享类型,music、video或link，不填默认为link
