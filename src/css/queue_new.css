@@ -421,7 +421,8 @@
 .remark_span{
     color:#c6f002;
     font-weight: normal;
-    display:inline-block
+    display:inline-block;
+    white-space:nowrap;
 }
 .queue_div{
     width:100% !important;
@@ -538,7 +539,7 @@
     color:#FFFFFF;
     font-size:35px;
     font-weight: bold;
-    word-break:normal; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+    white-space:nowrap;
     font-family: Calibri;
 }
 .middle_name{

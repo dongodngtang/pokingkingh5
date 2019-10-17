@@ -14,6 +14,8 @@ const colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D
 
 const circle_list = [1, 2, 3, 4, 5, 6, 7, 8];
 
+const pattern = /^[\u4e00-\u9fa5]{0,}$/;
+
 export default class QueueListPage extends Component {
 
     constructor(props) {
@@ -495,7 +497,7 @@ export default class QueueListPage extends Component {
                                                     <div className="queue_number_div_new">
                                                         {name_list.map((member_item, member_index) => {
                                                             if (member_index < 11) {
-
+                                                                let scrollLeg = pattern.test(member_item.nickname)?5:10
                                                                 return <div className="number_name_div_new"
                                                                             key={member_index}>
                                                                     {index !== 0 && (member_index === 0 || member_index === 4 || member_index === 9) ?
@@ -503,7 +505,7 @@ export default class QueueListPage extends Component {
                                                                         <div className="none_img"/>}
 
                                                                     <div className="middle_name">
-                                                                        {member_item.nickname.length < marquee_name ?
+                                                                        {member_item.nickname.length < scrollLeg ?
                                                                             <span className="name_span_new"
                                                                                   key={member_index}>{member_item.nickname}</span> :
 
