@@ -104,71 +104,6 @@ export default class QueueListPage extends Component {
 
         });
     }
-    // getlist = (id) => {
-    //     getCashQueues({cash_game_id: id}, data => {
-    //
-    //         let queues = data.ordinary_queues;
-    //         let hight_limit = data.high_limit_queues;
-    //         let transfer = data.transfer_request_queues;
-    //         let vip = {small_blind: '', big_blind: ""};
-    //
-    //         if (!isEmptyObject(hight_limit) && hight_limit.status) {
-    //             queues.push(hight_limit);
-    //         }
-    //         if (!isEmptyObject(transfer) && transfer.status) {
-    //             transfer.transfer_type = 'transfer'
-    //             queues.push(transfer);
-    //         }
-    //         logMsg('ordinary_queues', data)
-    //         let marquee_length = !isEmptyObject(queues) && queues.length < 5 ? 15 : 10;
-    //
-    //         let cash_queues1 = data.tables;
-    //         let top_content = [{id: 9}, {id: 10}, {id: 7}, {id: 8}, {id: 5}, {id: 6}, {id: 3}, {id: 4}, {id: 1}, {id: 2}];
-    //         let newTables = top_content.map(item => {
-    //             cash_queues1.forEach(x => {
-    //                 if (parseInt(x.table_no) === 11) {
-    //                     vip = {small_blind: x.small_blind, big_blind: x.big_blind, no: 11};
-    //                 } else if (parseInt(x.table_no) === item.id) {
-    //                     item.info = x
-    //                 }
-    //             })
-    //             return item
-    //         })
-    //
-    //         let members = [];
-    //         let valid = 0
-    //         queues.forEach((item, index, arr) => {
-    //
-    //             if (item.status === undefined || item.status) {
-    //                 valid++
-    //                 getCashQueuesNumber({cash_game_id: item.cash_game_id, cash_queue_id: item.id}, data2 => {
-    //
-    //                     item.cash_items = data2.items
-    //                     members.push(data2.items)
-    //
-    //                     if (valid === members.length) {
-    //
-    //                         this.setState({
-    //                             cash_queue_members: arr
-    //                         })
-    //                     }
-    //                 });
-    //             }
-    //
-    //         });
-    //
-    //
-    //         this.setState({
-    //             cash_queues: queues,
-    //             all_cash_queues: newTables,
-    //             cash_vip: vip,
-    //             high_limit: hight_limit,
-    //             marquee_name: marquee_length
-    //
-    //         });
-    //
-    //     });
-    // };
 
     getRandomColor = () => {
         let color = "";
@@ -463,15 +398,10 @@ export default class QueueListPage extends Component {
                                                         }
 
 
-                                                        <div style={{width: '85%', height: 25, textAlign: 'center'}}>
-                                                            {strNotNull(item.notice) && this.getBLen(item.notice) ?
-                                                                <Marquee>
-                                                            <span
-                                                                className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                                </Marquee> :
-                                                                <span className="remark_span">{item.notice}</span>
-                                                            }
-                                                        </div>
+                                                      <Marquee textClass={'remark_span'}
+                                                               boxClass={''}
+                                                               boxStyle={{width: '85%', height: 25, textAlign: 'center'}}
+                                                               text={item.notice}/>
 
 
                                                         <div className="span_line_n"/>
@@ -502,18 +432,10 @@ export default class QueueListPage extends Component {
                                                                         <img className="left_img" src={Images.right}/> :
                                                                         <div className="none_img"/>}
 
-                                                                    <div className="middle_name">
-                                                                        {member_item.nickname.length < marquee_name ?
-                                                                            <span className="name_span_new"
-                                                                                  key={member_index}>{member_item.nickname}</span> :
-
-                                                                            <Marquee>
-                                                                            <span className="name_span_new"
-                                                                                  key={member_index}>{member_item.nickname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                                            </Marquee>
-                                                                        }
-
-                                                                    </div>
+                                                                  <Marquee textClass={'name_span_new'}
+                                                                           boxClass={'middle_name'}
+                                                                           text={member_item.nickname}>
+                                                                  </Marquee>
                                                                     {index !== cash_queues.length - 1 && (member_index === 0 || member_index === 4 || member_index === 9) ?
                                                                         <img className="right_img" src={Images.left}/> :
                                                                         <div className="none_img"/>}

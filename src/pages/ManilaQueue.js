@@ -98,15 +98,10 @@ export default class ManilaQueue extends Component {
                                                     }
 
 
-                                                    <div style={{width: '85%', height: 25, textAlign: 'center'}}>
-                                                        {strNotNull(item.notice) && this.getBLen(item.notice) ?
-                                                            <Marquee>
-                                                            <span
-                                                                className="remark_span">{item.notice} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                            </Marquee> :
-                                                            <span className="remark_span">{item.notice}</span>
-                                                        }
-                                                    </div>
+                                                  <Marquee textClass={'remark_span'}
+                                                           boxClass={''}
+                                                           boxStyle={{width: '85%', height: 25, textAlign: 'center'}}
+                                                           text={item.notice}/>
 
 
                                                     <div className="span_line_n"/>
@@ -136,19 +131,9 @@ export default class ManilaQueue extends Component {
                                                                 {index !== 0 && (member_index === 0 || member_index === 3 || member_index === 8) ?
                                                                     <img className="left_img" src={Images.right}/> :
                                                                     <div className="none_img"/>}
-
-                                                                <div className="middle_name">
-                                                                    {member_item.nickname.length < marquee_name ?
-                                                                        <span className="name_span_new"
-                                                                              key={member_index}>{member_item.nickname}</span> :
-
-                                                                        <Marquee>
-                                                                            <span className="name_span_new"
-                                                                                  key={member_index}>{member_item.nickname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                                        </Marquee>
-                                                                    }
-
-                                                                </div>
+                                                              <Marquee textClass={'name_span_new'}
+                                                                       boxClass={'middle_name'}
+                                                                       text={member_item.nickname}/>
                                                                 {index !== cash_queues.length - 1 && (member_index === 0 || member_index === 3 || member_index === 8) ?
                                                                     <img className="right_img" src={Images.left}/> :
                                                                     <div className="none_img"/>}
