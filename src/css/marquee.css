@@ -1,12 +1,32 @@
-#marquee {
-    position:relative;
-    overflow:hidden;
+.box {
+    margin: 0 auto;
+    overflow: hidden;
 }
-#marquee dl, #marquee dt,#marquee dd {
-    float:left;
-    margin:0;
-    padding:0;
+
+.animate {
+    display: inline-block;
+    animation: 10s wordsLoop linear infinite normal;
+    white-space:nowrap;
 }
-#marquee dl{
-    width:1000%;
+
+@keyframes wordsLoop {
+    0% {
+        transform: translateX(200px);
+        -webkit-transform: translateX(200px);
+    }
+    100% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes wordsLoop {
+    0% {
+        transform: translateX(200px);
+        -webkit-transform: translateX(200px);
+    }
+    100% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+    }
 }

@@ -15,7 +15,7 @@ import KingsApp from './pages/KingsApp'
 const Routes = () => (
     <Router>
         <App>
-
+            <Route path="/" component={QueueListNewPage}/>
             <Route path="/queue_new" component={QueueListNewPage}/>
 
             <Route path="/manila" component={QueueMaNiLa}/>
