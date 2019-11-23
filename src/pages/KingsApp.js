@@ -22,7 +22,7 @@ export default class LoadApp extends Component {
             dataUrl: '', // 如果type是music或video，则要提供数据链接`，默认为空
         };
         const url = {url: window.location.href};
-        // weiXinShare(url, message);
+        weiXinShare(url, message);
     };
 
     toIosApp = () => {

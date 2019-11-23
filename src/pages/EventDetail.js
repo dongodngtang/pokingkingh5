@@ -36,7 +36,7 @@ export default class EventDetail extends Component {
             };
             const url = {url: window.location.href};
             console.log("message:", message);
-            // weiXinShare(url, message);
+            weiXinShare(url, message);
 
         }, err => {
 
