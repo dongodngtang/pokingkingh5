@@ -36,6 +36,29 @@ const client = create({
   baseURL: basic_api(),
   timeout: 20000
 });
+export function getLang(){
+  let lang = navigator.language||navigator.userLanguage;//常规浏览器语言和IE浏览器
+  console.log('语言',lang)
+  if(/zh/.test(lang)){
+    if(/zh-[cn|CN]/.test(lang)){
+      return 'zh'
+    }else{
+      return 'tc'
+    }
+  }
+  return 'en'
+}
+
+
+
+client.setHeader('X-LANG', 'zh')
+
+export function setLang(lang) {
+  logMsg('X-LANG',lang)
+  if(lang){
+    client.setHeader("X-LANG", lang);
+  }
+}
 //cash_queue特定的v2
 const client2 = create({
   baseURL: basic_api2(),

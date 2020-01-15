@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {getInfoDetail} from '../services/InfoDao';
 import {isEmptyObject,strNotNull,weiXinShare} from "../utils/utils";
 import {Images,MarkDown} from '../components'
+import queryString from 'querystring'
+import { setLang } from '../utils/fetch';
 
 export default class SecondPage extends Component {
 
@@ -13,10 +15,12 @@ export default class SecondPage extends Component {
     }
 
     componentDidMount() {
-
-
         const {id} = this.props.match.params;
 
+        let search = this.props.location.search.replace('?',"")
+        const langO = queryString.parse(search)
+        setLang(langO.lang)
+        
         getInfoDetail({id: id}, data => {
             console.log("info:", data);
             this.setState({

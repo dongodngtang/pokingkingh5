@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {getEventDetail} from '../services/InfoDao';
 import {isEmptyObject,strNotNull,weiXinShare} from "../utils/utils";
 import {Images,MarkDown} from '../components'
+import queryString from 'querystring'
+import { setLang } from '../utils/fetch';
 
 export default class EventDetail extends Component {
 
@@ -13,10 +15,11 @@ export default class EventDetail extends Component {
     }
 
     componentDidMount() {
-
-
         const {event_id,id} = this.props.match.params;
-
+        let search = this.props.location.search.replace('?',"")
+        const langO = queryString.parse(search)
+        setLang(langO.lang)
+        
         getEventDetail({event_id: event_id, id: id}, data => {
             console.log("info:", data);
             this.setState({
